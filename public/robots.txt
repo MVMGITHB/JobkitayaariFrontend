@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /server/
+Disallow: /private/
+Disallow: /login
+Disallow: /register
+Disallow: /account/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /orders/
+Disallow: /settings/
+Disallow: /*?*  # Blocks unnecessary query parameters
+Disallow: /*.json$  # Blocks JSON API responses
+
+# Allow essential pages
+Allow: /
+
+# Delay crawling to prevent server overload
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://jobkityaari.com/sitemap.xml
