@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <head>
 
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
-        {/* <meta name="robots" content="noindex, nofollow"></meta> */}
+        <meta name="robots" content="noindex, nofollow"></meta>
         {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9QH53NLWK"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
