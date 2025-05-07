@@ -1,4 +1,5 @@
 import Home from "@/components/home/Home";
+import Popup from "@/components/home/Popup";
 
 export const metadata = {
   title: 'Latest Government Jobs 2025, IT Jobs, Bank PO & Railway Jobs in India',
@@ -172,6 +173,7 @@ export default function Home1() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
+        <Popup/>
       <Home />
     </div>
   );

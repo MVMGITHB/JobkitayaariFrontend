@@ -1,7 +1,5 @@
 "use client";
-import  { useState, useEffect } from "react";
-
-
+import { useState, useEffect } from "react";
 
 import JobSection from "./JobSection";
 import Cookies from "js-cookie";
@@ -18,17 +16,12 @@ const Home = () => {
     }
   }, []);
 
-  console.log(token, "token");
-
-
-
 
   return (
     <div>
-
-      
-      
-      <h1 className=" text-2xl text-center font-bold py-[20px]">Find Your Dream Job – Government, IT, Bank & Private Jobs in India</h1>
+      <h1 className=" text-2xl text-center font-bold py-[20px]">
+        Find Your Dream Job – Government, IT, Bank & Private Jobs in India
+      </h1>
       {/* <div className="relative flex justify-center ">
             <input
               type="text"
@@ -41,7 +34,7 @@ const Home = () => {
             />
           </div> */}
       <JobSection />
-      <HomeBlog/>
+      <HomeBlog />
     </div>
   );
 };

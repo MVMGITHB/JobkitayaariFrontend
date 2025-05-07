@@ -28,7 +28,8 @@ function HomeBlog() {
 
   return (
     <>
-      {latest ? (
+<div className="w-full lg:w-[90%] mx-auto" >
+{latest ? (
         <JobCarousel
           jobs={latest}
           title={"Latest Govenment Job Opening 2025 - All Sectors"}
@@ -37,8 +38,9 @@ function HomeBlog() {
       ) : (
         ""
       )}
+</div>
       <div className="py-4 lg:py-10 px-4 lg:px-6 ">
-        <h3 className="text-center text-2xl font-bold mb-10 text-white max-w-[1280px] bg-black mx-auto rounded-full">
+        <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[1280px] bg-black mx-auto rounded-full">
           Career Guide
         </h3>
         <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row justify-center items-center gap-6">
