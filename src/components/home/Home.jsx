@@ -41,7 +41,7 @@ const Home = () => {
             />
           </div> */}
       <JobSection />
-      {/* <HomeBlog/> */}
+      <HomeBlog/>
     </div>
   );
 };

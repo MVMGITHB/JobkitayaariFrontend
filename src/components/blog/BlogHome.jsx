@@ -30,26 +30,32 @@ export const BlogHome = ({ cards }) => {
 
       <div className=" w-full md:w-3/5 shadow-md p-4">
         <div className=" w-full shadow-md  ">
-          Ads
-          <img
+         <div>
+          <h3>          Ads
+          </h3>
+         <img
             src="https://images-static.nykaa.com/uploads/899a63be-fbb2-457a-be3e-c55d02a0fcbb.jpg?tr=cm-pad_resize,w-1200 "
             alt=""
             className="w-full"
           />
+         </div>
         </div>
 
         <div className="p-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
             {data.map((card, index) => (
               <div
                 key={index}
                 className="bg-white shadow-lg rounded-lg overflow-hidden"
               >
+                <div className=" h-[200px]">
                 <img
                   src={`${base_url}${card.image}`}
                   alt={`${base_url}${card.title}`}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-full object-contain"
                 />
+                </div>
+                
                 <div className="p-4 text-center">
                   <h4 className="text-xl font-semibold">
                     <Link
