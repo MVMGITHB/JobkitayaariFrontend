@@ -77,9 +77,9 @@ export default function Footer() {
           <h6 className="text-lg font-semibold">Follow Us:</h6>
 
           
-            <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaFacebook size={30} />Facebook</Link>
+            <Link href="https://www.facebook.com/mvmbs/" className="text-white flex gap-3 item-center hover:text-gray-400"><FaFacebook size={30} />Facebook</Link>
             <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaTwitter size={30} />Twitter</Link>
-            <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaInstagram size={30} />Instagram</Link>
+            <Link href="https://www.instagram.com/mvmbs_official/" className="text-white flex gap-3 item-center hover:text-gray-400"><FaInstagram size={30} />Instagram</Link>
             <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaLinkedinIn size={30} />LinkedIn</Link>
           </div>
         </div>

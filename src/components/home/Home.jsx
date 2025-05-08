@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className=" text-2xl text-center font-bold py-[20px]">
+      <h1 className="text-xl lg:text-2xl text-center font-bold py-[20px] px-4 lg:px-6">
         Find Your Dream Job – Government, IT, Bank & Private Jobs in India
       </h1>
       {/* <div className="relative flex justify-center ">

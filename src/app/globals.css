@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #000;
   }
 }
 
@@ -38,11 +38,14 @@ table {
 
 }
  
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  padding-bottom: 10px !important;
-  padding-top: 10px !important;
+/* styles/slick-custom.css */
+.custom-slick .slick-track,
+.custom-slick .slick-list {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
 }
+
 
 
 .blog-image-container {

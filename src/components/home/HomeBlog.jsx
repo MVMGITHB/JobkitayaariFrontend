@@ -52,7 +52,7 @@ function HomeBlog() {
               <img
                 src={`${base_url}${blog.image}`}
                 alt={`${base_url}${blog.title}`}
-                className="w-full h-120 object-cover  transition-all duration-300"
+                className="w-full h-100 lg:h-120 object-cover  transition-all duration-300"
               />
               <div className="absolute inset-0 z-10 p-4 flex items-end justify-center transition-all duration-300">
                 <Link href={`/${blog?.category?.slug}/articles/${blog.slug}`}>
