@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
           </div>
         </section>
 
-        <section className="py-16 px-6 md:px-20 bg-gray-100">
+        <section className="py-4 lg:py-16 px-4 md:px-6 lg:px-8 bg-gray-100">
           <div className="max-w-4xl mx-auto text-gray-700">
             <h2 className="text-3xl font-bold text-gray-800 mb-2">
               Privacy Policy

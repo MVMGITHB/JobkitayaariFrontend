@@ -14,7 +14,6 @@ export const ArticleHome = ({ data }) => {
   
   const formattedDate = `${day}/${month}/${year}`;
 
-  console.log("--data--", data)
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "Article",

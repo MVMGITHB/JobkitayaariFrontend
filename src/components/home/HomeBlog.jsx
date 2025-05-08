@@ -3,7 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import base_url from "../helper/helper";
 import Link from "next/link";
-import JobCarousel from "../technology/JobCarousel";
+// import JobCarousel from "../technology/JobCarousel";
+import JobCarousel from "./JobCrousel1";
 
 function HomeBlog() {
   const [blog, setBlog] = useState([]);
@@ -28,7 +29,7 @@ function HomeBlog() {
 
   return (
     <>
-<div className="w-full lg:w-[90%] mx-auto" >
+<div className="w-full  mx-auto" >
 {latest ? (
         <JobCarousel
           jobs={latest}
@@ -40,10 +41,10 @@ function HomeBlog() {
       )}
 </div>
       <div className="py-4 lg:py-10 px-4 lg:px-6 ">
-        <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[1280px] bg-black mx-auto rounded-full">
+        <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[100%] bg-black mx-auto rounded-full">
           Career Guide
         </h3>
-        <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row justify-center items-center gap-6">
+        <div className="max-w-[100%] mx-auto flex flex-col md:flex-row justify-center items-center gap-9">
           {blog.map((blog, indx) => (
             <div
               key={indx}
