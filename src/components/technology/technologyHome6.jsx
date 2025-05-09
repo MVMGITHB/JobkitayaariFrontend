@@ -28,7 +28,7 @@ const technologyHome6 = ({ title }) => {
     <div>
       
 
-      <h1 className=" text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
+      <h1 className="text-base lg:text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
       {bankingJob && (
   <JobCarousel
     jobs={bankingJob}

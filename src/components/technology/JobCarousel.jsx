@@ -49,7 +49,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
       <div className="w-full max-w-[90%]">
 
         {/* Title */}
-        <h2 className={`text-2xl font-bold text-center px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white`}>
+        <h2 className={`text-base lg:text-2xl font-bold text-center px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white`}>
           {title}
         </h2>
 
@@ -57,7 +57,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
         {data && (
           <div className="w-full mx-auto mb-4">
             {(showAll ? data : [data[0]]).map((item, index) => (
-              <p key={index} className="text-xl text-black mb-3 text-left">
+              <p key={index} className="text-base lg:text-xl text-black mb-3 text-left">
                 {item.title}
               </p>
             ))}
@@ -88,7 +88,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
           {jobs.length <= 1 ? (
             <div className="flex justify-center">
               {jobs.map((job, index) => (
-                <div key={index} className="px-2 w-full max-w-xs mx-auto">
+                <div key={index} className="py-2 px-2 w-full max-w-xs mx-auto">
                   <JobCard
                     category={job?.category?.slug}
                     slug={job?.slug}

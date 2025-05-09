@@ -36,7 +36,7 @@ const [bhelJob, setbhelJob]=useState([])
   return (
     <div>
      
-      <h1 className=" text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
+      <h1 className="text-base lg:text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
      {ongcJob?( <JobCarousel
         jobs={ongcJob}
         title={"ONGC Recruitment 2025 – Apply Now"}

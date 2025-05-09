@@ -118,10 +118,10 @@ const TechnologyHome1 = ({ title ,para}) => {
   return (
     <div>
      
-      <h1 className=" text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
+      <h1 className="text-base lg:text-2xl font-bold text-center mb-2 pt-8">{title}</h1>
       <div className=" w-[90%] mx-auto">
        {(showAll ? para : [para[0]]).map((item, index) => (
-        <p key={index} className="text-xl text-black mb-4">
+        <p key={index} className="text-base lg:text-xl text-black mb-4">
           {item.title}
         </p>
       ))}
