@@ -98,8 +98,8 @@ console.log(data?.faqs[0]?.ques)
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     
-    <div className="container mx-auto p-6 flex flex-col md:flex-row gap-6">
-    <div className=" w-full md:w-1/5">
+    <div className=" mx-auto p-6 flex flex-col md:flex-row ">
+    <div className=" w-full md:w-[20%]">
       <SideBar />
     </div>
 
@@ -108,15 +108,16 @@ console.log(data?.faqs[0]?.ques)
                  <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, sit quod quo rerum doloremque neque ullam itaque, sunt eius amet, nostrum totam minus eaque quisquam veniam nisi in cumque possimus ipsa consequatur dolor beatae! Voluptas ducimus commodi quibusdam quod dolorum mollitia tempora aliquam et corrupti, saepe magni at illo doloremque, ea voluptate reiciendis fugit nobis sit iste iure obcaecati labore? Eligendi, ipsa expedita sunt cum cupiditate laudantium ducimus iusto sapiente tenetur adipisci. Id rem fuga voluptates saepe, voluptatibus ut est dolores eos impedit veritatis. Consequuntur vero, quis perspiciatis sit fugit delectus suscipit animi magnam eaque alias, iste vitae repellat unde quidem! Dignissimos incidunt omnis esse repellendus aut, aperiam qui sunt magnam beatae. Voluptatibus dolorum, molestias adipisci tempore aut libero non dolores cum dolorem aperiam aliquid natus officia deleniti ducimus totam. Nemo illo corporis voluptatum non quas earum quo similique, assumenda deserunt, architecto praesentium repudiandae explicabo aut fugit dicta ipsam! Explicabo, saepe enim at accusantium quasi vitae magni. Veniam blanditiis ratione suscipit tempore. Vitae eligendi consectetur provident maiores dolor aut tempore suscipit sunt laudantium autem ipsa assumenda obcaecati qui, at quia voluptas odit quidem minus quas eos. Voluptates, odit. Incidunt officiis nostrum quod sed alias cum veritatis sint mollitia, at quibusdam.</p>
           </div> */}
 
-    <div className=" w-full md:w-3/5 shadow-md p-4">
+    <div className=" w-full md:w-[85%] shadow-md p-4">
       <h1 class="heading-primary1">{data?.title}</h1>
-      <div className="blog-image-container">
-        <img
-          src={`${base_url}${data?.image}`}
-          alt="Blog Image"
-          className="w-full h-auto object-cover"
-        />
-      </div>
+      <div className="w-full h-[400px] flex items-center justify-center overflow-hidden">
+  <img
+    src={`${base_url}${data?.image}`}
+    alt="Blog Image"
+    className="w-full h-[600px] object-contain"
+  />
+</div>
+
 
       {/* <p class='heading-secondary-para'>We all try to put in our best efforts during the job interview process. All of us try that we get succeed in impressing the person who is taking our interview so that we get our dream jobs </p>
 <p class='heading-secondary-para'>People put a lot of effort into getting an interview call and despite putting in their best-efforts people still make certain mistakes that significantly hamper their performance during the job interview process.</p>
@@ -201,7 +202,7 @@ console.log(data?.faqs[0]?.ques)
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-    <div className=" w-full md:w-1/5">
+    <div className=" w-full md:w-[20%]">
       <RightSideBar />
     </div>
   </div></>

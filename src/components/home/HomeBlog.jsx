@@ -43,27 +43,38 @@ function HomeBlog() {
         <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[98%] bg-black mx-auto rounded-full">
           Career Guide
         </h3>
-        <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-center items-center gap-9">
-          {blog.map((blog, indx) => (
-            <div
-              key={indx}
-              className="group relative w-full max-w-sm rounded-xl overflow-hidden shadow-xl transition-all duration-300 ease-in hover:scale-105"
-            >
-              <img
-                src={`${base_url}${blog.image}`}
-                alt={`${base_url}${blog.title}`}
-                className="w-full h-100 lg:h-120 object-cover  transition-all duration-300"
-              />
-              <div className="absolute inset-0 z-10 p-4 flex items-end justify-center transition-all duration-300">
-                <Link href={`/${blog?.category?.slug}/articles/${blog.slug}`}>
-                  <button className="text-sm py-2 px-4 cursor-pointer bg-violet-700 hover:bg-violet-800 rounded-xl text-white transition duration-300 mb-4">
-                    Explore now
-                  </button>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center gap-9 flex-wrap">
+  {blog.map((blog, indx) => (
+    <div
+    key={indx}
+    className="relative w-full max-w-sm h-[400px] rounded-xl overflow-hidden shadow-xl group transition-all duration-300 ease-in hover:scale-105 bg-white"
+  >
+    <img
+      src={`${base_url}${blog.image}`}
+      alt={blog.title}
+      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+    />
+  
+    {/* Gradient overlay for visibility */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10"></div>
+  
+    {/* Title (above button) */}
+    <h1 className="absolute bottom-16 left-0 w-full px-4 text-center text-[18px] lg:text-[22px] font-semibold text-white z-20">
+      {blog.title}
+    </h1>
+  
+    {/* Button */}
+    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+      <Link href={`/${blog?.category?.slug}/articles/${blog.slug}`}>
+        <button className="text-sm py-2 px-4 cursor-pointer bg-violet-700 hover:bg-violet-800 rounded-xl text-white transition duration-300">
+          Explore now
+        </button>
+      </Link>
+    </div>
+  </div>
+    ))}
+</div>
+
       </div>
     </>
   );

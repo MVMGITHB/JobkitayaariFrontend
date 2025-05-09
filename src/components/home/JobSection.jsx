@@ -35,7 +35,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className="container mx-auto px-4 pt-[20px]">
+      <div className="max-w-[95%] mx-auto px-4 pt-[20px]">
         {/* Job Sections Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Top Jobs Section */}

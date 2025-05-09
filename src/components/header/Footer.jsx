@@ -41,7 +41,6 @@ export default function Footer() {
            
             <li><Link href="/technology-jobs" className="text-white hover:underline">💻 Technology Jobs</Link></li>
             <li><Link href="/management-jobs" className="text-white hover:underline">📈 Management Jobs</Link></li>
-            <li><Link href="/finance-jobs" className="text-white hover:underline">💰 Finance Jobs</Link></li>
             <li><Link href="/teaching-jobs/" className="text-white hover:underline"> 🎓 Teaching Jobs</Link></li>
             <li><Link href="/banking-jobs" className="text-white hover:underline">🏦 Banking Jobs</Link></li>
             <li><Link href="/psu-jobs" className="text-white hover:underline">🏢 PSU Jobs</Link></li>

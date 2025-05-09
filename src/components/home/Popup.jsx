@@ -30,7 +30,9 @@ export default function Popup() {
           </button>
         )}
         <div className="text-center space-y-4">
-          <div className="text-5xl">🚀</div>
+        <div className="flex justify-center items-center h-20">
+  <img src="/images/logo2.png" alt="Logo" className="h-full object-contain" />
+</div>
           <h2 className="text-3xl font-bold text-gray-800">
             Stay Updated With
           </h2>
@@ -38,7 +40,7 @@ export default function Popup() {
             Latest Job Openings & Career Updates
           </h3>
           <p className="text-sm text-gray-600">
-            Join thousands of users getting real-time alerts!
+            Join thousands of users getting real-time job alerts!
           </p>
           <Link href="/register">
             <button className="mt-4 px-6 py-3 cursor-pointer bg-violet-700 hover:bg-violet-800 text-white  font-medium rounded-full transition duration-300 shadow-md">
