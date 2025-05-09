@@ -114,7 +114,7 @@ console.log(data?.faqs[0]?.ques)
   <img
     src={`${base_url}${data?.image}`}
     alt="Blog Image"
-    className="w-full h-[600px] object-contain"
+    className="w-full h-full object-cover"
   />
 </div>
 

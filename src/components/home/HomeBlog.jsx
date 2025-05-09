@@ -40,7 +40,7 @@ function HomeBlog() {
       )}
 </div>
       <div className="py-4 lg:py-10 px-4 lg:px-6 ">
-        <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[98%] bg-black mx-auto rounded-full">
+        <h3 className="text-center text-2xl font-bold mb-8 text-white max-w-[98%] bg-violet-500 mx-auto rounded-full">
           Career Guide
         </h3>
         <div className="max-w-[90%] mx-auto flex flex-col md:flex-row justify-between items-center gap-9 flex-wrap">
