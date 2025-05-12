@@ -48,9 +48,6 @@ export const metadata = {
 }
  
 
-
-
-
 // other: {
 //   "application/ld+json": JSON.stringify({
 //     "@context": "https://schema.org",

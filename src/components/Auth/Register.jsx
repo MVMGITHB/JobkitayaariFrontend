@@ -66,7 +66,6 @@ export default function Register() {
         position: "bottom-right",
       });
 
-      console.log(error.response?.data?.message);
       setError(true);
     } finally {
       setLoading(false);

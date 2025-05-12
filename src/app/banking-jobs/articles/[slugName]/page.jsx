@@ -1,5 +1,6 @@
 import Article from "@/components/Article/Article"
 import axios from "axios";
+
 export const metadata = {
   title: 'About Us | Job Ki Tyaari - Your Career Guide',
   description: 'Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us',

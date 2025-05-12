@@ -1,9 +1,10 @@
 import React from 'react'
 import { BlogHome } from './BlogHome'
-export const Blog = ({cards}) => {
+export const Blog = ({data}) => {
+     
     return (
         <div>
-            <BlogHome cards={cards}/>
+            <BlogHome data={data}/>
         </div>
     )
 }

@@ -304,34 +304,39 @@ const job= data
             <div className="bg-azure-100 shadow-lg px-4 py-6">
               <p className="text-gray-900">Requirement:</p>
               <ul className="space-y-2">
-                {data?.requirementdata?.map((req, index) => (
-                  <li
-                    key={index}
-                    className="list-disc list-inside text-gray-800"
-                  >
-                    {req}
-                  </li>
-                ))}
-              </ul>
+  {data?.requirementdata?.map((req, index) =>
+    req.length > 1 ? (
+      <li
+        key={index}
+        className="list-disc list-inside text-gray-800"
+      >
+        {req}
+      </li>
+    ) : null
+  )}
+</ul>
+
 
               <p className="text-gray-500 mt-4">Job Description:</p>
               <ul className="space-y-2">
                 {data?.jobDescription?.map((jobdesc, index) => (
-                  <li
-                    key={index}
-                    className="list-disc list-inside text-gray-800"
-                  >
-                    {jobdesc}
-                  </li>
+                jobdesc.length>1 ?(  <li
+                  key={index}
+                  className="list-disc list-inside text-gray-800"
+                >
+                  {jobdesc}
+                </li>):(null)
                 ))}
               </ul>
 
               <p className="text-black font-bold mt-4">Skills Required</p>
               <ul className="space-y-2 list-disc list-inside">
-                {data?.skill?.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-                ))}
-              </ul>
+  {data?.skill?.map((skill, index) =>
+    skill.length > 1 ? (
+      <li key={index}>{skill}</li>
+    ) : null
+  )}
+</ul>
 
               {data?.applylink && (
                 <a

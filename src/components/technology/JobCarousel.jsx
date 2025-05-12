@@ -49,7 +49,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
       <div className="w-full max-w-[90%]">
 
         {/* Title */}
-        <h2 className={`text-base lg:text-2xl font-bold text-center px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white`}>
+        <h2 className={`text-base lg:text-2xl font-bold text-center p-2 lg:p-0 px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white`}>
           {title}
         </h2>
 

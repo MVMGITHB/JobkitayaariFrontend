@@ -1,4 +1,6 @@
 import { Blog } from "@/components/blog/Blog"
+import base_url from "@/components/helper/helper";
+import axios from "axios";
 
 export const metadata = {
   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -15,16 +17,30 @@ export const metadata = {
 
 }
 
- const page = () => {
-    const cards = [
-      { id: 1, title: "Heading 1", image: "https://cdn4.vectorstock.com/i/1000x1000/67/68/business-concept-background-article-writing-word-vector-38866768.jpg",base:"banking-jobs" },
-      ];
+
+
+
+const page = async () => {
+  const response = await axios.get(
+    `${base_url}/api/blog/getAllBlog`
+  );
+
+  const data = response?.data?.filter((item)=>{
+      return item.category.slug === 'banking-jobs'
+  })
+
+  let test = []
 
   return (
     <div>
-        <Blog cards={cards}/>
-    </div>
-  )
-}
 
-export default page
+      {
+        data?(<Blog data={data} />):(<Blog data={test} />)
+      }
+      
+    </div>
+  );
+};
+
+export default page;
+

@@ -57,7 +57,6 @@ export default function Login() {
         position: "bottom-right",
       });
 
-      console.log(error.response?.data?.message);
       setError(true);
     } finally {
       setLoading(false);
