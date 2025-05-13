@@ -74,6 +74,10 @@ export const metadata = {
 
 export default function Home1() {
 
+
+  
+
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -101,60 +105,7 @@ export default function Home1() {
   
   
   
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://jobkityaari.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Government Jobs",
-        "item": "https://jobkityaari.com/government-jobs"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Technology Jobs",
-        "item": "https://jobkityaari.com/technology-jobs"
-      },
   
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Management Jobs",
-        "item": "https://jobkityaari.com/management-jobs/"
-      },
-  
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "name": "Teaching Jobs",
-        "item": "https://jobkityaari.com/teaching-jobs"
-      },
-  
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "name": "Banking Jobs",
-        "item": "https://jobkityaari.com/banking-jobs"
-      },
-  
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "name": "Psu Jobs",
-        "item": "https://jobkityaari.com/psu-jobs"
-      },
-  
-      
-    ]
-  };
 
 
   return (
@@ -166,10 +117,6 @@ export default function Home1() {
         />
 
 
-<script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
         <Popup/>
       <Home />
     </div>

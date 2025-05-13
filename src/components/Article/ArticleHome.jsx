@@ -85,6 +85,8 @@ export const ArticleHome = ({ data }) => {
     ],
   };
 
+
+
   return (
     <>
       <script
@@ -98,24 +100,48 @@ export const ArticleHome = ({ data }) => {
   </div>
 
   <div className="w-full md:w-[85%] shadow-md p-4 order-1 md:order-2">
-    <p className="text-xl lg:text-2xl font-bold text-center">{data?.title}</p>
- <div className="w-full max-h-[500px] flex items-center justify-center overflow-hidden bg-gray-100">
-  <img
-    src={`${base_url}${data?.image}`}
-    alt="Blog Image"
-    className="w-full h-auto object-cover"
-  />
-</div>
+  <p className="text-xl lg:text-3xl font-bold text-center">{data?.title}</p>
+  
+  <div className="w-full max-h-[500px] flex items-center justify-center overflow-hidden bg-gray-100">
+    <img
+      src={`${base_url}${data?.image}`}
+      alt="Blog Image"
+      className="w-full h-auto object-cover"
+    />
+  </div>
 
-
-
-    {data && (
+  {data && (
+    <>
       <div
         id="artice-main"
         dangerouslySetInnerHTML={{ __html: data?.content }}
+        className="mb-0"
       />
-    )}
-  </div>
+
+      {data.faqs && data.faqs.length > 0 && (
+        <div className="mx-auto p-4 mt-[-20px]">
+          <h2 className="text-center text-2xl font-bold mb-4">
+            Frequently Asked Questions (FAQs)
+          </h2>
+          <div>
+            {data.faqs.map((faq, index) => (
+              <div key={faq._id || index} className="mb-4">
+                <h3 className="text-[18px] font-semibold mb-2">
+                  Q{index + 1}: {faq.ques}
+                </h3>
+                <p className="text-[16px]">
+                  <strong>Ans:</strong> {faq.ans}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  )}
+</div>
+
+ 
 
   <div className="w-full md:w-[20%] order-3">
     <RightSideBar />

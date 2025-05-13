@@ -1,5 +1,5 @@
 import base_url from "@/components/helper/helper";
-import JobDescription from "@/components/jobDescription/JobDescription"
+import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 
 // export const metadata = {
@@ -9,14 +9,13 @@ import axios from "axios";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
 //   },
 
 // }
-
 
 export async function generateMetadata({ params }) {
   const { slugName } = await params;
@@ -40,6 +39,10 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.mtitle} https://jobkityaari.com`,
       description: post.mdescription,
+      metadataBase: new URL("https://jobkityaari.com"),
+      alternates: {
+        canonical: "./",
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.excerpt,
@@ -64,14 +67,13 @@ export async function generateMetadata({ params }) {
   }
 }
 
-async function page({params}) {
-
-  const {slugName} = await params
+async function page({ params }) {
+  const { slugName } = await params;
   return (
     <>
-    <JobDescription slug={slugName}/>
+      <JobDescription slug={slugName} />
     </>
-  )
+  );
 }
 
-export default page
+export default page;

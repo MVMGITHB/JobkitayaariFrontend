@@ -24,7 +24,6 @@ export async function generateMetadata({ params }) {
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
     const post = response.data;
-    console.log("--article", post);
     if (!post) {
       return {
         title: "Post not found",
@@ -39,6 +38,10 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.mtitle} https://jobkityaari.com`,
       description: post.mdesc,
+       metadataBase: new URL('https://jobkityaari.com'),
+    alternates: {
+      canonical: './',
+    },
       // openGraph: {
       //   title: post.title,
       //   description: post.excerpt,

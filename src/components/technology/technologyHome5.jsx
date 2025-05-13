@@ -30,6 +30,7 @@ const technologyHome5 = ({ title, para }) => {
     const fetchData1 = async () => {
       try {
         const response = await axios.get(`${base_url}/api/job/getJobbySUbCategory/all-sectors`);
+        
         setAllsector(response?.data);
       } catch (error) {
         console.log(err);
