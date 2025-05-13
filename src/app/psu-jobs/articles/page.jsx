@@ -18,24 +18,12 @@ export const metadata = {
 
 }
 const page = async () => {
-  const response = await axios.get(
-    `${base_url}/api/blog/getAllBlog`
-  );
-
-
-  const data = response?.data?.filter((item)=>{
-      return item.category.slug === 'psu-jobs'
-  })
-
-  let test = []
 
   return (
     <div>
 
-      {
-        data?(<Blog data={data} />):(<Blog data={test} />)
-      }
-      
+         <Blog  filters={"psu-jobs"} />
+
     </div>
   );
 };

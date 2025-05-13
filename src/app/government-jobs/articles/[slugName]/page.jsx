@@ -1,4 +1,5 @@
 import Article from "@/components/Article/Article"
+import base_url from "@/components/helper/helper";
 import axios from "axios";
 export const metadata = {
   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -69,7 +70,7 @@ const page = async ({ params }) => {
 
   try {
     const response = await axios.get(
-      `https://api.jobkityaari.com/api/blog/getOneBlogByslug/${slugName}`
+      `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
     const data1 = response.data;
    

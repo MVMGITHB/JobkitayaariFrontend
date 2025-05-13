@@ -1,5 +1,6 @@
 
 import { Blog } from "@/components/blog/Blog"
+import base_url from "@/components/helper/helper";
 import axios from "axios";
 
 export const metadata = {
@@ -19,13 +20,13 @@ export const metadata = {
 
 const page = async () => {
   const response = await axios.get(
-    "https://api.jobkityaari.com/api/blog/getAllBlog"
+    `${base_url}/api/blog/getAllBlog`
   );
 
 
   return (
     <div>
-      <Blog data={response?.data} />
+      <Blog  filters={"carrier"} />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { RightSideBar } from "./RightSideBar";
 import base_url from "../helper/helper";
 
 export const ArticleHome = ({ data }) => {
-  // const isoDate = "2025-04-10T09:41:10.884Z";
   const date = new Date(data?.createdAt);
 
   const day = String(date.getDate()).padStart(2, "0");
