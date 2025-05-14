@@ -19,7 +19,6 @@ function JobDescription({ slug }) {
             `${base_url}/api/job/getJobBySlug/${slug}`
           );
           setData(response.data);
-          console.log("data--", response.data);
           setLoading(false);
         } catch (error) {
           setError(error.message);

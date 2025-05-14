@@ -60,9 +60,9 @@ function HomeBlog() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10"></div>
 
         {/* Title */}
-        <h1 className="absolute bottom-16 left-0 w-full px-4 text-center text-[18px] lg:text-[22px] font-semibold text-white z-20">
+        <p className="absolute bottom-16 left-0 w-full px-4 text-center text-[18px] lg:text-[22px] font-semibold text-white z-20">
           {blog.title}
-        </h1>
+        </p>
 
         {/* Button */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">

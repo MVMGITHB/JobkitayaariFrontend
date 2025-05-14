@@ -30,25 +30,26 @@ export const BlogHome = ({ data }) => {
   {data?.length > 0 ? (
   data.map((card, index) => (
     <div
-      key={index}
-      className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
-    >
-      <div className="h-[200px] bg-white overflow-hidden flex items-center justify-center rounded-t-xl">
-        <img
-          src={`${base_url}${card?.image}`}
-          alt={card?.title}
-          className="h-full w-full object-cover rounded-lg transition-transform duration-300 hover:scale-105"
-        />
-      </div>
+  key={index}
+  className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+>
+  <div className="h-[200px] bg-white overflow-hidden flex items-center justify-center rounded-t-xl">
+    <img
+      src={`${base_url}${card?.image}`}
+      alt={card?.title}
+      className="w-full h-auto max-h-[200px] rounded-lg transition-transform duration-300 hover:scale-105"
+    />
+  </div>
 
-      <div className="p-4 text-center">
-        <p className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
-          <Link href={`/${card?.category?.slug}/articles/${card?.slug}`}>
-            {card?.title}
-          </Link>
-        </p>
-      </div>
-    </div>
+  <div className="p-4 text-center">
+    <p className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
+      <Link href={`/${card?.category?.slug}/articles/${card?.slug}`}>
+        {card?.title}
+      </Link>
+    </p>
+  </div>
+</div>
+
   ))
 ) : (
 <div className="flex items-center  bg-gray-50 px-4">

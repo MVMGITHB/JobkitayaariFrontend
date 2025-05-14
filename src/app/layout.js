@@ -4,6 +4,9 @@ import { AuthProvider } from "@/components/context/auth";
 import Header from "@/components/header/Header"
 import Footer from "@/components/header/Footer";
 import Navbar from "@/components/header/Navbar"
+import BreadCrumbSchema from "@/components/BreadCrumb/BreadCrumbSchema";
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,8 +23,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
-
+ 
   return (
     <html lang="en">
       <head>
@@ -38,8 +40,7 @@ export default function RootLayout({ children }) {
         }} /> */}
 
 
-
-
+    
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-B6KBQKWQMS"
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
     <Navbar/>
 
     </div>
+    <BreadCrumbSchema/>
     {children}
     <Footer />
   </AuthProvider>

@@ -39,51 +39,18 @@ export const ArticleHome = ({ data }) => {
   };
 
   const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: data?.faqs[0]?.ques,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: data?.faqs[0]?.ans,
-        },
-      },
-      {
-        "@type": "Question",
-        name: data?.faqs[1]?.ques,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: data?.faqs[1]?.ans,
-        },
-      },
-      {
-        "@type": "Question",
-        name: data?.faqs[2]?.ques,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: data?.faqs[2]?.ans,
-        },
-      },
-      {
-        "@type": "Question",
-        name: data?.faqs[3]?.ques,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: data?.faqs[3]?.ans,
-        },
-      },
-      {
-        "@type": "Question",
-        name: data?.faqs[4]?.ques,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: data?.faqs[4]?.ans,
-        },
-      },
-    ],
-  };
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: data?.faqs?.map((faq) => ({
+    "@type": "Question",
+    name: faq.ques,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.ans,
+    },
+  })),
+};
+
 
 
 
@@ -100,9 +67,9 @@ export const ArticleHome = ({ data }) => {
   </div>
 
   <div className="w-full md:w-[85%] shadow-md p-4 order-1 md:order-2">
-  <p className="text-xl lg:text-3xl font-bold text-center">{data?.title}</p>
+  <h1 className="text-xl lg:text-3xl font-bold text-center">{data?.title}</h1>
   
-  <div className="w-full max-h-[500px] flex items-center justify-center overflow-hidden bg-gray-100">
+  <div className="w-full max-h-[500px] flex items-center justify-center overflow-hidden bg-gray-100 mt-4 lg:mt-8">
     <img
       src={`${base_url}${data?.image}`}
       alt="Blog Image"

@@ -158,7 +158,7 @@ const technologyHome5 = ({ title, para }) => {
   return (
     <div>
     
-      <h1 className="text-xl lg:text-2xl font-bold text-center mb-2 pt-8 px-4 lg:px-6">{title}</h1>
+      <h1 className="text-xl lg:text-2xl font-bold text-center mb-2  px-4 lg:px-6">{title}</h1>
 
       <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (

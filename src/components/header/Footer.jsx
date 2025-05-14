@@ -63,7 +63,6 @@ export default function Footer() {
              <li><Link href="/about-us" className="text-white hover:underline">About Us</Link></li>
             <li><Link href="/privacy-policy" className="text-white hover:underline">Privacy Policy</Link></li>
             <li><Link href="/terms-conditions" className="text-white hover:underline">Terms & Conditions</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Contact Us</Link></li>
              </ul>
           </ul>
         </div>
