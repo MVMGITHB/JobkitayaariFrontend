@@ -24,7 +24,7 @@ export const Blog = ({filters}) => {
   if(data1){
         setData(data1)
     }
- 
+  
      }
   
     

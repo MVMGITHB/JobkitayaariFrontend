@@ -159,9 +159,9 @@ export default function BreadCrumbSchema() {
     return (
       <li
         key={index}
-        className="flex items-center gap-2 bg-blue-50  py-3 rounded-xl shadow-md text-sm"
+        className="flex items-center gap-2   py-2  text-sm"
       >
-        <ChevronRight className="w-4 h-4 text-blue-400" />
+        <ChevronRight className="w-4 h-4" />
         {isLast ? (
           <span
             className="text-blue-700 font-semibold capitalize"

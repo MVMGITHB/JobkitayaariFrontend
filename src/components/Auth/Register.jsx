@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-
 import axios from "axios";
 import base_url from "../helper/helper";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useRouter } from "next/navigation";
-import { message } from 'antd';
-import 'antd/dist/reset.css';
+import { message } from "antd";
+import "antd/dist/reset.css";
+
 export default function Register() {
   const [loading, setLoading] = useState(false);
   const [err, setError] = useState(false);
   const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,13 +22,11 @@ export default function Register() {
     specialization: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
 
@@ -40,13 +38,13 @@ export default function Register() {
         dateOfBirth: formData.dob,
         specialization: formData.specialization,
       };
+
       const response = await axios.post(
         base_url + "/api/auth/register",
         formdata
       );
 
       if (response.data) {
-        // toast.success("Registered successfully!", { position: "bottom-right" });
         message.success("Register successfully. Please check your email for verification.");
         setFormData({
           name: "",
@@ -60,12 +58,10 @@ export default function Register() {
         setError(false);
         router.push("/login");
       }
-
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed!", {
         position: "bottom-right",
       });
-
       setError(true);
     } finally {
       setLoading(false);
@@ -73,58 +69,65 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 pt-[20px]">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Register
-        </h2>
+    <div className=" flex justify-center items-center px-4">
+      <div className="w-full max-w-md bg-gray-100 rounded-xl shadow-md p-8">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold text-gray-800">Register</h2>
+          <p className="text-sm text-gray-500">Fill in your details to create an account</p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Name */}
           <div>
-            <label className="block text-gray-700 font-medium">Name</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Full Name
+            </label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Your Name"
+              placeholder="Your Name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-gray-700 font-medium">Email</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Email Address
+            </label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Your Email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-gray-700 font-medium">Password</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Your Password"
+              placeholder="Create a password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Date of Birth */}
           <div>
-            <label className="block text-gray-700 font-medium">
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
               Date of Birth
             </label>
             <input
@@ -133,27 +136,29 @@ export default function Register() {
               value={formData.dob}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Phone */}
           <div>
-            <label className="block text-gray-700 font-medium">Phone</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Phone Number
+            </label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Your Phone Number"
+              placeholder="e.g., 9876543210"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Specialization */}
           <div>
-            <label className="block text-gray-700 font-medium">
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
               Specialization
             </label>
             <select
@@ -161,34 +166,30 @@ export default function Register() {
               value={formData.specialization}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="" disabled>
                 Select specialization
               </option>
-
               <option value="tech">Tech</option>
               <option value="govern">Govt</option>
               <option value="bank">Bank</option>
             </select>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
-            className=" cursor-pointer w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
 
           {err && (
-            <>
-              <div>
-                <h1 className=" text-center text-red-500 text-2xl">
-                  Error In Registration
-                </h1>
-              </div>
-            </>
+            <p className="text-center text-red-500 font-semibold text-sm">
+              Error in registration. Please try again.
+            </p>
           )}
         </form>
       </div>

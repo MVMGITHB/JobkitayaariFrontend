@@ -5,7 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import base_url from "../helper/helper";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../context/auth";
 
@@ -19,16 +19,14 @@ export default function Login() {
     password: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       setLoading(true);
-
       const formdata = {
         identifier: formData.email,
         password: formData.password,
@@ -37,26 +35,22 @@ export default function Login() {
 
       if (response.data) {
         toast.success("Login successfully!", { position: "bottom-right" });
-        setFormData({
-          email: "",
-          password: "",
-        });
+        setFormData({ email: "", password: "" });
 
         setAuth({
           ...auth,
           user: response.data.user,
           token: response.data.token,
         });
-        localStorage.setItem("auth", JSON.stringify(response.data));
 
+        localStorage.setItem("auth", JSON.stringify(response.data));
         setError(false);
         router.push("/");
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "Registration failed!", {
+      toast.error(error.response?.data?.message || "Login failed!", {
         position: "bottom-right",
       });
-
       setError(true);
     } finally {
       setLoading(false);
@@ -64,69 +58,65 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex  justify-center bg-gray-100 px-4 pt-[20px]">
+    <div className="flex justify-center items-center  px-4">
       <ToastContainer position="top-right" autoClose={3000} />
-      <div className="bg-white h-[400px] shadow-lg rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          <Link href={"/login"}>Login/</Link>
-          <Link href={"/register"}>Register</Link>
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
+      <div className="w-full max-w-md bg-gray-100 rounded-xl shadow-md p-8">
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold text-gray-800">Login</h2>
+        </div>
 
-          {/* Email */}
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-gray-700 font-medium">Email</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Email
+            </label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
+              placeholder="you@example.com"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          {/* Password */}
           <div>
-            <label className="block text-gray-700 font-medium">Password</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
-            className="cursor-pointer w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
+            disabled={loading}
+            className="w-full cursor-pointer bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
 
           {err && (
-            <>
-              <div>
-                <h1 className=" text-center text-red-500 text-2xl">
-                  Error In Login
-                </h1>
-              </div>
-            </>
+            <p className="text-center text-red-500 font-semibold text-sm">
+              Error in login. Please check your credentials.
+            </p>
           )}
         </form>
 
-        <h1 className="text-blue-400 pt-2">
-          <Link href={"/register"}>
-            If not account please{" "}
-            <span className=" text-orange-300"> Register Now</span>{" "}
+        <p className="mt-6 text-sm text-center text-gray-500">
+          New here?{" "}
+          <Link href="/register" className="text-orange-500 hover:underline">
+            Register Now
           </Link>
-        </h1>
+        </p>
       </div>
     </div>
   );
