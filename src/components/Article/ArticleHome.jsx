@@ -99,20 +99,20 @@ export const ArticleHome = ({ data }) => {
               <div
                 id="article-main"
                 dangerouslySetInnerHTML={{ __html: data?.content }}
-                className="prose max-w-full mb-8"
+                className="prose max-w-full mb-8  blog-content"
               />
 
               {data.faqs && data.faqs.length > 0 && (
                 <div className="bg-gray-50 p-6 rounded">
-                  <h2 className="text-2xl font-bold mb-4 text-center">
+                  <h2 className="text-[27px] font-bold mb-4 text-center">
                     Frequently Asked Questions (FAQs)
                   </h2>
                   {data.faqs.map((faq, index) => (
                     <div key={faq._id || index} className="mb-4">
-                      <h3 className="text-lg font-semibold mb-2">
+                      <h3 className="text-[21px] font-semibold mb-2">
                         Q{index + 1}: {faq.ques}
                       </h3>
-                      <p className="text-base">
+                      <p className="text-[21px]">
                         <strong>Ans:</strong> {faq.ans}
                       </p>                                          
                     </div>

@@ -71,11 +71,15 @@ table {
   padding-top: 1.25rem; /* pt-5 → 5 * 0.25rem */
 }
 
-
-#artice-main .blog-image-container img {
-  width: 90% !important;
-  object-fit: cover;
+.blog-content table {
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.blog-content a {
+  color: blue;
+}
+
 
 
 

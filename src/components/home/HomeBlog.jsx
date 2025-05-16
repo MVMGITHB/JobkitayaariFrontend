@@ -46,8 +46,9 @@ function HomeBlog() {
 
   <div className="max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
     {blog.map((blog, indx) => (
-      <div
+      <Link
         key={indx}
+        href={`/${blog?.category?.slug}/articles/${blog.slug}`}
         className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-xl group transition-all duration-300 ease-in hover:scale-105 bg-white"
       >
         <img
@@ -72,7 +73,7 @@ function HomeBlog() {
             </button>
           </Link>
         </div>
-      </div>
+      </Link>
     ))}
   </div>
 </div>
