@@ -9,10 +9,10 @@ export const metadata = {
   },
 
   
-  robots: {
-    index: false, // Disables indexing
-    follow: false, // Prevents following links
-  },
+  // robots: {
+  //   index: false, // Disables indexing
+  //   follow: false, // Prevents following links
+  // },
 
 }
 const page = () => {

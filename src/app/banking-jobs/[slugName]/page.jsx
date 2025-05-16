@@ -15,10 +15,10 @@ export async function generateMetadata({ params }) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        robots: {
-          index: false,
-          follow: false,
-        },
+        // robots: {
+        //   index: false,
+        //   follow: false,
+        // },
       };
     }
 
