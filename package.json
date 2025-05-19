@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "antd": "^5.24.3",
@@ -16,6 +17,7 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.479.0",
     "next": "15.2.1",
+    "node-fetch": "^3.3.2",
     "npm": "^10.9.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
