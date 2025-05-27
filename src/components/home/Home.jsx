@@ -9,8 +9,7 @@ const Home = () => {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    // Get token from cookie
-    const userToken = Cookies.get("jwt"); // Replace "token" with your cookie name
+    const userToken = Cookies.get("jwt"); 
     if (userToken) {
       setToken(userToken);
     }
@@ -21,20 +20,13 @@ const Home = () => {
     <div>
 
     
-      <h1 className="text-xl lg:text-2xl text-center font-bold py-[20px] px-4 lg:px-6">
-        Find Your Dream Job – Government, IT, Bank & Private Jobs in India
-      </h1>
-      {/* <div className="relative flex justify-center ">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <Search
-              className="absolute right-2 top-2 text-gray-500"
-              size={18}
-            />
-          </div> */}
+      <h1
+  className="text-xl lg:text-2xl text-center font-bold py-5 px-4 lg:px-6"
+  style={{ fontDisplay: "swap" }}
+>
+  Find Your Dream Job – Government, IT, Bank & Private Jobs in India
+</h1>
+
       <JobSection />
       <HomeBlog />
     </div>

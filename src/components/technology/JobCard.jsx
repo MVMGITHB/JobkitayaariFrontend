@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import base_url from "../helper/helper";
+import Image from "next/image";
 const JobCard = ({
   title,
   company,
@@ -11,17 +12,25 @@ const JobCard = ({
   category,
   slug,
 }) => {
-
+   
+  
   return (
     <div className="bg-white hover:bg-amber-50 shadow-lg rounded-lg p-5 w-full min-h-[380px] flex flex-col">
       <div className="flex flex-col items-center text-center flex-grow">
-        <div className="h-[50px]">
-          <img
-            src={`${base_url}${logo}`}
-            alt={company}
-            className="w-full h-14 object-contain"
-          />
-        </div>
+
+<div className="relative w-full h-14">
+  {logo ? (
+    <Image
+      src={`${base_url}${logo}`}
+      alt={company}
+      fill
+      className="object-contain"
+    />
+  ) : (
+    ""
+  )}
+</div>
+
 
         <h3 className="text-xl h-[90px] pt-2 text-black font-semibold mt-3 break-words">
           {title}

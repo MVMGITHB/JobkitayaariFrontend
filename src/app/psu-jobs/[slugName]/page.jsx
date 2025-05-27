@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle} https://jobkityaari.com`,
+      title: `${post.mtitle}`,
       description: post.mdescription,
        metadataBase: new URL('https://jobkityaari.com'),
     alternates: {

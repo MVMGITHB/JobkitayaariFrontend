@@ -1,17 +1,25 @@
 "use client";
 
-import Slider from "react-slick";
+import { useRef, useState, useCallback, Suspense, memo } from "react";
+import dynamic from "next/dynamic";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const Slider = dynamic(() => import("react-slick"), { ssr: false });
+const JobCard = dynamic(() => import("../technology/JobCard"), {
+  ssr: false,
+  loading: () => <div>Loading...</div>,
+});
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import JobCard from "../technology/JobCard";
-import { useRef, useState } from "react";
 
 const JobCarousel = ({ jobs, title, color, data }) => {
   const [showAll, setShowAll] = useState(false);
   const sliderRef = useRef(null);
 
-  const handleToggle = () => setShowAll((prev) => !prev);
+  const handleToggle = useCallback(() => setShowAll((prev) => !prev), []);
+  const handlePrev = useCallback(() => sliderRef.current?.slickPrev(), []);
+  const handleNext = useCallback(() => sliderRef.current?.slickNext(), []);
 
   const settings = {
     dots: false,
@@ -46,14 +54,11 @@ const JobCarousel = ({ jobs, title, color, data }) => {
 
   return (
     <div className="relative flex justify-center py-4 overflow-hidden">
-      <div className="w-full max-w-[95%]">
-
-        {/* Title */}
-        <h2 className={`text-2xl font-bold text-center px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white`}>
+      <div className="w-full max-w-[94%]">
+        <h2 className="text-2xl font-bold text-center px-4 lg:px-6 mb-2 rounded-2xl bg-blue-400 text-white">
           {title}
         </h2>
 
-        {/* Optional Read More Content */}
         {data && (
           <div className="w-full mx-auto mb-4">
             {(showAll ? data : [data[0]]).map((item, index) => (
@@ -61,7 +66,10 @@ const JobCarousel = ({ jobs, title, color, data }) => {
                 {item.title}
               </p>
             ))}
-            <button onClick={handleToggle} className="text-blue-600 underline cursor-pointer">
+            <button
+              onClick={handleToggle}
+              className="text-blue-600 underline cursor-pointer"
+            >
               {showAll ? "Read Less" : "Read More"}
             </button>
           </div>
@@ -72,13 +80,13 @@ const JobCarousel = ({ jobs, title, color, data }) => {
             <>
               <button
                 className="cursor-pointer absolute -left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
-                onClick={() => sliderRef.current?.slickPrev()}
+                onClick={handlePrev}
               >
                 <FaChevronLeft size={20} />
               </button>
               <button
                 className="cursor-pointer absolute -right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
-                onClick={() => sliderRef.current?.slickNext()}
+                onClick={handleNext}
               >
                 <FaChevronRight size={20} />
               </button>
@@ -89,24 +97,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
             <div className="flex justify-center">
               {jobs.map((job, index) => (
                 <div key={index} className="px-2 w-full max-w-xs mx-auto">
-                  <JobCard
-                    category={job?.category?.slug}
-                    slug={job?.slug}
-                    title={job?.postName}
-                    company={job?.companyName}
-                    logo={job?.image}
-                    salary={job?.salary}
-                    profile={job?.Jobrole}
-                    link={job?.applylink}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <Slider ref={sliderRef} {...settings}>
-              {jobs.map((job, index) => (
-                <div key={index} className="px-2">
-                  <div className="w-full max-w-xs mx-auto">
+                  <Suspense fallback={<div>Loading...</div>}>
                     <JobCard
                       category={job?.category?.slug}
                       slug={job?.slug}
@@ -117,6 +108,27 @@ const JobCarousel = ({ jobs, title, color, data }) => {
                       profile={job?.Jobrole}
                       link={job?.applylink}
                     />
+                  </Suspense>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Slider ref={sliderRef} {...settings}>
+              {jobs.map((job, index) => (
+                <div key={index} className="px-2">
+                  <div className="w-full max-w-xs mx-auto">
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <JobCard
+                        category={job?.category?.slug}
+                        slug={job?.slug}
+                        title={job?.postName}
+                        company={job?.companyName}
+                        logo={job?.image}
+                        salary={job?.salary}
+                        profile={job?.Jobrole}
+                        link={job?.applylink}
+                      />
+                    </Suspense>
                   </div>
                 </div>
               ))}
@@ -128,4 +140,4 @@ const JobCarousel = ({ jobs, title, color, data }) => {
   );
 };
 
-export default JobCarousel;
+export default memo(JobCarousel);

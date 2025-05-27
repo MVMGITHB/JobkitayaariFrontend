@@ -36,15 +36,15 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle} https://jobkityaari.com`,
-      description: post.mdesc,
-       metadataBase: new URL('https://jobkityaari.com'),
+      title: `${post.mtitle}`,
+      description: `${post.mdesc}`,
+      metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
     },
       // openGraph: {
       //   title: post.title,
-      //   description: post.excerpt,
+      //   description: post.mdescription,
       //   robots: {
       //     index: false,
       //     follow: false,
@@ -65,7 +65,6 @@ export async function generateMetadata({ params }) {
     };
   }
 }
-
 const page = async ({ params }) => {
   const { slugName } =await params;
 

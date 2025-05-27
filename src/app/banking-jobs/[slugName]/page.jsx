@@ -23,27 +23,13 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle} https://jobkityaari.com`,
+      title: `${post.mtitle} `,
       description: post.mdescription,
        metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
     },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.excerpt,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
+     
     };
   } catch (error) {
     return {

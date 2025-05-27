@@ -5,6 +5,7 @@ import base_url from "../helper/helper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Popup from "../home/Popup";
+import Image from "next/image";
 
 export const ArticleHome = ({ data }) => {
   const date = new Date(data?.createdAt);
@@ -87,12 +88,15 @@ export const ArticleHome = ({ data }) => {
           <h1 className="text-2xl lg:text-3xl font-bold text-center mb-6">
             {data?.title}
           </h1> 
-          <div className="w-full h-80 overflow-hidden mb-2">
-            <img
-              src={`${base_url}${data?.image}`}
-              alt="Blog Image"
-              className="w-full h-full object-cover shadow-2xl rounded-lg"
-            />
+          <div className="w-full  overflow-hidden mb-2">
+           <Image
+  src={`${base_url}${data?.image}`}
+  alt="Blog Image"
+  width={874}
+  height={320}
+  layout="responsive"
+  className="object-cover shadow-2xl rounded-lg"
+/>
           </div>
           {data && (
             <>
@@ -101,6 +105,7 @@ export const ArticleHome = ({ data }) => {
                 dangerouslySetInnerHTML={{ __html: data?.content }}
                 className="prose max-w-full mb-8  blog-content"
               />
+          
 
               {data.faqs && data.faqs.length > 0 && (
                 <div className="bg-gray-50 p-6 rounded">
@@ -125,26 +130,31 @@ export const ArticleHome = ({ data }) => {
 
         <div className="w-full md:w-[25%] order-2">
           <div className="sticky top-20">
-            <div className="p-4 rounded shadow bg-white">
+            <div className="p-2 rounded shadow bg-white">
               <h2 className="text-xl font-bold mb-4">Similar Blogs</h2>
               <div className="flex flex-col">
-                {randomCards.map((card, index) => (
-                  <Link
-                    key={index}
-                    href={`/${card?.category?.slug}/articles/${card?.slug}`}
-                    className="flex items-center gap-3 p-2 border-b border-gray-200 last:border-b-0 hover:bg-gray-100 transition duration-200"
-                  >
-                    <img
-                      src={`${base_url}${card?.image}`}
-                      alt={card?.title}
-                      className="w-32 h-32 object-contain rounded"
-                    />
-                    <p className="text-lg font-medium text-gray-800 hover:text-blue-600 line-clamp-2">
-                      {card?.title}
-                    </p>
-                  </Link>
-                ))}
-              </div>
+  {randomCards.map((card, index) => (
+    <Link
+      key={index}
+      href={`/${card?.category?.slug}/articles/${card?.slug}`}
+      className="flex items-center gap-3 p-2 border-b border-gray-200 last:border-b-0 hover:bg-gray-100 transition duration-200"
+    >
+      <div className="flex-shrink-0 w-24 h-24 relative">
+        <Image
+          src={`${base_url}${card?.image}`}
+          alt={card?.title}
+          fill
+          className="object-cover rounded"
+        />
+      </div>
+
+      <p className="text-sm font-medium text-gray-800 hover:text-blue-600 line-clamp-2">
+        {card?.title}
+      </p>
+    </Link>
+  ))}
+</div>
+
             </div>
           </div>
         </div>

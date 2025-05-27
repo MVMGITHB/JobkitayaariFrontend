@@ -12,7 +12,6 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md  p-4 px-16">
       <div className="container w-[85%] mx-auto flex flex-wrap md:flex-nowrap justify-between items-center space-y-3 md:space-y-0">
-        {/* Dropdowns */}
         {[
           {
             label: "Government Jobs",
@@ -67,7 +66,6 @@ const Header = () => {
               {menu.label}
             </button>
 
-            {/* Dropdown Menu */}
             {openDropdown === menu.label && (
               <div className="p-2 absolute left-0 mt-2 w-48 bg-white  border rounded-lg shadow-lg z-50">
                 {menu.items.map((item, i) => (

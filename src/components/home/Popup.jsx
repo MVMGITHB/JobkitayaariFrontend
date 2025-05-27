@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Popup() {
   const [visible, setVisible] = useState(false);
@@ -30,8 +31,16 @@ export default function Popup() {
           </button>
         )}
         <div className="text-center space-y-4">
-        <div className="flex justify-center items-center h-20">
-  <img src="/images/logo2.png" alt="Logo" className="h-full object-contain" />
+   <div className="flex justify-center items-center h-20">
+  <div className="relative h-20 w-[150px]">
+    <Image
+      src="/images/logo2.png"
+      alt="Logo"
+      fill
+      className="object-contain"
+      sizes="(max-width: 640px) 100vw, 150px"
+    />
+  </div>
 </div>
           <h2 className="text-3xl font-bold text-gray-800">
             Stay Updated With

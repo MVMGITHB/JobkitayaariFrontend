@@ -4,7 +4,7 @@ import TechnologyHome5 from "@/components/technology/technologyHome5";
 
 export const metadata = {
     title: 'Latest Government Jobs in India  2025– Apply Now for Sarkari Naukri ',
-    description: 'Find the latest government job vacancies in India. Apply for Railway, UPSC, Banking, and Defense jobs. Daily updates on Sarkari Naukri.',
+    description: 'Explore latest government job openings in India. Get daily Sarkari Naukri updates for Railways, UPSC, Banks, Defense & more. Apply online now!',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',

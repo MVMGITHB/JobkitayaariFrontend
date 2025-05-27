@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import base_url from "../helper/helper";
 import Link from "next/link";
 import JobCarousel from "./JobCrousel1";
+import Image from "next/image";
 
 function HomeBlog() {
   const [blog, setBlog] = useState([]);
@@ -17,7 +18,7 @@ function HomeBlog() {
           axios.get(`${base_url}/api/job/getJobbySUbCategory/all-sectors`),
         ]);
 
-        setBlog(blogRes?.data?.slice(0, 3));
+        setBlog(blogRes?.data?.slice(0, 4));
         setLatest(latestRes?.data);
       } catch (err) {
         console.log(err);
@@ -44,38 +45,41 @@ function HomeBlog() {
     Career Guide
   </h3>
 
-  <div className="max-w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-    {blog.map((blog, indx) => (
-      <Link
-        key={indx}
-        href={`/${blog?.category?.slug}/articles/${blog.slug}`}
-        className="relative w-full h-[400px] rounded-xl overflow-hidden shadow-xl group transition-all duration-300 ease-in hover:scale-105 bg-white"
-      >
-        <img
-          src={`${base_url}${blog.image}`}
-          alt={blog.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+
+<div className="max-w-[1380px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  {blog.map((item, index) => (
+    <Link
+      key={index}
+      href={`/${item?.category?.slug}/articles/${item.slug}`}
+      className="bg-white rounded-xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-[1.02] overflow-hidden flex flex-col"
+    >
+      <div className="relative w-full h-62">
+        <Image
+          src={`${base_url}${item.image}`}
+          alt={item.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          priority={index < 1} 
+          className="object-cover"
         />
+      </div>
 
-        {/* Gradient overlay for visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10"></div>
+        <div className="p-4">
+        <span className="inline-block text-xs text-white bg-[#3D365C] px-2 py-1 rounded-md mb-2">
+          {item?.category?.name}
+        </span>
+        <h3 className="text-md font-semibold text-gray-800 line-clamp-2">
+          {item.title}
+        </h3>
+        <button className="mt-3 text-sm px-4 py-2 cursor-pointer bg-[#162d5e] hover:bg-[#162d5ef8] text-white rounded-full transition">
+          Read More
+        </button>
+      </div>
+    </Link>
+  ))}
+</div>
 
-        {/* Title */}
-        <p className="absolute bottom-16 left-0 w-full px-4 text-center text-[18px] lg:text-[22px] font-semibold text-white z-20">
-          {blog.title}
-        </p>
 
-        {/* Button */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
-          <Link href={`/${blog?.category?.slug}/articles/${blog.slug}`}>
-            <button className="text-sm py-2 px-4 cursor-pointer bg-violet-700 hover:bg-violet-800 rounded-xl text-white transition duration-300">
-              Explore now
-            </button>
-          </Link>
-        </div>
-      </Link>
-    ))}
-  </div>
 </div>
 
     </>

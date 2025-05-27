@@ -6,8 +6,7 @@ export default function AboutUs() {
 <div className="bg-gray-100 ">
 {/* Hero Section */}
       <section
-        className="relative w-full h-80 md:h-170 flex items-center justify-center text-center bg-cover bg-center "
-        style={{ backgroundImage: `url("https://img.freepik.com/free-photo/aerial-view-business-team_53876-124515.jpg?ga=GA1.1.1414107002.1745826214&semt=ais_hybrid&w=740")` }}
+        className="relative w-full h-80 md:h-170 flex items-center justify-center text-center aboutus"
       >
         <div className="bg-black bg-opacity-50 p-10 rounded-xl">
           <h1 className="text-4xl md:text-5xl font-bold text-white">
@@ -19,7 +18,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
       <section className="py-6 lg:py-8 w-[90%] lg:w-[70%] mx-auto ">
         <h2 className="text-3xl font-bold text-gray-800">
           About Us | Job Ki Tyaari - Trusted Job Alert Platform

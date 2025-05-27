@@ -28,23 +28,23 @@ export async function generateMetadata({ params }) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        robots: {
-          index: false,
-          follow: false,
-        },
+        // robots: {
+        //   index: false,
+        //   follow: false,
+        // },
       };
     }
 
     return {
-      title: `${post.mtitle} https://jobkityaari.com`,
-      description: post.mdesc,
-       metadataBase: new URL('https://jobkityaari.com'),
+      title: `${post.mtitle}`,
+      description: `${post.mdesc}`,
+      metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
     },
       // openGraph: {
       //   title: post.title,
-      //   description: post.excerpt,
+      //   description: post.mdescription,
       //   robots: {
       //     index: false,
       //     follow: false,

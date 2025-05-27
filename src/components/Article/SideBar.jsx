@@ -8,7 +8,7 @@ export const SideBar = () => {
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4ZOzVPR43BhdRWjLjWW4LbWxBXHaaD42Hyw&s"
             className="h-[100%] "
-            alt=""
+            alt="latest news"
           />
         </div>
       </div>
@@ -20,7 +20,7 @@ export const SideBar = () => {
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfOv-_zk4HmJbRv5oQ0HYwh8FZ0znD6gzXsw&s"
           className="h-[100%]"
-          alt=""
+          alt="latest news"
         />
       </div>
       </div>

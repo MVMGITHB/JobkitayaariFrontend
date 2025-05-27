@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "../context/auth";
+import Image from "next/image";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,12 +22,16 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md">
     <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-      {/* Logo */}
-      <Link href="/" className="text-2xl font-bold text-blue-600">
-        <img src="/images/logo2.png" alt="jobkitayaari logo" className="w-28" />
-      </Link>
+<Link href="/" className="text-2xl font-bold text-blue-600 inline-block">
+  <Image
+    src="/images/logo2.png"
+    alt="jobkitayaari logo"
+    width={112}  
+    height={40}  
+    priority
+  />
+</Link>
   
-      {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-6 items-center lg:pr-28">
         <Link href="/" className="text-gray-700 hover:text-blue-600">Jobs</Link>
         <Link href="/career-guide" className="text-gray-700 hover:text-blue-600">Career Guide</Link>
@@ -45,13 +50,11 @@ const Header = () => {
         )}
       </nav>
   
-      {/* Mobile Menu Button */}
       <button className="md:hidden text-gray-700" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
     </div>
   
-    {/* Mobile Menu */}
     {isOpen && (
       <div className="md:hidden bg-gray-50 border-t border-gray-200 shadow-sm">
         <nav className="flex flex-col px-4 py-4 space-y-3">
