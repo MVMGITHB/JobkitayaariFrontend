@@ -22,15 +22,16 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md">
     <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-<Link href="/" className="text-2xl font-bold text-blue-600 inline-block">
+<Link href="/" aria-label="JobKityaari Home">
   <Image
     src="/images/logo2.png"
-    alt="jobkitayaari logo"
-    width={112}  
-    height={40}  
+    alt="JobKityaari logo"
+    width={112}
+    height={40}
     priority
   />
 </Link>
+
   
       <nav className="hidden md:flex space-x-6 items-center lg:pr-28">
         <Link href="/" className="text-gray-700 hover:text-blue-600">Jobs</Link>

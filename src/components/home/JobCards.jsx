@@ -10,7 +10,7 @@ export const JobCards = ({ job }) => {
     <>
     <div className="bg-white hover:bg-amber-50 shadow-lg rounded-lg p-5 w-full min-h-[360px] flex flex-col">
       <div className="flex flex-col items-center text-center flex-grow">
-      <div className="h-14 w-44 relative">
+      <div className="h-18 w-44 relative">
   <Image
     src={`${base_url}${job?.image}`}
     alt="company"

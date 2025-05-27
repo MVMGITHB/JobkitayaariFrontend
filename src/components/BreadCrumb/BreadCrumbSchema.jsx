@@ -53,74 +53,163 @@ export default function BreadCrumbSchema() {
 
   const pathSegments = pathname.split("/").filter(Boolean);
 
+  // const staticBreadcrumbItems = {
+  //   "@context": "https://schema.org",
+  //   "@type": "BreadcrumbList",
+  //   itemListElement: [
+  //     {
+  //       "@type": "ListItem",
+  //       position: 1,
+  //       name: "Home",
+  //       item: "https://jobkityaari.com/",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 2,
+  //       name: "Government Jobs",
+  //       item: "https://jobkityaari.com/government-jobs",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 3,
+  //       name: "Technology Jobs",
+  //       item: "https://jobkityaari.com/technology-jobs",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 4,
+  //       name: "Management Jobs",
+  //       item: "https://jobkityaari.com/management-jobs/",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 5,
+  //       name: "Teaching Jobs",
+  //       item: "https://jobkityaari.com/teaching-jobs",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 6,
+  //       name: "Banking Jobs",
+  //       item: "https://jobkityaari.com/banking-jobs",
+  //     },
+  //     {
+  //       "@type": "ListItem",
+  //       position: 7,
+  //       name: "Psu Jobs",
+  //       item: "https://jobkityaari.com/psu-jobs",
+  //     },
+  //   ],
+  // };
+
   const staticBreadcrumbItems = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://jobkityaari.com/",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Government Jobs",
-        item: "https://jobkityaari.com/government-jobs",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Technology Jobs",
-        item: "https://jobkityaari.com/technology-jobs",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "Management Jobs",
-        item: "https://jobkityaari.com/management-jobs/",
-      },
-      {
-        "@type": "ListItem",
-        position: 5,
-        name: "Teaching Jobs",
-        item: "https://jobkityaari.com/teaching-jobs",
-      },
-      {
-        "@type": "ListItem",
-        position: 6,
-        name: "Banking Jobs",
-        item: "https://jobkityaari.com/banking-jobs",
-      },
-      {
-        "@type": "ListItem",
-        position: 7,
-        name: "Psu Jobs",
-        item: "https://jobkityaari.com/psu-jobs",
-      },
-    ],
-  };
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@id": "https://jobkityaari.com/",
+        "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@id": "https://jobkityaari.com/government-jobs",
+        "name": "Government Jobs"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@id": "https://jobkityaari.com/technology-jobs",
+        "name": "Technology Jobs"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@id": "https://jobkityaari.com/management-jobs/",
+        "name": "Management Jobs"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
+        "@id": "https://jobkityaari.com/teaching-jobs",
+        "name": "Teaching Jobs"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 6,
+      item: {
+        "@id": "https://jobkityaari.com/banking-jobs",
+        "name": "Banking Jobs"
+      }
+    },
+    {
+      "@type": "ListItem",
+      position: 7,
+      item: {
+        "@id": "https://jobkityaari.com/psu-jobs",
+        "name": "Psu Jobs"
+      }
+    }
+  ]
+};
+
+  // const dynamicBreadcrumbItems =
+  //   jobdata?.map((item, index) => ({
+  //     "@type": "ListItem",
+  //     position: staticBreadcrumbItems.itemListElement.length + index + 1,
+  //     name: item?.postName,
+  //     item: `https://jobkityaari.com/${item?.category?.slug}/${item?.slug}`,
+  //   })) || [];
 
   const dynamicBreadcrumbItems =
-    jobdata?.map((item, index) => ({
-      "@type": "ListItem",
-      position: staticBreadcrumbItems.itemListElement.length + index + 1,
-      name: item?.postName,
-      item: `https://jobkityaari.com/${item?.category?.slug}/${item?.slug}`,
-    })) || [];
+  jobdata?.map((item, index) => ({
+    "@type": "ListItem",
+    position: staticBreadcrumbItems.itemListElement.length + index + 1,
+    item: {
+      "@id": `https://jobkityaari.com/${item?.category?.slug}/${item?.slug}`,
+      "name": item?.postName
+    }
+  })) || [];
+
+
+  // const dynamicBreadcrumbItems1 =
+  //   blogsdata?.map((item, index) => ({
+  //     "@type": "ListItem",
+  //     position:
+  //       staticBreadcrumbItems.itemListElement.length +
+  //       dynamicBreadcrumbItems.length +
+  //       index +
+  //       1,
+  //     name: item?.postName,
+  //     item: `https://jobkityaari.com/${item?.category?.slug}/articles/${item?.slug}`,
+  //   })) || [];
 
   const dynamicBreadcrumbItems1 =
-    blogsdata?.map((item, index) => ({
-      "@type": "ListItem",
-      position:
-        staticBreadcrumbItems.itemListElement.length +
-        dynamicBreadcrumbItems.length +
-        index +
-        1,
-      name: item?.postName,
-      item: `https://jobkityaari.com/${item?.category?.slug}/articles/${item?.slug}`,
-    })) || [];
+  blogsdata?.map((item, index) => ({
+    "@type": "ListItem",
+    position:
+      staticBreadcrumbItems.itemListElement.length +
+      dynamicBreadcrumbItems.length +
+      index +
+      1,
+    item: {
+      "@id": `https://jobkityaari.com/${item?.category?.slug}/articles/${item?.slug}`,
+      "name": item?.postName,
+    }
+  })) || [];
+
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
