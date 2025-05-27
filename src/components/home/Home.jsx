@@ -21,7 +21,7 @@ const Home = () => {
 
     
       <h1
-  className="text-lg lg:text-xl text-center font-bold px-2 lg:px-4"
+  className="hidden md:block text-lg lg:text-xl text-center font-bold px-2 lg:px-4"
   style={{ fontDisplay: "swap" }}
 >
   Find Your Dream Job – Government, IT, Bank & Private Jobs in India

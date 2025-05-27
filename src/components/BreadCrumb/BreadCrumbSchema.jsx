@@ -206,7 +206,7 @@ export default function BreadCrumbSchema() {
       1,
     item: {
       "@id": `https://jobkityaari.com/${item?.category?.slug}/articles/${item?.slug}`,
-      "name": item?.postName,
+      "name": item?.title
     }
   })) || [];
 

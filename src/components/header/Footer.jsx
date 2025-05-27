@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
         
 
-        <div className=" flex md:hidden">
+        <div className=" hidden">
                      <div  className="  md:pl-28 md:flex md:flex-col gap-4"> 
           <p className="text-xl lg:text-2xl font-bold">Top Job Categories</p>
           <ul className="mt-2 space-y-4">
