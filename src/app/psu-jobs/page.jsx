@@ -34,7 +34,7 @@ export const metadata = {
 const page = () => {
   return (
     <div>
-      <TechnologyHome3 title={"Latest PSU Jobs 2025 – ONGC, BHEL, SAIL & More"}  para={para}/>
+      <TechnologyHome3 title={"Latest PSU Jobs 2025 – ONGC, BHEL, SAIL & More"}  para={para} slug={"psu-jobs"} />
     </div>
   );
 };

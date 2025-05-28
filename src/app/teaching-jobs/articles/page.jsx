@@ -28,21 +28,6 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: './',
     },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.mdescription,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
     };
   } catch (error) {
     return {

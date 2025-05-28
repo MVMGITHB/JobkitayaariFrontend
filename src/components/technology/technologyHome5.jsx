@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
 import axios from "axios";
 import base_url from "../helper/helper";
+import CategoryBlog from "./CategoryBlog";
 
-const technologyHome5 = ({ title, para }) => {
+const technologyHome5 = ({ title, para, slug }) => {
   const [showAll, setShowAll] = useState(false);
   const handleToggle = () => {
     setShowAll((prev) => !prev);
@@ -13,15 +14,17 @@ const technologyHome5 = ({ title, para }) => {
   const [railwayjob, setRailway] = useState([]);
   const [allsector, setAllsector] = useState([]);
   const [defense, setDefense] = useState([]);
-  const [upsc, setUpsc]= useState([])
+  const [upsc, setUpsc] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${base_url}/api/job/getJobbySUbCategory/railway-jobs`);
+        const response = await axios.get(
+          `${base_url}/api/job/getJobbySUbCategory/railway-jobs`
+        );
         setRailway(response?.data);
       } catch (error) {
-        console.log(err);  
+        console.log(err);
       }
     };
 
@@ -29,8 +32,10 @@ const technologyHome5 = ({ title, para }) => {
 
     const fetchData1 = async () => {
       try {
-        const response = await axios.get(`${base_url}/api/job/getJobbySUbCategory/all-sectors`);
-        
+        const response = await axios.get(
+          `${base_url}/api/job/getJobbySUbCategory/all-sectors`
+        );
+
         setAllsector(response?.data);
       } catch (error) {
         console.log(err);
@@ -41,7 +46,9 @@ const technologyHome5 = ({ title, para }) => {
 
     const fetchData2 = async () => {
       try {
-        const response = await axios.get(`${base_url}/api/job/getJobbySUbCategory/defence-jobs`);
+        const response = await axios.get(
+          `${base_url}/api/job/getJobbySUbCategory/defence-jobs`
+        );
         setDefense(response?.data);
       } catch (error) {
         console.log(err);
@@ -52,7 +59,9 @@ const technologyHome5 = ({ title, para }) => {
 
     const fetchData3 = async () => {
       try {
-        const response = await axios.get(`${base_url}/api/job/getJobbySUbCategory/upsc-jobs`);
+        const response = await axios.get(
+          `${base_url}/api/job/getJobbySUbCategory/upsc-jobs`
+        );
         setUpsc(response?.data);
       } catch (error) {
         console.log(err);
@@ -61,8 +70,6 @@ const technologyHome5 = ({ title, para }) => {
 
     fetchData3();
   }, []);
-
-
 
   const data1 = [
     {
@@ -122,7 +129,6 @@ const technologyHome5 = ({ title, para }) => {
   ];
 
   const data3 = [
-   
     {
       id: 1,
       title:
@@ -131,7 +137,7 @@ const technologyHome5 = ({ title, para }) => {
     {
       id: 2,
       title:
-"Stay ahead with regular UPSC updates and the latest government job vacancies in India."
+        "Stay ahead with regular UPSC updates and the latest government job vacancies in India.",
     },
     {
       id: 3,
@@ -157,8 +163,9 @@ const technologyHome5 = ({ title, para }) => {
 
   return (
     <div>
-    
-      <h1 className="text-xl lg:text-2xl font-bold text-center mb-2  px-4 lg:px-6">{title}</h1>
+      <h1 className="text-xl lg:text-2xl font-bold text-center mb-2  px-4 lg:px-6">
+        {title}
+      </h1>
 
       <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
@@ -167,16 +174,23 @@ const technologyHome5 = ({ title, para }) => {
           </p>
         ))}
 
-        <button onClick={handleToggle} className="text-blue-600 underline cursor-pointer ">
+        <button
+          onClick={handleToggle}
+          className="text-blue-600 underline cursor-pointer "
+        >
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
-    {allsector?(  <JobCarousel
-        jobs={allsector}
-        title={"Latest Govenment Job Opening 2025 - All Sectors"}
-        color={"blue"}
-      />):("")}
-      
+      {allsector ? (
+        <JobCarousel
+          jobs={allsector}
+          title={"Latest Govenment Job Opening 2025 - All Sectors"}
+          color={"blue"}
+        />
+      ) : (
+        ""
+      )}
+
       {railwayjob ? (
         <JobCarousel
           jobs={railwayjob}
@@ -188,9 +202,7 @@ const technologyHome5 = ({ title, para }) => {
         ""
       )}
 
-
-
-{defense ? (
+      {defense ? (
         <JobCarousel
           jobs={defense}
           title={"Explore Latest Defense Jobs in India 2025"}
@@ -201,7 +213,7 @@ const technologyHome5 = ({ title, para }) => {
         ""
       )}
 
-{upsc ? (
+      {upsc ? (
         <JobCarousel
           jobs={upsc}
           title={"UPSC Exam Notifications 2025 – Latest Govt Jobs"}
@@ -211,18 +223,7 @@ const technologyHome5 = ({ title, para }) => {
       ) : (
         ""
       )}
-
-           
-      {/* {defense? (<JobCarousel jobs={defense} title={"Explore Latest Defense Jobs in India 2025"} color={"green"} data={data2} />):("")} */}
-
-      {/* // <JobCarousel
-      //   jobs={jobsData?.upsc}
-      //   title={"UPSC Exam Notifications 2025 – Latest Govt Jobs"}
-      //   color={"orange"}
-      //   data={data3}
-      // />  */}
-
-      {/* <JobCarousel jobs={jobsData?.AI_ML} title={"Apply for Latest Ministry Jobs in India"} color={"purple"} /> */}
+      <CategoryBlog slug={slug}/>
     </div>
   );
 };

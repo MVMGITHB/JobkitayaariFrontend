@@ -30,7 +30,7 @@ const para = [
 const page = () => {
   return (
     <div>
-      <TechnologyHome4 title={"Top Management Job Opportunities in India 2025"} para={para} />
+      <TechnologyHome4 title={"Top Management Job Opportunities in India 2025"} para={para} slug={"management-jobs"}/>
     </div>
   );
 };

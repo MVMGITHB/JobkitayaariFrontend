@@ -29,7 +29,7 @@ const Page = () => {
  ]
   return (
     <div>
-      <TechnologyHome1 title={"Latest Technology Jobs in India 2025"}  para={para}/>{" "}
+      <TechnologyHome1 title={"Latest Technology Jobs in India 2025"}  para={para} slug={"technology-jobs"}/>{" "}
       {/* Capitalized component usage */}
     </div>
   );

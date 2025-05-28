@@ -1,11 +1,11 @@
 'use client'
 import { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
-import Head from "next/head";
 import axios from "axios";
 import base_url from "../helper/helper";
+import CategoryBlog from "./CategoryBlog";
 
-const TechnologyHome1 = ({ title ,para}) => {
+const TechnologyHome1 = ({ title ,para,slug}) => {
   const [showAll, setShowAll] = useState(false);
     const handleToggle = () => {
       setShowAll((prev) => !prev);
@@ -154,8 +154,12 @@ const TechnologyHome1 = ({ title ,para}) => {
         data={data3}
       />):("")}
 {aimlJobs?(<JobCarousel jobs={aimlJobs} title={"AI & ML Jobs in India 2025 – High-Paying Roles"} color={"purple"} data={data4}/>):("")}
+  <CategoryBlog slug={slug}/>
+
     </div>
   );
+
+  
 };
 
 export default TechnologyHome1;

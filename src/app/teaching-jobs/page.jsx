@@ -31,7 +31,7 @@ const para = [
 const page = () => {
   return (
     <div>
-      <TechnologyHome2 title="Find Your Next Govt & Private Teaching Job in India 2025" para={para} />
+      <TechnologyHome2 title="Find Your Next Govt & Private Teaching Job in India 2025" para={para} slug={"teaching-jobs"} />
     </div>
   );
 };

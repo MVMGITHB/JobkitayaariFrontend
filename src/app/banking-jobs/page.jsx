@@ -31,7 +31,7 @@ export const metadata = {
 const page = () => {
   return (
     <div>
-      <TechnologyHome6 title={"Latest Banking Job Openings in India"}  para={para}/>
+      <TechnologyHome6 title={"Latest Banking Job Openings in India"}  para={para} slug={"banking-jobs"}/>
     </div>
   );
 };

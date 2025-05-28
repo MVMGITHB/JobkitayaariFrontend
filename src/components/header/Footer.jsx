@@ -1,128 +1,169 @@
-import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaInstagram,FaLinkedinIn  } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white pl-5 py-8  md:pl-10">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8  md:text-left">
-       
-        <div className=" flex flex-col gap-6">
-          <p className=" text-white font-bold text-2xl">Company Details</p>
-          <div className=" flex gap-5">
-            
-         
-<Link href="/" className="text-xl font-bold text-blue-600 inline-block">
-  <Image
-    src="/images/logo2.png"
-    alt="Job Ki Tyaari logo"
-    width={100}
-    height={40} 
-  />
-</Link>
-            <p className=" text-white font-bold ">JobKityaari
-            Your Trusted Job Search Partner</p>
-
+    <footer className="bg-gray-900 text-white text-center lg:text-left">
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
+          <div>
+            <h5 className="uppercase font-semibold mb-4">Contact us</h5>
+            <ul className="space-y-2">
+              <li>
+                <strong>Address:</strong> IThum I.T. Park, Sector 62, Noida
+              </li>
+              <li>
+                <strong> Email:</strong> <a href="mailto:contact@jobkityaari.com">
+  contact@jobkityaari.com
+</a>
+              </li>
+            </ul>
           </div>
-           
 
-           <p> <span className=" text-white  font-bold"> Address:</span> IThum I.T. Park, Sector 62, Noida</p>
-         
-            <p> <span className=" text-white  font-bold">📧 Email:</span> contact@jobkityaari.com</p>
-           
-           {/* <p><span className=" text-white  font-bold">📞 📍 Phone:</span> <br/> +91 9811868368
-           </p> */}
-          
-          
-        </div>
-
-
-        
-        
-
-        <div  className=" hidden md:pl-28 md:flex md:flex-col gap-4"> 
-          <p className=" text-2xl font-bold">Top Job Categories</p>
-          <ul className="mt-2 space-y-4">
-           
-            <li><Link href="/government-jobs" className="text-white hover:underline"> Government Jobs</Link></li>
-           
-            <li><Link href="/technology-jobs" className="text-white hover:underline"> Technology Jobs</Link></li>
-            <li><Link href="/management-jobs" className="text-white hover:underline"> Management Jobs</Link></li>
-            <li><Link href="/teaching-jobs/" className="text-white hover:underline"> Teaching Jobs</Link></li>
-            <li><Link href="/banking-jobs" className="text-white hover:underline"> Banking Jobs</Link></li>
-            <li><Link href="/psu-jobs" className="text-white hover:underline"> PSU Jobs</Link></li>
-          </ul>
-        </div>
-
-
-
-        <div  className=" hidden md:pl-28 md:flex md:flex-col gap-4"> 
-          <p className="text-2xl font-bold">Useful Resources</p>
-          <ul className="mt-2 space-y-4">
-          
-            <li><Link href="/career-guide" className="text-white hover:underline">Career Guide</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Resume Writing Tips</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Interview Preparation</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Salary Calculator</Link></li>
-            <p className="text-white font-bold ">📜 Company</p>
-             <ul className=" list-none pl-8">
-              
-             <li><Link href="/about-us" className="text-white hover:underline">About Us</Link></li>
-            <li><Link href="/privacy-policy" className="text-white hover:underline">Privacy Policy</Link></li>
-            <li><Link href="/terms-conditions" className="text-white hover:underline">Terms & Conditions</Link></li>
-             </ul>
-          </ul>
-        </div>
-        
-
-        <div className=" hidden">
-                     <div  className="  md:pl-28 md:flex md:flex-col gap-4"> 
-          <p className="text-xl lg:text-2xl font-bold">Top Job Categories</p>
-          <ul className="mt-2 space-y-4">
-           
-            <li><Link href="/government-jobs" className="text-white hover:underline"> Government Jobs</Link></li>
-           
-            <li><Link href="/technology-jobs" className="text-white hover:underline"> Technology Jobs</Link></li>
-            <li><Link href="/management-jobs" className="text-white hover:underline"> Management Jobs</Link></li>
-            <li><Link href="/teaching-jobs/" className="text-white hover:underline"> Teaching Jobs</Link></li>
-            <li><Link href="/banking-jobs" className="text-white hover:underline"> Banking Jobs</Link></li>
-            <li><Link href="/psu-jobs" className="text-white hover:underline"> PSU Jobs</Link></li>
-          </ul>
-        </div>
-
-
-
-        <div  className="  md:pl-28 md:flex md:flex-col gap-4"> 
-          <p className="text-xl lg:text-2xl font-bold">Useful Resources</p>
-          <ul className="mt-2 space-y-4">
-          
-            <li><Link href="/career-guide" className="text-white hover:underline">Career Guide</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Resume Writing Tips</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Interview Preparation</Link></li>
-            <li><Link href="#" className="text-white hover:underline">Salary Calculator</Link></li>
-             <ul className=" list-none pl-8">
-              
-             <li><Link href="/about-us" className="text-white hover:underline">About Us</Link></li>
-            <li><Link href="/privacy-policy" className="text-white hover:underline">Privacy Policy</Link></li>
-            <li><Link href="/terms-conditions" className="text-white hover:underline">Terms & Conditions</Link></li>
-             </ul>
-          </ul>
-        </div>
-        </div>
-
-        {/* <div className=" md:flex md:flex-col md:items-center gap-4">
-          <h4 className="text-lg text-left font-semibold">Social Media</h4>
-          <div className="flex flex-col justify-center md:justify-start space-x-4 gap-4">
-          <h6 className="text-lg font-semibold"> Stay Updated!</h6>
-          <h6 className="text-lg font-semibold">Follow Us:</h6>
-
-          
-            <Link href="https://www.facebook.com/mvmbs/" className="text-white flex gap-3 item-center hover:text-gray-400"><FaFacebook size={30} />Facebook</Link>
-            <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaTwitter size={30} />Twitter</Link>
-            <Link href="https://www.instagram.com/mvmbs_official/" className="text-white flex gap-3 item-center hover:text-gray-400"><FaInstagram size={30} />Instagram</Link>
-            <Link href="#" className="text-white flex gap-3 item-center hover:text-gray-400"><FaLinkedinIn size={30} />LinkedIn</Link>
+          <div>
+            <h5 className="uppercase font-semibold mb-4">Top Job Categories</h5>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/government-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  Government Jobs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/technology-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  Technology Jobs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/management-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  Management Jobs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/technology-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  Teaching Jobs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/banking-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  Banking Jobs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/psu-jobs"
+                  className="flex items-center text-white hover:underline"
+                >
+                  PSU Jobs
+                </Link>
+              </li>
+            </ul>
           </div>
-        </div> */}
+
+          <div>
+            <h5 className="uppercase font-semibold mb-4">Legal & Info</h5>
+            <ul className="space-y-2">
+              <li>
+ <Link
+                  href="/about-us"
+                  className="flex items-center text-white hover:underline"
+                >
+                  About us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="flex items-center text-white hover:underline"
+                >
+                 Privacy Policy
+                </Link>
+              </li>
+              <Link
+                  href="/terms-conditions"
+                  className="flex items-center text-white hover:underline"
+                >
+                Terms & Conditions
+                </Link>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="uppercase font-semibold mb-4">Social Media</h5>
+           <ul className="space-y-2">
+  <li>
+    <Link
+      href="https://www.facebook.com/yourpage"
+      className="flex items-center text-white hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaFacebook className="mr-2" /> Facebook
+    </Link>
+  </li>
+  <li>
+    <Link
+      href="https://twitter.com/yourhandle"
+      className="flex items-center text-white hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaTwitter className="mr-2" /> Twitter
+    </Link>
+  </li>
+  <li>
+    <Link
+      href="https://www.instagram.com/yourprofile"
+      className="flex items-center text-white hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaInstagram className="mr-2" /> Instagram
+    </Link>
+  </li>
+  <li>
+    <Link
+      href="https://www.linkedin.com/company/yourcompany"
+      className="flex items-center text-white hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaLinkedinIn className="mr-2" /> LinkedIn
+    </Link>
+  </li>
+</ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="text-center bg-black/20 py-4 text-sm">
+        © 2025 Copyright:{" "}
+        <a
+          href="https://jobkityaari.com/"
+          className="text-white hover:underline"
+        >
+          Jobkityaari.com
+        </a>
       </div>
     </footer>
   );

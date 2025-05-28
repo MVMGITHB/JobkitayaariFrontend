@@ -1,6 +1,4 @@
 import { Blog } from "@/components/blog/Blog"
-import base_url from "@/components/helper/helper";
-import axios from "axios";
 
 
 export const metadata = {

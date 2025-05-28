@@ -12,6 +12,8 @@ export const metadata = {
 }
 const page = () => {
 
+
+
     const para = [
        {
         id:1,
@@ -43,7 +45,7 @@ const page = () => {
     <div>
 
 
-      <TechnologyHome5 title={"Find Latest Government Jobs in India 2025"} para={para}/>
+      <TechnologyHome5 title={"Find Latest Government Jobs in India 2025"} para={para} slug={"government-jobs"} />
     </div>
   );
 };

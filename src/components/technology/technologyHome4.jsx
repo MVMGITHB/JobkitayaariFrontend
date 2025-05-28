@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
 import base_url from "../helper/helper";
 import axios from "axios";
+import CategoryBlog from "./CategoryBlog";
 
-const technologyHome4 = ({ title, para }) => {
+const technologyHome4 = ({ title, para, slug }) => {
   const [showAll, setShowAll] = useState(false);
   const handleToggle = () => {
     setShowAll((prev) => !prev);
@@ -181,6 +182,7 @@ const technologyHome4 = ({ title, para }) => {
       ) : (
         ""
       )}
+      <CategoryBlog slug={slug}/>
     </div>
   );
 };

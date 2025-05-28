@@ -4,8 +4,9 @@ import  { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
 import axios from "axios";
 import base_url from "../helper/helper";
+import CategoryBlog from "./CategoryBlog";
 
-const technologyHome6 = ({ title, para }) => {
+const technologyHome6 = ({ title, para, slug }) => {
 
   const [showAll, setShowAll] = useState(false);
     const handleToggle = () => {
@@ -96,7 +97,10 @@ const technologyHome6 = ({ title, para }) => {
       color={"green"}
       data={data2}
        />):("")}
+           <CategoryBlog slug={slug}/>
+
     </div>
+
   );
 };
 
