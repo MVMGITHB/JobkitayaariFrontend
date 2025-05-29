@@ -42,17 +42,17 @@ export default function Popup() {
     />
   </div>
 </div>
-          <h2 className="text-3xl font-bold text-gray-800">
+          <h2 className="text-xl lg:text-3xl font-bold text-gray-800">
             Stay Updated With
           </h2>
-          <h3 className="text-xl font-semibold text-violet-700">
+          <h3 className=" text-lg lg:text-xl font-semibold text-violet-700">
             Latest Job Openings & Career Updates
           </h3>
           <p className="text-sm text-gray-600">
             Join thousands of users getting real-time job alerts!
           </p>
           <Link href="/register">
-            <button className="mt-4 px-6 py-3 cursor-pointer bg-violet-700 hover:bg-violet-800 text-white  font-medium rounded-full transition duration-300 shadow-md">
+            <button className=" px-6 py-2 cursor-pointer bg-violet-700 hover:bg-violet-800 text-white  font-medium rounded-full transition duration-300 shadow-md">
               Register Now
             </button>
           </Link>

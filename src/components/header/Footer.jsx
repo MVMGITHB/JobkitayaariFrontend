@@ -10,11 +10,11 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white text-center lg:text-left">
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-2">
           <div>
             <h5 className="uppercase font-semibold mb-4">Contact us</h5>
             <ul className="space-y-2">
-              <li>
+              <li >
                 <strong>Address:</strong> IThum I.T. Park, Sector 62, Noida
               </li>
               <li>
@@ -25,95 +25,98 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h5 className="uppercase font-semibold mb-4">Top Job Categories</h5>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/government-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  Government Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/technology-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  Technology Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/management-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  Management Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/technology-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  Teaching Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/banking-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  Banking Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/psu-jobs"
-                  className="flex items-center text-white hover:underline"
-                >
-                  PSU Jobs
-                </Link>
-              </li>
-            </ul>
-          </div>
+         <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">
+  <h5 className="uppercase font-semibold mb-4">Top Job Categories</h5>
+  <ul className="space-y-0 lg:space-y-2">
+    <li>
+      <Link
+        href="/government-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Government Jobs
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/technology-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Technology Jobs
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/management-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Management Jobs
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/technology-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Teaching Jobs
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/banking-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Banking Jobs
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/psu-jobs"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        PSU Jobs
+      </Link>
+    </li>
+  </ul>
+</div>
 
-          <div>
-            <h5 className="uppercase font-semibold mb-4">Legal & Info</h5>
-            <ul className="space-y-2">
-              <li>
- <Link
-                  href="/about-us"
-                  className="flex items-center text-white hover:underline"
-                >
-                  About us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy-policy"
-                  className="flex items-center text-white hover:underline"
-                >
-                 Privacy Policy
-                </Link>
-              </li>
-              <Link
-                  href="/terms-conditions"
-                  className="flex items-center text-white hover:underline"
-                >
-                Terms & Conditions
-                </Link>
-            </ul>
-          </div>
+       <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">
+  <h5 className="uppercase font-semibold mb-4">Legal & Info</h5>
+  <ul className="space-y-0 lg:space-y-2">
+    <li>
+      <Link
+        href="/about-us"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        About us
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/privacy-policy"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Privacy Policy
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/terms-conditions"
+        className="flex sm:justify-start justify-center text-white hover:underline"
+      >
+        Terms & Conditions
+      </Link>
+    </li>
+  </ul>
+</div>
 
-          <div>
+
+          <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">
             <h5 className="uppercase font-semibold mb-4">Social Media</h5>
-           <ul className="space-y-2">
+           <ul className="space-y-0 lg:space-y-2">
   <li>
     <Link
       href="https://www.facebook.com/yourpage"
-      className="flex items-center text-white hover:underline"
+      className="flex sm:justify-start justify-center text-white hover:underline"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -123,7 +126,7 @@ export default function Footer() {
   <li>
     <Link
       href="https://twitter.com/yourhandle"
-      className="flex items-center text-white hover:underline"
+      className="flex sm:justify-start justify-center text-white hover:underline"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -133,7 +136,7 @@ export default function Footer() {
   <li>
     <Link
       href="https://www.instagram.com/yourprofile"
-      className="flex items-center text-white hover:underline"
+      className="flex sm:justify-start justify-center text-white hover:underline"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -143,7 +146,7 @@ export default function Footer() {
   <li>
     <Link
       href="https://www.linkedin.com/company/yourcompany"
-      className="flex items-center text-white hover:underline"
+      className="flex sm:justify-start justify-center text-white hover:underline"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -155,7 +158,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="text-center bg-black/20 py-4 text-sm">
         © 2025 Copyright:{" "}
         <a

@@ -78,18 +78,20 @@ const JobCarousel = ({ jobs, title, color, data }) => {
         <div className="relative mt-6">
           {jobs.length > 1 && (
             <>
-              <button
-                className="cursor-pointer absolute -left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
-                onClick={handlePrev}
-              >
-                <FaChevronLeft size={20} />
-              </button>
-              <button
-                className="cursor-pointer absolute -right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
-                onClick={handleNext}
-              >
-                <FaChevronRight size={20} />
-              </button>
+            <button
+  className="hidden md:flex cursor-pointer absolute -left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
+  onClick={handlePrev}
+>
+  <FaChevronLeft size={20} />
+</button>
+
+<button
+  className="hidden md:flex cursor-pointer absolute -right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
+  onClick={handleNext}
+>
+  <FaChevronRight size={20} />
+</button>
+
             </>
           )}
 
