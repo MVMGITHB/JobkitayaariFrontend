@@ -79,7 +79,6 @@ async function generateSitemap() {
 </urlset>`;
 
   fs.writeFileSync(path.join('public', 'sitemap.xml'), fullSitemap, 'utf8');
-  console.log('✅ sitemap.xml generated with jobs and blogs.');
 }
 
 generateSitemap();

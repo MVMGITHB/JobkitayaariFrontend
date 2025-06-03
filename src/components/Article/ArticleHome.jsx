@@ -8,7 +8,6 @@ import Popup from "../home/Popup";
 import Image from "next/image";
 
 export const ArticleHome = ({ data }) => {
-  console.log("author", data.author);
   const date = new Date(data?.createdAt);
 
   const day = String(date.getDate()).padStart(2, "0");
@@ -89,7 +88,7 @@ export const ArticleHome = ({ data }) => {
         setAllCards(data);
 
         const shuffled = [...data].sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, 3);
+        const selected = shuffled.slice(0, 8);
         setRandomCards(selected);
       })
       .catch((err) => console.error(err));
@@ -115,13 +114,13 @@ export const ArticleHome = ({ data }) => {
           <h1 className="text-2xl lg:text-3xl font-bold text-center mb-6">
             {data?.title}
           </h1>
-          <div className="w-full  overflow-hidden mb-2">
+          <div className="w-full flex justify-center  overflow-hidden mb-2">
             <Image
               src={`${base_url}${data?.image}`}
               alt="Blog Image"
-              width={874}
-              height={320}
-              className="object-cover shadow-2xl rounded-lg"
+              width={800}
+              height={500}
+              className="w-full md:w-[800] h-auto md:h-[400] rounded-md object-cover shadow-2xl"
             />
           </div>
 
@@ -185,12 +184,13 @@ export const ArticleHome = ({ data }) => {
                     href={`/${card?.category?.slug}/articles/${card?.slug}`}
                     className="flex items-center gap-3 p-2 border-b border-gray-200 last:border-b-0 hover:bg-gray-100 transition duration-200"
                   >
-                    <div className="flex-shrink-0 w-24 h-24 relative">
+                    <div className="flex-shrink-0 w-[120px] h-auto relative">
                       <Image
                         src={`${base_url}${card?.image}`}
                         alt={card?.title}
-                        fill
                         className="object-cover rounded"
+                        height={50}
+                        width={120}
                       />
                     </div>
 

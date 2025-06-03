@@ -16,7 +16,6 @@ export default function AuthorPage({ slug }) {
         
         if (!res.ok) throw new Error("Failed to fetch data");
         const data = await res.json();
-        console.log("autho---", data);
         setAuthor(data[0]);
       } catch (err) {
         setError("Failed to load author data.");
