@@ -39,7 +39,7 @@ export default function Register() {
         specialization: formData.specialization,
       };
 
-      const response = await axios.post(
+      const response = await axios.post( 
         base_url + "/api/auth/register",
         formdata
       );

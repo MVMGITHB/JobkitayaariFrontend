@@ -34,77 +34,77 @@ function JobDescription({ slug }) {
 
 
 const job= data 
-  const faqItems = [];
+  // const faqItems = [];
 
-  if (job.requirementdata && job.requirementdata.length > 0) {
-    faqItems.push({
-      "@type": "Question",
-      "name": "What are the educational qualifications required?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": job.requirementdata.filter(r => r.trim() !== "").join("<br/>")
-      }
-    });
-  }
+  // if (job.requirementdata && job.requirementdata.length > 0) {
+  //   faqItems.push({
+  //     "@type": "Question",
+  //     "name": "What are the educational qualifications required?",
+  //     "acceptedAnswer": {
+  //       "@type": "Answer",
+  //       "text": job.requirementdata.filter(r => r.trim() !== "").join("<br/>")
+  //     }
+  //   });
+  // }
 
-  if (job.ageLimit && job.ageLimit.length > 0) {
-    faqItems.push({
-      "@type": "Question",
-      "name": "What is the age limit for this job?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": job.ageLimit.join("<br/>")
-      }
-    });
-  }
+  // if (job.ageLimit && job.ageLimit.length > 0) {
+  //   faqItems.push({
+  //     "@type": "Question",
+  //     "name": "What is the age limit for this job?",
+  //     "acceptedAnswer": {
+  //       "@type": "Answer",
+  //       "text": job.ageLimit.join("<br/>")
+  //     }
+  //   });
+  // }
 
-  if (job.salary) {
-    faqItems.push({
-      "@type": "Question",
-      "name": "What is the salary for this position?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": job.salary
-      }
-    });
-  }
+  // if (job.salary) {
+  //   faqItems.push({
+  //     "@type": "Question",
+  //     "name": "What is the salary for this position?",
+  //     "acceptedAnswer": {
+  //       "@type": "Answer",
+  //       "text": job.salary
+  //     }
+  //   });
+  // }
 
-  if (job.applylink) {
-    faqItems.push({
-      "@type": "Question",
-      "name": "How can I apply for this job?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `You can apply through the official link: <a href="${job.applylink}" target="_blank" rel="noopener noreferrer">${job.applylink}</a>`
-      }
-    });
-  }
+  // if (job.applylink) {
+  //   faqItems.push({
+  //     "@type": "Question",
+  //     "name": "How can I apply for this job?",
+  //     "acceptedAnswer": {
+  //       "@type": "Answer",
+  //       "text": `You can apply through the official link: <a href="${job.applylink}" target="_blank" rel="noopener noreferrer">${job.applylink}</a>`
+  //     }
+  //   });
+  // }
 
-  if (job.jobDescription && job.jobDescription.length > 0) {
-    faqItems.push({
-      "@type": "Question",
-      "name": "What is the job description?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": job.jobDescription.join("<br/>")
-      }
-    });
-  }
+  // if (job.jobDescription && job.jobDescription.length > 0) {
+  //   faqItems.push({
+  //     "@type": "Question",
+  //     "name": "What is the job description?",
+  //     "acceptedAnswer": {
+  //       "@type": "Answer",
+  //       "text": job.jobDescription.join("<br/>")
+  //     }
+  //   });
+  // }
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqItems
-  };
+  // const faqSchema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "FAQPage",
+  //   "mainEntity": faqItems
+  // };
 
   return (
 
 
     <>
-          <script
+          {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      /> */}
 
     <div className="px-4 lg:px-6">
       {data?.Jobtype === "goven" ? (

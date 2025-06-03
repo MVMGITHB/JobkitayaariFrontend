@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
  
     if (!author) {
       return {
-        title: "Author Not Found | Top5Shots",
+        title: "Author Not Found | Jobkityaari",
         description: "No author information available at the moment.",
         alternates: {
           canonical: `${baseUrl}/author/${slug}`,
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
     const fullName = `${author.firstName} ${author.lastName}`;
     const bio =
       author.shortBio ||
-      `Explore articles and insights by ${fullName} on Top5Shots.`;
+      `Explore articles and insights by ${fullName} on Jobkityaari.`;
     const imageUrl = author.image
       ? author.image.startsWith("http")
         ? author.image
@@ -49,14 +49,14 @@ export async function generateMetadata({ params }) {
       : `${baseUrl}/images/default-user.png`;
  
     return {
-      title: `${fullName} | Author at Top5Shots`,
+      title: `${fullName} | Author at jobkityaari`,
       description: bio,
       keywords: [
         fullName,
-        "Top5Shots authors",
+        "Jobkityaari authors",
         "tech blog authors",
         "curated content writer",
-        "top 5 articles",
+        "Jobkityaari 5 articles",
         "insights by " + fullName,
       ],
       alternates: {

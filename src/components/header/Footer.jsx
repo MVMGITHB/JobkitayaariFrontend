@@ -135,7 +135,7 @@ export default function Footer() {
   </li>
   <li>
     <Link
-      href="https://www.instagram.com/yourprofile"
+      href="https://www.instagram.com/jobkityaari/?next=%2F"
       className="flex sm:justify-start justify-center text-white hover:underline"
       target="_blank"
       rel="noopener noreferrer"
