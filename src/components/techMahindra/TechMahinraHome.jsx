@@ -11,7 +11,7 @@ import AnimatedLink from './AnimatedLink'
            
          </div>
 
-         <div className="w-full md:w-[55%] lg:w-[70%] order-2 md:order-2 shadow-md p-4 bg-gray-50 rounded md:h-[100vh] custom-scrollbox overflow-y-auto">
+         <div className="w-full md:w-[55%] lg:w-[70%] order-2 md:order-2 shadow-md p-4 bg-gray-50 rounded ">
            <Mahindra/>
          </div>
 
