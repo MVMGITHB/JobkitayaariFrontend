@@ -17,10 +17,10 @@ export default function AnimatedLink() {
   return (
     <div className="text-center p-4">
       <Link
-        href="https://mvmbs.com/"
+        href="https://spectrum.gotrackier.com/click?campaign_id=183&pub_id=945"
         className={`${colors[colorIndex]} font-bold text-3xl transition-colors duration-500`}
       >
-        𝐏𝐚𝐲 𝐀𝐟𝐭𝐞𝐫 𝐏𝐥𝐚𝐜𝐞𝐦𝐞𝐧𝐭 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠 𝐏𝐫𝐨𝐠𝐫𝐚𝐦 - 𝐆𝐞𝐭 𝐏𝐥𝐚𝐜𝐞𝐝 𝐈𝐧 𝐓𝐨𝐩 𝐌𝐍𝐂'𝐬
+        Learn immersive public speaking and creative writing skills - Unleash your true Potential Now
       </Link>
     </div>
   );
