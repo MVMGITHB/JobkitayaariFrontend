@@ -86,7 +86,7 @@ export const ArticleHome = ({ data }) => {
       .then((res) => {
         const data = res.data;
         setAllCards(data);
-
+        console.log("conclusion---", data)
         const shuffled = [...data].sort(() => 0.5 - Math.random());
         const selected = shuffled.slice(0, 8);
         setRandomCards(selected);
@@ -171,7 +171,17 @@ export const ArticleHome = ({ data }) => {
               )}
             </>
           )}
+            {
+          data?.blogContent&&data.blogContent.length>0&&(
+           <>
+            <h2 className="text-[27px] font-bold mb-4 text-center">Conclusion</h2>
+            <p className="text-[21px]">{data?.blogContent}</p>
+           </>
+          )
+        }
         </div>
+
+      
 
         <div className="w-full md:w-[25%] order-2">
           <div className="sticky top-20">

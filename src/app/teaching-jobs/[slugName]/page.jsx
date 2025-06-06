@@ -1,7 +1,7 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription"
 import axios from "axios";
-
+import Popup from "@/components/popup/Popup";
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
 //   description: 'Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us',
@@ -74,6 +74,7 @@ async function page({params}) {
   return (
     <>
     <JobDescription slug={slugName}/>
+    <Popup/>
     </>
   )
 }
