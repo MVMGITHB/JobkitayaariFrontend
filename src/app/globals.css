@@ -187,3 +187,28 @@ table {
   background-size: cover ;
   background-position: center;
 }
+
+
+/* .custom-scrollbox {
+ 
+  max-height: 100vh;
+  overflow-y: auto;
+ 
+} */
+
+
+
+.custom-scrollbox::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+.custom-scrollbox {
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* For IE and Edge */
+.custom-scrollbox {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}

@@ -1,9 +1,10 @@
 import React from 'react'
 import Mahindra from '@/components/techMahindra/Mahindra'
+import TechMahinraHome from '@/components/techMahindra/TechMahinraHome'
 export const page = () => {
   return (
     <div>
-        <Mahindra/>
+        <TechMahinraHome/>
     </div>
   )
 }

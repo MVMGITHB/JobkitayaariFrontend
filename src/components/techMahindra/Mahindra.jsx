@@ -55,7 +55,7 @@ const walkinData1 = [
   <p><span class="text-[18px] font-semibold">Experience:</span> 0 – 5 Years</p>
   <p><span class="text-[18px] font-semibold">Qualification:</span> 12th, Any Graduate</p>
   <p><span class="text-[18px] font-semibold">Job Type:</span> Full Time</p>
-   <AnimatedLink/>
+    <AnimatedLink text={"Get Assured Rs.20 Lakh Per Annum Package In AI, Apply For This Now"} link="http://www.intellectmedia.net/trk/click.asp?cid=3109&pid=661&did=23428&code=552"/>
   <p><span class="text-[18px] font-semibold">Job Location:</span> Noida, Ghaziabad, Delhi / NCR</p>
   <p><span class="text-[18px] font-semibold">Salary:</span> Rs.2,00,000/- to Rs.3,50,000/-</p>
 </div>
@@ -146,9 +146,11 @@ const walkinData1 = [
   </div>
 </div>
 
- <div>
+    <div>
       <WalkinTable walkinData={walkinData} />
     </div>
+
+     <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://trk.clickgenie.in/click?campaign_id=35487&pub_id=4513&p1={your-transaction-id}&source={your-sub-aff-id}"/>
  <div>
       <WakinHome />
     </div>
