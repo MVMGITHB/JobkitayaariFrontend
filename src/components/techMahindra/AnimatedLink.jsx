@@ -17,7 +17,7 @@ export default function AnimatedLink() {
   return (
     <div className="text-center p-4">
       <Link
-        href="/your-target-page"
+        href="https://mvmbs.com/"
         className={`${colors[colorIndex]} font-bold text-3xl transition-colors duration-500`}
       >
         𝐏𝐚𝐲 𝐀𝐟𝐭𝐞𝐫 𝐏𝐥𝐚𝐜𝐞𝐦𝐞𝐧𝐭 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠 𝐏𝐫𝐨𝐠𝐫𝐚𝐦 - 𝐆𝐞𝐭 𝐏𝐥𝐚𝐜𝐞𝐝 𝐈𝐧 𝐓𝐨𝐩 𝐌𝐍𝐂'𝐬
