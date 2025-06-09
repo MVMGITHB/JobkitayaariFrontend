@@ -7,7 +7,7 @@ import AnimatedLink from './AnimatedLink'
     <div className="mx-auto px-4 py-4 flex flex-col md:flex-row justify-center gap-6">
 
          <div className="w-full md:pt-[200px] md:w-[20%] order-1 md:order-1 bg-gray-100 flex flex-col gap-8 ">
-           <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://trk.clickgenie.in/click?campaign_id=35487&pub_id=4513&p1={your-transaction-id}&source={your-sub-aff-id}"/>
+           <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://spectrum.gotrackier.com/click?campaign_id=1638&pub_id=375&url_id=2"/>
            
          </div>
 

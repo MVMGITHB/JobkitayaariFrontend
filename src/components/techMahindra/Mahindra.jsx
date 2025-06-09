@@ -150,7 +150,7 @@ const walkinData1 = [
       <WalkinTable walkinData={walkinData} />
     </div>
 
-     <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://trk.clickgenie.in/click?campaign_id=35487&pub_id=4513&p1={your-transaction-id}&source={your-sub-aff-id}"/>
+     <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://spectrum.gotrackier.com/click?campaign_id=1638&pub_id=375&url_id=2"/>
  <div>
       <WakinHome />
     </div>
