@@ -150,7 +150,7 @@ const walkinData1 = [
       <WalkinTable walkinData={walkinData} />
     </div>
 
-     <AnimatedLink text={"Graduates Are Getting 15 Lakh Package In MNCs After Applying"} link="https://spectrum.gotrackier.com/click?campaign_id=1638&pub_id=375&url_id=2"/>
+     <AnimatedLink text={"Win a voucher of ₹50,000 and a 10% student discount with Samsung Galaxy AI Treasure Hunt"} link="https://spectrum.gotrackier.com/click?campaign_id=1638&pub_id=375&url_id=3"/>
  <div>
       <WakinHome />
     </div>
