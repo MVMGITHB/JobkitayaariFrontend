@@ -55,7 +55,7 @@ const walkinData1 = [
   {/* <p><span class="text-[18px] font-semibold">Experience:</span> 0 – 5 Years</p> */}
   <p><span class="text-[18px] font-semibold">Qualification:</span> Class X, Class XII / Diploma and Graduation.</p>
   <p><span class="text-[18px] font-semibold">Job Type:</span> Full Time</p>
-   <AnimatedLink text={"Join NMIMS Online MBA And Get Assured Rs. 20 Lakh Per Annum Package, Apply Now"} link="https://geoads74.gotrackier.com/click?campaign_id=1881&pub_id=1544&url_id=18"/>
+   <AnimatedLink text={"Master Communication Skills and Start Earning in Lakhs, Apply Now"} link="https://spectrum.gotrackier.com/click?campaign_id=183&pub_id=684"/>
   {/* <p><span class="text-[18px] font-semibold">Job Location:</span> Noida, Ghaziabad, Delhi / NCR</p> */}
   <p><span class="text-[18px] font-semibold">Salary:</span> Rs.4,00,000/- to Rs.26,50,000/-</p>
 </div>

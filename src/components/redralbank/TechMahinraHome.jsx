@@ -7,7 +7,7 @@ import AnimatedLink from './AnimatedLink'
     <div className="mx-auto px-4 py-4 flex flex-col md:flex-row justify-center gap-6">
 
          <div className="w-full md:pt-[200px] md:w-[20%] order-1 md:order-1 bg-gray-100 flex flex-col gap-8 ">
-           <AnimatedLink text={"Join NMIMS Online MBA And Get Assured Rs. 20 Lakh Per Annum Package, Apply For This Now"} link="https://geoads74.gotrackier.com/click?campaign_id=1881&pub_id=1544&url_id=18"/>
+            <AnimatedLink text={"Master Communication Skills and Start Earning in Lakhs, Apply Now"} link="https://spectrum.gotrackier.com/click?campaign_id=183&pub_id=684"/>
            
          </div>
 
