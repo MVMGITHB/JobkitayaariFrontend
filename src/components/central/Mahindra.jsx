@@ -55,7 +55,7 @@ const walkinData1 = [
   {/* <p><span class="text-[18px] font-semibold">Experience:</span> 0 – 5 Years</p> */}
   <p><span class="text-[18px] font-semibold">Post Date:</span> 07-06-2025</p>
   <p><span class="text-[18px] font-semibold">Latest Update:</span> 12-06-2025</p>
-   <AnimatedLink text={" India's BEST RuPay Card Get 1.5% BACK on UPI, ZERO JOINING FEE and Many more"} link="https://spectrum.gotrackier.com/click?campaign_id=1201&pub_id=945&source={3}"/>
+   <AnimatedLink text={"India's BEST RuPay Card Get 1.5% BACK on UPI, zero JOINING FEE "} link="https://spectrum.gotrackier.com/click?campaign_id=1201&pub_id=945&source={3}"/>
   {/* <p><span class="text-[18px] font-semibold">Job Location:</span> Noida, Ghaziabad, Delhi / NCR</p> */}
   <p><span class="text-[18px] font-semibold">Total Vacancy: </span> 4500</p>
 </div>
@@ -200,7 +200,7 @@ const walkinData1 = [
 
 
 
-         <AnimatedLink text={" India's BEST RuPay Card Get 1.5% BACK on UPI, ZERO JOINING FEE and Many more"} link="https://spectrum.gotrackier.com/click?campaign_id=1201&pub_id=945&source={3}"/>
+         <AnimatedLink text={"India's BEST RuPay Card Get 1.5% BACK on UPI, zero JOINING FEE "} link="https://spectrum.gotrackier.com/click?campaign_id=1201&pub_id=945&source={3}"/>
 
  <div>
       <WakinHome />

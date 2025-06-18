@@ -21,7 +21,8 @@ export default function AnimatedLink({text,link}) {
         href={link}
         className={`${textColors[colorIndex]} font-bold text-2xl transition-colors duration-500`}
       >
-        {text}
+        {text} <br />
+        Apply Now 
       </Link>
     </div>
   );
