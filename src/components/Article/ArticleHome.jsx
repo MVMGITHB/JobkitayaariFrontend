@@ -8,6 +8,15 @@ import Popup from "../home/Popup";
 import Image from "next/image";
 
 export const ArticleHome = ({ data }) => {
+
+
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  
   const date = new Date(data?.createdAt);
 
   const day = String(date.getDate()).padStart(2, "0");

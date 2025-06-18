@@ -1,6 +1,6 @@
 import React from 'react'
-import Mahindra from '@/components/techMahindra/Mahindra'
-import TechMahinraHome from '@/components/techMahindra/TechMahinraHome'
+import TechMahinraHome from '@/components/central/TechMahinraHome'
+
 
 export const metadata = {
   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -21,13 +21,12 @@ export const metadata = {
 };
 
 
-export const page = () => {
+ const page = () => {
   return (
     <div>
         <TechMahinraHome/>
     </div>
   )
 }
-
 
 export default page
