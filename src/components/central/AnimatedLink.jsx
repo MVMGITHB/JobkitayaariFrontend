@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import BlinkingButton from './BlinkingButton';
 
-export default function AnimatedLink({text,link}) {
+export default function AnimatedLink({text,link,apply}) {
   const textColors = ['text-blue-300', 'text-violet-950', 'text-red-900'];
   const borderColors = ['border-blue-300', 'border-violet-950', 'border-red-900'];
   const [colorIndex, setColorIndex] = useState(0);
@@ -22,7 +23,7 @@ export default function AnimatedLink({text,link}) {
         className={`${textColors[colorIndex]} font-bold text-2xl transition-colors duration-500`}
       >
         {text} <br />
-        Apply Now 
+        <BlinkingButton apply={apply}/>
       </Link>
     </div>
   );
