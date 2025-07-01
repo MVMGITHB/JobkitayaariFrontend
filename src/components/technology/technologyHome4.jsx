@@ -23,7 +23,7 @@ const technologyHome4 = ({ title, para, slug }) => {
         const [marketingRes, salesRes, financeRes, bdeRes] = await Promise.all([
           axios.get(`${base_url}/api/job/getJobbySUbCategory/marketing-jobs`),
           axios.get(`${base_url}/api/job/getJobbySUbCategory/sales-job`),
-          axios.get(`${base_url}/api/job/getJobbySUbCategory/best-finance`),
+          axios.get(`${base_url}/api/job/getJobbySUbCategory/business-development-job`),
           axios.get(
             `${base_url}/api/job/getJobbySUbCategory/business-development-job`
           ),
