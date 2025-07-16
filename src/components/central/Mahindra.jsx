@@ -1,4 +1,3 @@
-import React from 'react'
 
 import WalkinTable from './WalkinTable'
 import WakinHome from './WakinHome'
