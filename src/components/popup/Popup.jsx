@@ -36,7 +36,12 @@ export default function Popup() {
           <img
             src="/images/image.png"
             alt="Popup"
-            className="w-full h-auto max-h-[60vh] object-contain rounded-2xl"
+            className=" hidden md:block w-full h-auto max-h-[60vh] object-contain rounded-2xl"
+          />
+          <img
+            src="/images/image2.png"
+            alt="Popup"
+            className=" block md:hidden w-full h-auto max-h-[60vh] object-contain rounded-2xl"
           />
         </Link>
       </div>
