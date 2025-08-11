@@ -11,6 +11,7 @@ import "antd/dist/reset.css";
 export default function Register() {
   const [loading, setLoading] = useState(false);
   const [err, setError] = useState(false);
+  const [consent, setConsent] = useState(false); // ✅ New state for checkbox
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -27,6 +28,15 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!consent) {
+      // ✅ Prevent form submit if unchecked
+      toast.error("Please agree to receive communication before registering.", {
+        position: "bottom-right",
+      });
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -37,15 +47,18 @@ export default function Register() {
         password: formData.password,
         dateOfBirth: formData.dob,
         specialization: formData.specialization,
+        consent: true, // ✅ Send consent status to backend
       };
 
-      const response = await axios.post( 
+      const response = await axios.post(
         base_url + "/api/auth/register",
         formdata
       );
 
       if (response.data) {
-        message.success("Register successfully. Please check your email for verification.");
+        message.success(
+          "Register successfully. Please check your email for verification."
+        );
         setFormData({
           name: "",
           email: "",
@@ -54,7 +67,7 @@ export default function Register() {
           dob: "",
           specialization: "",
         });
-
+        setConsent(false);
         setError(false);
         router.push("/login");
       }
@@ -73,7 +86,9 @@ export default function Register() {
       <div className="w-full max-w-md bg-gray-100 rounded-xl shadow-md p-8">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-gray-800">Register</h2>
-          <p className="text-sm text-gray-500">Fill in your details to create an account</p>
+          <p className="text-sm text-gray-500">
+            Fill in your details to create an account
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -175,6 +190,22 @@ export default function Register() {
               <option value="govern">Govt</option>
               <option value="bank">Bank</option>
             </select>
+          </div>
+
+          {/* ✅ Consent Checkbox */}
+          <div className="flex items-start gap-2">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="mt-1"
+              
+            />
+            <label className="text-sm text-gray-700">
+              I agree to receive communication regarding various offers and
+              products through Call, E-mail, SMS, WhatsApp etc. from{" "}
+              <strong>jobkityaari.com</strong> & its partners.
+            </label>
           </div>
 
           {/* Submit */}
