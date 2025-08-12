@@ -10,14 +10,11 @@ export default function JobKityaariPopup() {
   useEffect(() => {
     const lastShown = localStorage.getItem("jobkityaari_popup_last_shown");
 
-    if (!lastShown || Date.now() - parseInt(lastShown) > 3600000) {
+    if (!lastShown || Date.now() - parseInt(lastShown) > 3600000) { 
       // 1 hour = 3600000 ms
       const timer = setTimeout(() => {
         setIsOpen(true);
-        localStorage.setItem(
-          "jobkityaari_popup_last_shown",
-          Date.now().toString()
-        );
+        localStorage.setItem("jobkityaari_popup_last_shown", Date.now().toString());
       }, 3000); // Show after 3 seconds
 
       return () => clearTimeout(timer);
