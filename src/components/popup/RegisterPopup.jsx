@@ -30,8 +30,10 @@ export default function JobKityaariPopup() {
 
   return (
     <>
+      {/* Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center z-50">
+         
           <div className="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 relative text-center border border-gray-200 animate-fadeIn">
             <button
               onClick={() => setIsOpen(false)}
