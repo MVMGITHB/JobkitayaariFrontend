@@ -1,11 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/context/auth";
-import Header from "@/components/header/Header"
+import Header from "@/components/header/Header";
 import Footer from "@/components/header/Footer";
-import Navbar from "@/components/header/Navbar"
+import Navbar from "@/components/header/Navbar";
 import BreadCrumbSchema from "@/components/BreadCrumb/BreadCrumbSchema";
-
+import JobKityaariPopup from "@/components/popup/RegisterPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +23,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
- 
   return (
     <html lang="en">
       <head>
-      <link rel="icon" href="/images/favicon.ico" type="image/x-icon" sizes="16x16" />
-         {/* <meta name="robots" content="noindex, nofollow"></meta> */}
+        <link
+          rel="icon"
+          href="/images/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        />
+        {/* <meta name="robots" content="noindex, nofollow"></meta> */}
         {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9QH53NLWK"></script>
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -39,8 +43,6 @@ export default function RootLayout({ children }) {
           `
         }} /> */}
 
-
-    
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-B6KBQKWQMS"
@@ -55,24 +57,21 @@ export default function RootLayout({ children }) {
           `,
           }}
         />
-
-
-
-
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-  <AuthProvider>
-    <Header />
-    <div className="lg:sticky top-0 z-40">
-    <Navbar/>
-
-    </div>
-    <BreadCrumbSchema/>
-    {children}
-    <Footer />
-  </AuthProvider>
-</body>
-
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <AuthProvider>
+          <Header />
+          <div className="lg:sticky top-0 z-40">
+            <Navbar />
+          </div>
+          <BreadCrumbSchema />
+          <JobKityaariPopup />
+          {children}
+          <Footer />
+        </AuthProvider>
+      </body>
     </html>
   );
 }
