@@ -48,19 +48,12 @@ export default function JobKityaariPopup() {
               <Image
                 src="/images/logo1.png"
                 alt="JobKityaari Logo"
-                width={100}
-                height={100}
+                width={200}
+                height={200}
               />
             </div>
 
-            <h2 className="text-xl font-semibold text-blue-700 mt-2">
-              JOBKITYAARI
-            </h2>
-            <p className="text-sm text-blue-500 mt-1">
-              Your Partner In Job Search
-            </p>
-
-            <h3 className="mt-4 text-lg font-bold text-gray-800">
+            <h3 className="text-lg font-bold text-gray-800">
               REGISTER WITH US
             </h3>
 
