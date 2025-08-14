@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-md  p-4 px-16">
+    <header className="bg-gradient-to-r from-orange-500 via-white to-green-500 shadow-md p-4 px-16">
       <div className="container w-[85%] mx-auto flex flex-wrap md:flex-nowrap justify-between items-center space-y-3 md:space-y-0">
         {[
           {
