@@ -22,7 +22,7 @@ const Header = () => {
   return (
 
     // <bg-white></bg-white>
-    <header className=" shadow-md  bg-gradient-to-r from-orange-500 via-white to-green-500">
+    <header className="bg-white shadow-md  ">
     <div className="container mx-auto px-4 py-3 flex justify-between items-center">
 <Link href="/" aria-label="JobKityaari Home">
   <Image
