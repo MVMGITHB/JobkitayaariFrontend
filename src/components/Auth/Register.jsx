@@ -69,7 +69,8 @@ export default function Register() {
         });
         setConsent(false);
         setError(false);
-        router.push("/login");
+        // router.push("/login");
+        router.push("/thankyou");
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "Registration failed!", {
@@ -199,7 +200,6 @@ export default function Register() {
               checked={consent}
               onChange={(e) => setConsent(e.target.checked)}
               className="mt-1"
-              
             />
             <label className="text-sm text-gray-700">
               I agree to receive communication regarding various offers and
