@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import base_url from "../helper/helper";
+
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../context/auth";
+import { base_url1 } from "../helper/helper";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -28,10 +29,10 @@ export default function Login() {
     try {
       setLoading(true);
       const formdata = {
-        identifier: formData.email,
+        email: formData.email,
         password: formData.password,
       };
-      const response = await axios.post(base_url + "/api/auth/login", formdata);
+      const response = await axios.post(base_url1 + "/api/users/login", formdata);
 
       if (response.data) {
         toast.success("Login successfully!", { position: "bottom-right" });

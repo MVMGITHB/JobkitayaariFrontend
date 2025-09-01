@@ -5,6 +5,7 @@ import base_url from "../helper/helper";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import { base_url1 } from "../helper/helper";
 import { message } from "antd";
 import "antd/dist/reset.css";
 
@@ -48,7 +49,7 @@ export default function Register() {
       };
 
       const response = await axios.post(
-        base_url + "/api/auth/register",
+        base_url1 + "/api/users/register",
         formdata
       );
 
