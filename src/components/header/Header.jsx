@@ -26,7 +26,7 @@ const Header = () => {
     <div className="container mx-auto px-4 py-3 flex justify-between items-center">
 <Link href="/" aria-label="JobKityaari Home">
   <Image
-    src="/images/logo2.png"
+    src="/images/logo3.webp"
     alt="JobKityaari logo"
     width={112}
     height={40}
