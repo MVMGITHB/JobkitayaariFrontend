@@ -14,7 +14,7 @@ export const metadata = {
     description: 'Find your dream job with Job Kityaari. Explore opportunities and grow your career!',
     url: 'https://jobkityaari.com',
     type: 'website',
-    images: [cc
+    images: [
       {
         url: 'https://jobkityaari.com/images/logo2.png',
         width: 500, // Adjust the width accordingly
