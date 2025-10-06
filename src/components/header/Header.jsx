@@ -28,7 +28,7 @@ const Header = () => {
   <Image
     src="/images/logo3.webp"
     alt="JobKityaari logo"
-    width={112}
+    width={140}
     height={40}
     priority
   />
