@@ -46,7 +46,7 @@ export default function JobKityaariPopup() {
 
             <div className="flex justify-center">
               <Image
-                src="/images/logo1.png"
+                src="/images/logo3.webp"
                 alt="JobKityaari Logo"
                 width={200}
                 height={200}
