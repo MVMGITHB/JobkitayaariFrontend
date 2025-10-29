@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       <head>
         <link
           rel="icon"
-          href="/images/favicon.ico"
+          href="/images/favicon3.png"
           type="image/x-icon"
           sizes="16x16"
         />

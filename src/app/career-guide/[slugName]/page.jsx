@@ -24,12 +24,6 @@ export const metadata = {
    let t ;
   const {slugName} = await params
   
-   
-
-
-
-
-   
 
 
   return (

@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
 
-    // <bg-white></bg-white>
+    
     <header className="bg-white shadow-md  ">
     <div className="container mx-auto px-4 py-3 flex justify-between items-center">
 <Link href="/" aria-label="JobKityaari Home">

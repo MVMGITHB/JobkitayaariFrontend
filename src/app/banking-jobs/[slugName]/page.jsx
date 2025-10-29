@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
       title: `${post.mtitle} `,
       description: post.mdescription,
        metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
+      alternates: {
       canonical: './',
     },
      
