@@ -205,7 +205,7 @@ const job= data
           </h2>
         )}
         <div className="p-4">
-          <p className="font-bold">For All Other Post</p>
+          {/* <p className="font-bold">For All Other Post</p> */}
           {data?.requirementdata?.map((age, index) => (
             <p key={index}>{age}</p>
           ))}
@@ -222,7 +222,7 @@ const job= data
           </h2>
         )}
         <div className="p-4">
-          <p className="font-bold">For All Other Post</p>
+          {/* <p className="font-bold">For All Other Post</p> */}
           {data?.jobDescription?.map((age, index) => (
             <p key={index}>{age}</p>
           ))}
@@ -239,7 +239,7 @@ const job= data
           </h2>
         )}
         <div className="p-4">
-          <p className="font-bold">For All Other Post</p>
+          {/* <p className="font-bold">For All Other Post</p> */}
           {data?.skill?.map((age, index) => (
             <p key={index}>{age}</p>
           ))}
