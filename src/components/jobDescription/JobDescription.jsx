@@ -180,7 +180,7 @@ const job= data
       </div>
     )}
 
-    {(data?.mtitle || (data?.ageLimit && data.ageLimit.length > 0)) && (
+    {(data?.mtitle && data?.ageLimit[0]?.length>=1 || (data?.ageLimit && data?.ageLimit?.length > 0 && data?.ageLimit[0]?.length>=1)) && (
       <div className="text-black border">
         {data?.mtitle && (
           <h2 className="text-center font-bold text-[24px] text-green-600">
@@ -197,11 +197,11 @@ const job= data
     )}
 
 
-     {(data?.requirementdata ) && (
+     {(data?.requirementdata && data?.requirementdata[0]?.length>1 ) && (
       <div className="text-black border">
         {data?.requirementdata && (
           <h2 className="text-center font-bold text-[24px] text-green-600">
-            Requirement
+           Job  Requirement
           </h2>
         )}
         <div className="p-4">
@@ -214,11 +214,28 @@ const job= data
     )}
 
 
-     {(data?.skill ) && (
+     {(data?.jobDescription && data?.jobDescription[0]?.length>1 ) && (
+      <div className="text-black border">
+        {data?.jobDescription && (
+          <h2 className="text-center font-bold text-[24px] text-green-600">
+            Job Description
+          </h2>
+        )}
+        <div className="p-4">
+          <p className="font-bold">For All Other Post</p>
+          {data?.jobDescription?.map((age, index) => (
+            <p key={index}>{age}</p>
+          ))}
+        </div>
+      </div>
+    )}
+
+
+     {(data?.skill && data?.skill[0]?.length>1  ) && (
       <div className="text-black border">
         {data?.skill && (
           <h2 className="text-center font-bold text-[24px] text-green-600">
-           Skill
+          Required Skill
           </h2>
         )}
         <div className="p-4">
