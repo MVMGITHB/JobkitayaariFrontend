@@ -19,6 +19,8 @@ function JobDescription({ slug }) {
             `${base_url}/api/job/getJobBySlug/${slug}`
           );
           setData(response.data);
+
+          console.log("response data",response.data)
           setLoading(false);
         } catch (error) {
           setError(error.message);
@@ -188,6 +190,40 @@ const job= data
         <div className="p-4">
           <p className="font-bold">For All Other Post</p>
           {data?.ageLimit?.map((age, index) => (
+            <p key={index}>{age}</p>
+          ))}
+        </div>
+      </div>
+    )}
+
+
+     {(data?.requirementdata ) && (
+      <div className="text-black border">
+        {data?.requirementdata && (
+          <h2 className="text-center font-bold text-[24px] text-green-600">
+            Requirement
+          </h2>
+        )}
+        <div className="p-4">
+          <p className="font-bold">For All Other Post</p>
+          {data?.requirementdata?.map((age, index) => (
+            <p key={index}>{age}</p>
+          ))}
+        </div>
+      </div>
+    )}
+
+
+     {(data?.skill ) && (
+      <div className="text-black border">
+        {data?.skill && (
+          <h2 className="text-center font-bold text-[24px] text-green-600">
+           Skill
+          </h2>
+        )}
+        <div className="p-4">
+          <p className="font-bold">For All Other Post</p>
+          {data?.skill?.map((age, index) => (
             <p key={index}>{age}</p>
           ))}
         </div>
