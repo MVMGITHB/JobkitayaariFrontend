@@ -120,20 +120,11 @@ export const ArticleHome = ({ data }) => {
         </div>
 
         <div className="w-full md:w-[60%] lg:w-[70%] order-1 md:order-2 shadow-md p-4 bg-gray-50 rounded">
-          <h1 className="text-2xl lg:text-3xl font-bold text-center mb-6">
+          <h1 className="text-2xl lg:text-4xl font-bold text-center mb-1">
             {data?.title}
           </h1>
-          <div className="w-full flex justify-center  overflow-hidden mb-2">
-            <Image
-              src={`${base_url}${data?.image}`}
-              alt="Blog Image"
-              width={800}
-              height={500}
-              className="w-full md:w-[800] h-auto md:h-[400] rounded-md object-cover shadow-2xl"
-            />
-          </div>
 
-          <div className="text-lm text-gray-600  px-1">
+          <div className="text-lm flex flex-col  gap-1 md:gap-3 justify-center items-center md:flex-row text-gray-600  px-1 mb-6">
             <p>
               <strong>Author:</strong>
               <Link
@@ -143,15 +134,26 @@ export const ArticleHome = ({ data }) => {
                 {data?.author?.name}
               </Link>
             </p>
-            <p>
+            {/* <p>
               <strong>Published:</strong>{" "}
               {new Date(data?.author?.createdAt).toLocaleDateString() || "N/A"}
-            </p>
+            </p> */}
             <p>
-              <strong>Last Updated:</strong>{" "}
+              <strong>Created At:</strong>{" "}
               {new Date(data?.author?.updatedAt).toLocaleDateString() || "N/A"}
             </p>
           </div>
+          <div className="w-full flex justify-center  overflow-hidden mb-2">
+            <Image
+              src={`${base_url}${data?.image}`}
+              alt="Blog Image"
+              width={800}
+              height={500}
+              className="w-full md:w-[850] h-auto md:h-[500] rounded-md object-cover shadow-2xl"
+            />
+          </div>
+
+          
 
           {data && (
             <>
