@@ -139,8 +139,15 @@ export const ArticleHome = ({ data }) => {
               {new Date(data?.author?.createdAt).toLocaleDateString() || "N/A"}
             </p> */}
             <p>
-              <strong>Created At:</strong>{" "}
-              {new Date(data?.author?.updatedAt).toLocaleDateString() || "N/A"}
+              <strong>Updated At:</strong>{" "}
+              {/* {new Date(data?.author?.updatedAt).toLocaleDateString() || "N/A"} */}
+               <time dateTime={data?.createdAt}>
+                {new Intl.DateTimeFormat("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                }).format(new Date(data?.createdAt))}
+              </time>
             </p>
           </div>
           <div className="w-full flex justify-center  overflow-hidden mb-2">
