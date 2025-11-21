@@ -8,15 +8,12 @@ import Popup from "../home/Popup";
 import Image from "next/image";
 
 export const ArticleHome = ({ data }) => {
-
-
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  
   const date = new Date(data?.createdAt);
 
   const day = String(date.getDate()).padStart(2, "0");
@@ -110,9 +107,9 @@ export const ArticleHome = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
-        />
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
+      />
       <Popup />
       <div className="mx-auto px-4 py-4 flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-[15%] order-3 md:order-1 bg-gray-100">
@@ -141,7 +138,7 @@ export const ArticleHome = ({ data }) => {
             <p>
               <strong>Updated At:</strong>{" "}
               {/* {new Date(data?.author?.updatedAt).toLocaleDateString() || "N/A"} */}
-               <time dateTime={data?.createdAt}>
+              <time dateTime={data?.createdAt}>
                 {new Intl.DateTimeFormat("en-GB", {
                   day: "2-digit",
                   month: "short",
@@ -150,6 +147,7 @@ export const ArticleHome = ({ data }) => {
               </time>
             </p>
           </div>
+
           <div className="w-full flex justify-center  overflow-hidden mb-2">
             <Image
               src={`${base_url}${data?.image}`}
@@ -159,8 +157,6 @@ export const ArticleHome = ({ data }) => {
               className="w-full md:w-[850] h-auto md:h-[500] rounded-md object-cover shadow-2xl"
             />
           </div>
-
-          
 
           {data && (
             <>
@@ -189,17 +185,15 @@ export const ArticleHome = ({ data }) => {
               )}
             </>
           )}
-            {
-          data?.blogContent&&data.blogContent.length>0&&(
-           <>
-            <h2 className="text-[27px] font-bold mb-4 text-center">Conclusion</h2>
-            <p className="text-[21px]">{data?.blogContent}</p>
-           </>
-          )
-        }
+          {data?.blogContent && data.blogContent.length > 0 && (
+            <>
+              <h2 className="text-[27px] font-bold mb-4 text-center">
+                Conclusion
+              </h2>
+              <p className="text-[21px]">{data?.blogContent}</p>
+            </>
+          )}
         </div>
-
-      
 
         <div className="w-full md:w-[25%] order-2">
           <div className="sticky top-20">

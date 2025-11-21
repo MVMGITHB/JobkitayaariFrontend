@@ -6,6 +6,7 @@ import Footer from "@/components/header/Footer";
 import Navbar from "@/components/header/Navbar";
 import BreadCrumbSchema from "@/components/BreadCrumb/BreadCrumbSchema";
 import JobKityaariPopup from "@/components/popup/RegisterPopup";
+import MainPopup from "@/components/popup/MainPopup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
           <div className="lg:sticky top-0 z-40">
             <Navbar />
           </div>
+          <MainPopup/>
           <BreadCrumbSchema />
           <JobKityaariPopup />
           {children}
