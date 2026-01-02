@@ -48,7 +48,7 @@ const [bhelJob, setbhelJob]=useState([])
     {
       id: 2,
       title:
-        "We include ONGC's 2025 job vacancies, which include specialized roles such as Finance Officer, HR Executive, Assistant Executive Engineer, Geologist, Geophysicist, Chemist, Graduate Trainee, and more.",
+        "We include ONGC's 2026 job vacancies, which include specialized roles such as Finance Officer, HR Executive, Assistant Executive Engineer, Geologist, Geophysicist, Chemist, Graduate Trainee, and more.",
     },
     {
       id: 3,
@@ -66,7 +66,7 @@ const [bhelJob, setbhelJob]=useState([])
     {
       id: 1,
       title:
-        "We feature the latest IOCL job openings for 2025, including positions like Engineers, Graduate Apprentices, Assistant Officers, Technicians, Management Trainees, Finance Officers, HR Executives, and more. ",
+        "We feature the latest IOCL job openings for 2026, including positions like Engineers, Graduate Apprentices, Assistant Officers, Technicians, Management Trainees, Finance Officers, HR Executives, and more. ",
     },
     {
       id: 2,
@@ -84,7 +84,7 @@ const [bhelJob, setbhelJob]=useState([])
     {
       id: 1,
       title:
-        "One of the leading Maharatna PSUs in the energy industry, GAIL (India) Limited, is a great place to start your career. In 2025, GAIL will be employing for a number of roles, such as engineers, officers, and technicians. ",
+        "One of the leading Maharatna PSUs in the energy industry, GAIL (India) Limited, is a great place to start your career. In 2026, GAIL will be employing for a number of roles, such as engineers, officers, and technicians. ",
     },
     {
       id: 2,
@@ -101,7 +101,7 @@ const [bhelJob, setbhelJob]=useState([])
     {
       id: 1,
       title:
-        "Power Grid Corporation of India Limited (POWERGRID), a top PSU in power transmission, offers exciting employment prospects. Their hiring drive for 2025 covers positions for managers, engineers, junior officers, and diploma trainees. ",
+        "Power Grid Corporation of India Limited (POWERGRID), a top PSU in power transmission, offers exciting employment prospects. Their hiring drive for 2026 covers positions for managers, engineers, junior officers, and diploma trainees. ",
     },
     {
       id: 2,
@@ -118,7 +118,7 @@ const [bhelJob, setbhelJob]=useState([])
     {
       id: 1,
       title:
-        "For 2025, Bharat Heavy Electricals Limited (BHEL) is hiring for a number of exciting positions at its offices and plants around the country. BHEL offers safe and prestigious PSU opportunities, ranging from management positions to graduate apprentices and trainee engineers. ",
+        "For 2026, Bharat Heavy Electricals Limited (BHEL) is hiring for a number of exciting positions at its offices and plants around the country. BHEL offers safe and prestigious PSU opportunities, ranging from management positions to graduate apprentices and trainee engineers. ",
     },
     {
       id: 2,
@@ -152,7 +152,7 @@ const [bhelJob, setbhelJob]=useState([])
 
      {ongcJob?( <JobCarousel
         jobs={ongcJob}
-        title={"ONGC Recruitment 2025 – Apply Now"}
+        title={"ONGC Recruitment 2026 – Apply Now"}
         color={"blue"}
         data={data1}
       />):("")}
@@ -182,7 +182,7 @@ const [bhelJob, setbhelJob]=useState([])
 
       {bhelJob?(<JobCarousel
         jobs={bhelJob}
-        title={"BHEL Jobs 2025 – Best PSU Opportunities"}
+        title={"BHEL Jobs 2026 – Best PSU Opportunities"}
         color={"purple"}
         data={data5}
       />):("")}

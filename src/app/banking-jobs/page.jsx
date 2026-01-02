@@ -1,7 +1,7 @@
 import TechnologyHome6 from "@/components/technology/technologyHome6";
 
 export const metadata = {
-    title: 'Banking Jobs in India 2025 – Latest Bank PO, Clerk & Specialist Roles',
+    title: 'Banking Jobs in India 2026 – Latest Bank PO, Clerk & Specialist Roles',
     description: 'Apply for the latest banking jobs in India. Explore openings for Bank PO, Clerk, RBI & Private Bank positions.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {

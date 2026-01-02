@@ -165,7 +165,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center bg-black/20 py-4 text-sm">
-        © 2025 Copyright:{" "}
+        © 2026 Copyright:{" "}
         <a
           href="https://jobkityaari.com/"
           className="text-white hover:underline"

@@ -34,7 +34,7 @@ const technologyHome6 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Keep up with India's most recent banking job vacancies for 2025. Regardless of your level of experience, consider a variety of positions like Deputy Manager-Sales, Assistant Manager, and Private Banking Advisor.",
+        "Keep up with India's most recent banking job vacancies for 2026. Regardless of your level of experience, consider a variety of positions like Deputy Manager-Sales, Assistant Manager, and Private Banking Advisor.",
     },
     {
       id: 2,
@@ -52,7 +52,7 @@ const technologyHome6 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Explore the top-rated insurance roles available in India in 2025. The insurance industry is growing quickly and now offers positions like risk analyst, underwriting executive, claims manager, and insurance advisor.",
+        "Explore the top-rated insurance roles available in India in 2026. The insurance industry is growing quickly and now offers positions like risk analyst, underwriting executive, claims manager, and insurance advisor.",
     },
     {
       id: 2,
@@ -85,7 +85,7 @@ const technologyHome6 = ({ title, para, slug }) => {
       {bankingJob && (
   <JobCarousel
     jobs={bankingJob}
-    title={"Latest Banking Job Openings in India 2025"}
+    title={"Latest Banking Job Openings in India 2026"}
     color={"blue"}
     data={data1}
   />
@@ -93,7 +93,7 @@ const technologyHome6 = ({ title, para, slug }) => {
 
     {insuranceJob?( <JobCarousel
          jobs={insuranceJob}
-         title={"Best Insurance Job Opportunities in India 2025"}
+         title={"Best Insurance Job Opportunities in India 2026"}
       color={"green"}
       data={data2}
        />):("")}

@@ -1,7 +1,7 @@
 import TechnologyHome2 from "@/components/technology/technologyHome2";
 
 export const metadata = {
-    title: 'Teaching Jobs in India 2025 – Apply for Govt & Private School Jobs',
+    title: 'Teaching Jobs in India 2026 – Apply for Govt & Private School Jobs',
     description: 'Looking for teaching jobs in India? Find vacancies in government & private schools, universities & coaching institutes.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
@@ -31,7 +31,7 @@ const para = [
 const page = () => {
   return (
     <div>
-      <TechnologyHome2 title="Find Your Next Govt & Private Teaching Job in India 2025" para={para} slug={"teaching-jobs"} />
+      <TechnologyHome2 title="Find Your Next Govt & Private Teaching Job in India 2026" para={para} slug={"teaching-jobs"} />
     </div>
   );
 };

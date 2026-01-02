@@ -135,25 +135,25 @@ const TechnologyHome1 = ({ title ,para,slug}) => {
     </div>
       {softwareJobs?(<JobCarousel
         jobs={softwareJobs}
-        title={"Software Developer Jobs 2025 – Freshers & Experienced"}
+        title={"Software Developer Jobs 2026 – Freshers & Experienced"}
         color={"blue"}
         data={data1}
       />):("")
 }
        {testingJobs?(<JobCarousel
         jobs={testingJobs}
-        title={"Software Testing Jobs (Manual & Automation) 2025"}
+        title={"Software Testing Jobs (Manual & Automation) 2026"}
         color={"green"}
         data={data2}
       />):("")}
 
     { projectManJobs? (<JobCarousel
         jobs={projectManJobs}
-        title={"Project Management Jobs 2025 – IT & Tech Sector"}
+        title={"Project Management Jobs 2026 – IT & Tech Sector"}
         color={"orange"}
         data={data3}
       />):("")}
-{aimlJobs?(<JobCarousel jobs={aimlJobs} title={"AI & ML Jobs in India 2025 – High-Paying Roles"} color={"purple"} data={data4}/>):("")}
+{aimlJobs?(<JobCarousel jobs={aimlJobs} title={"AI & ML Jobs in India 2026 – High-Paying Roles"} color={"purple"} data={data4}/>):("")}
   <CategoryBlog slug={slug}/>
 
     </div>

@@ -21,7 +21,11 @@ export default function Popup() {
 
   return (
 
-    <></>
+    <>
+    
+    </>
+
+    
 //     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 ">
 //       <div className="relative bg-gradient-to-br from-white to-gray-100 rounded-3xl shadow-2xl p-8 max-w-md w-full mx-4 animate-fadeIn">
 //         {showClose && (

@@ -45,7 +45,7 @@ const technologyHome4 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Explore the latest marketing job opportunities in India for 2025. Marketing is key to building brand value and connecting with customers.",
+        "Explore the latest marketing job opportunities in India for 2026. Marketing is key to building brand value and connecting with customers.",
     },
     {
       id: 2,
@@ -68,7 +68,7 @@ const technologyHome4 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Find the latest sales job opportunities in India for 2025. Sales is a vital function responsible for revenue generation and driving business growth.",
+        "Find the latest sales job opportunities in India for 2026. Sales is a vital function responsible for revenue generation and driving business growth.",
     },
     {
       id: 2,
@@ -91,7 +91,7 @@ const technologyHome4 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Discover the latest finance job openings in India for 2025. Finance roles involve auditing, budgeting, taxation, payments, balance sheets, and investment management.",
+        "Discover the latest finance job openings in India for 2026. Finance roles involve auditing, budgeting, taxation, payments, balance sheets, and investment management.",
     },
     {
       id: 2,
@@ -110,7 +110,7 @@ const technologyHome4 = ({ title, para, slug }) => {
     {
       id: 1,
       title:
-        "Stay updated on business development job opportunities in India for 2025. Business Development teams drive organizational growth by acquiring new clients and scaling operations.",
+        "Stay updated on business development job opportunities in India for 2026. Business Development teams drive organizational growth by acquiring new clients and scaling operations.",
     },
     {
       id: 2,
@@ -142,7 +142,7 @@ const technologyHome4 = ({ title, para, slug }) => {
       {marketingJobs ? (
         <JobCarousel
           jobs={marketingJobs}
-          title={"Find the Best Marketing Jobs in India 2025"}
+          title={"Find the Best Marketing Jobs in India 2026"}
           color={"blue"}
           data={data1}
         />
@@ -153,7 +153,7 @@ const technologyHome4 = ({ title, para, slug }) => {
       {salesJobs ? (
         <JobCarousel
           jobs={salesJobs}
-          title={"Best Sales Job Opportunities in India 2025"}
+          title={"Best Sales Job Opportunities in India 2026"}
           color={"green"}
           data={data2}
         />
@@ -164,7 +164,7 @@ const technologyHome4 = ({ title, para, slug }) => {
       {financeJobs ? (
         <JobCarousel
           jobs={financeJobs}
-          title={"Find the Best Finance Jobs in India 2025 "}
+          title={"Find the Best Finance Jobs in India 2026 "}
           color={"orange"}
           data={data3}
         />
@@ -175,7 +175,7 @@ const technologyHome4 = ({ title, para, slug }) => {
       {bdeJobs ? (
         <JobCarousel
           jobs={bdeJobs}
-          title={"Top Business Development Job Openings in India 2025"}
+          title={"Top Business Development Job Openings in India 2026"}
           color={"purple"}
           data={data4}
         />

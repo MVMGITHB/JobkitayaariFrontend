@@ -1,7 +1,7 @@
 import TechnologyHome1 from "@/components/technology/TechnologyHome1"; // Capitalized component name
 
 export const metadata = {
-    title: 'Technology Jobs in India 2025 – IT, Software & Developer Vacancies',
+    title: 'Technology Jobs in India 2026 – IT, Software & Developer Vacancies',
     description: 'Explore the latest IT & software jobs in India. Find openings for software developers, AI engineers, data scientists & more.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
@@ -14,7 +14,7 @@ const Page = () => {
   const para = [
     {
      id:1,
-     title:"Stay updated on the latest government job opportunities in India for 2025. We provide accurate and timely updates on vacancies across government departments and organizations."
+     title:"Stay updated on the latest government job opportunities in India for 2026. We provide accurate and timely updates on vacancies across government departments and organizations."
     },
 
     {
@@ -29,7 +29,7 @@ const Page = () => {
  ]
   return (
     <div>
-      <TechnologyHome1 title={"Latest Technology Jobs in India 2025"}  para={para} slug={"technology-jobs"}/>{" "}
+      <TechnologyHome1 title={"Latest Technology Jobs in India 2026"}  para={para} slug={"technology-jobs"}/>{" "}
       {/* Capitalized component usage */}
     </div>
   );

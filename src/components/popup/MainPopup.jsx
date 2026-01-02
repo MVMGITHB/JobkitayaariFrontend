@@ -26,7 +26,7 @@ export default function MainPopup() {
       }
     }
 
-    getPopup();
+    // getPopup();
 
     // show popup after 5 seconds
     const timer = setTimeout(() => {

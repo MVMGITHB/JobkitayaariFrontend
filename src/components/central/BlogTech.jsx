@@ -24,7 +24,7 @@ function BlogTech() {
         console.log(err);
       }
     };
-    fetchData();
+    // fetchData();
   }, []);
 
   return (

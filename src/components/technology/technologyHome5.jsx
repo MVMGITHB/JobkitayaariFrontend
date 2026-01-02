@@ -95,7 +95,7 @@ const technologyHome5 = ({ title, para, slug }) => {
     {
       id: 5,
       title:
-        "With thousands of positions expected in 2025, staying informed is key. Bookmark this page to explore the latest vacancies in Indian Railways and boost your chances of getting hired.",
+        "With thousands of positions expected in 2026, staying informed is key. Bookmark this page to explore the latest vacancies in Indian Railways and boost your chances of getting hired.",
     },
   ];
 
@@ -184,7 +184,7 @@ const technologyHome5 = ({ title, para, slug }) => {
       {allsector ? (
         <JobCarousel
           jobs={allsector}
-          title={"Latest Govenment Job Opening 2025 - All Sectors"}
+          title={"Latest Govenment Job Opening 2026 - All Sectors"}
           color={"blue"}
         />
       ) : (
@@ -194,7 +194,7 @@ const technologyHome5 = ({ title, para, slug }) => {
       {railwayjob ? (
         <JobCarousel
           jobs={railwayjob}
-          title={"Latest Railway Jobs in India 2025"}
+          title={"Latest Railway Jobs in India 2026"}
           color={"blue"}
           data={data1}
         />
@@ -205,7 +205,7 @@ const technologyHome5 = ({ title, para, slug }) => {
       {defense ? (
         <JobCarousel
           jobs={defense}
-          title={"Explore Latest Defense Jobs in India 2025"}
+          title={"Explore Latest Defense Jobs in India 2026"}
           color={"blue"}
           data={data2}
         />
@@ -216,7 +216,7 @@ const technologyHome5 = ({ title, para, slug }) => {
       {upsc ? (
         <JobCarousel
           jobs={upsc}
-          title={"UPSC Exam Notifications 2025 – Latest Govt Jobs"}
+          title={"UPSC Exam Notifications 2026 – Latest Govt Jobs"}
           color={"blue"}
           data={data3}
         />

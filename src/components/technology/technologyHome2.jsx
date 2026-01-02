@@ -105,7 +105,7 @@ const technologyHome2 = ({ title, para,slug }) => {
       {primaryJob ? (
         <JobCarousel
           jobs={primaryJob}
-          title={"Best Primary Teacher Job Opportunities in India 2025"}
+          title={"Best Primary Teacher Job Opportunities in India 2026"}
           color={"blue"}
           data={data1}
         />
@@ -115,7 +115,7 @@ const technologyHome2 = ({ title, para,slug }) => {
       {srTeacherJob ? (
         <JobCarousel
           jobs={srTeacherJob}
-          title={"Latest Senior Teacher Job Openings in India 2025 "}
+          title={"Latest Senior Teacher Job Openings in India 2026 "}
           color={"green"}
           data={data2}
         />
@@ -126,7 +126,7 @@ const technologyHome2 = ({ title, para,slug }) => {
       {clProfessorJob ? (
         <JobCarousel
           jobs={clProfessorJob}
-          title={"Best College Professor Job Vacancies in India 2025"}
+          title={"Best College Professor Job Vacancies in India 2026"}
           color={"orange"}
           data={data3}
         />

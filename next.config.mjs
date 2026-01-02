@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
      images: {
-    domains: ['api.jobkityaari.com',"api.shopsmaart.com"],
+    domains: ['api.jobkityaari.com',"api.shopsmaart.com", "localhost"],
   },
 };
  

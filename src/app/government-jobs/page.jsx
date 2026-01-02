@@ -3,7 +3,7 @@ import TechnologyHome5 from "@/components/technology/technologyHome5";
 
 
 export const metadata = {
-    title: 'Latest Government Jobs in India  2025– Apply Now for Sarkari Naukri ',
+    title: 'Latest Government Jobs in India  2026– Apply Now for Sarkari Naukri ',
     description: 'Explore latest government job openings in India. Get daily Sarkari Naukri updates for Railways, UPSC, Banks, Defense & more. Apply online now!',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
@@ -17,7 +17,7 @@ const page = () => {
     const para = [
        {
         id:1,
-        title:"Searching for government jobs in India for 2025? We bring you accurate updates on the latest vacancies in central and state government departments."
+        title:"Searching for government jobs in India for 2026? We bring you accurate updates on the latest vacancies in central and state government departments."
        },
 
        {
@@ -45,7 +45,7 @@ const page = () => {
     <div>
 
 
-      <TechnologyHome5 title={"Find Latest Government Jobs in India 2025"} para={para} slug={"government-jobs"} />
+      <TechnologyHome5 title={"Find Latest Government Jobs in India 2026"} para={para} slug={"government-jobs"} />
     </div>
   );
 };
