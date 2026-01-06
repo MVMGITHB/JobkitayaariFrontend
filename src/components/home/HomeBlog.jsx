@@ -1,14 +1,26 @@
 "use client";
 
-import axios from "axios";
 import { useEffect, useState, useMemo } from "react";
+import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import JobCarousel from "./JobCrousel1";
+import dynamic from "next/dynamic";
 import base_url from "../helper/helper";
 
 /* ----------------------------------------
-   Axios instance (reused, faster)
+   Dynamically load carousel (LCP fix)
+----------------------------------------- */
+const JobCarousel = dynamic(() => import("./JobCrousel1"), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[420px] flex items-center justify-center">
+      <p className="text-gray-400">Loading jobs…</p>
+    </div>
+  ),
+});
+
+/* ----------------------------------------
+   Axios instance
 ----------------------------------------- */
 const api = axios.create({
   baseURL: base_url,
@@ -16,7 +28,7 @@ const api = axios.create({
 });
 
 /* ----------------------------------------
-   Blog Skeleton Loader
+   Blog Skeleton (CLS-safe)
 ----------------------------------------- */
 function BlogSkeleton() {
   return (
@@ -27,7 +39,6 @@ function BlogSkeleton() {
           className="bg-white rounded-xl shadow-md overflow-hidden animate-pulse"
         >
           <div className="h-[220px] bg-gray-200" />
-
           <div className="p-4 space-y-3">
             <div className="h-4 w-24 bg-gray-200 rounded" />
             <div className="h-4 w-full bg-gray-200 rounded" />
@@ -62,9 +73,9 @@ function HomeBlog() {
 
         setBlog(blogRes?.data?.slice(0, 4) || []);
         setLatest(latestRes?.data || []);
-      } catch (error) {
-        if (error.name !== "CanceledError") {
-          console.error("HomeBlog API Error:", error);
+      } catch (err) {
+        if (err.name !== "CanceledError") {
+          console.error("HomeBlog error:", err);
         }
       } finally {
         setLoading(false);
@@ -83,7 +94,7 @@ function HomeBlog() {
   return (
     <>
       {/* ================= JOB CAROUSEL ================= */}
-      <div className="w-full mx-auto">
+      <div className="w-full mx-auto min-h-[420px]">
         {hasLatestJobs && (
           <JobCarousel
             jobs={latest}
@@ -103,13 +114,13 @@ function HomeBlog() {
           <BlogSkeleton />
         ) : (
           <div className="max-w-[1380px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {blog.map((item) => (
+            {blog.map((item, index) => (
               <Link
                 key={item?._id || item?.slug}
                 href={`/${item?.category?.slug}/articles/${item?.slug}`}
                 className="bg-white rounded-xl shadow-md hover:shadow-xl transition-transform duration-300 hover:scale-[1.02] overflow-hidden flex flex-col"
               >
-                {/* IMAGE */}
+                {/* IMAGE (LCP optimized) */}
                 <div className="relative w-full h-[220px]">
                   <Image
                     src={`${base_url}${item?.image}`}
@@ -119,7 +130,7 @@ function HomeBlog() {
                            (max-width: 1024px) 50vw,
                            25vw"
                     className="object-cover"
-                    loading="lazy"
+                    priority={index === 0}   // 🔥 LCP FIX
                   />
                 </div>
 
