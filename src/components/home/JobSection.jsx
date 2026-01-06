@@ -6,7 +6,7 @@ import base_url from "../helper/helper";
 import JobCards from "./JobCards";
 
 /* ----------------------------------
-   Axios instance (reused)
+   Axios instance
 ----------------------------------- */
 const api = axios.create({
   baseURL: base_url,
@@ -14,7 +14,7 @@ const api = axios.create({
 });
 
 /* ----------------------------------
-   Skeleton Loader (CLS safe)
+   Skeleton Loader
 ----------------------------------- */
 function JobSkeleton({ count = 4 }) {
   return (
@@ -23,12 +23,7 @@ function JobSkeleton({ count = 4 }) {
         <div
           key={i}
           className="bg-white rounded-lg shadow-md p-5 min-h-[360px] animate-pulse"
-        >
-          <div className="h-16 w-32 bg-gray-200 mx-auto mb-4 rounded" />
-          <div className="h-4 bg-gray-200 mb-2 rounded" />
-          <div className="h-4 bg-gray-200 w-3/4 mx-auto rounded" />
-          <div className="h-8 w-24 bg-gray-200 mx-auto mt-6 rounded-full" />
-        </div>
+        />
       ))}
     </div>
   );
@@ -39,6 +34,7 @@ const JobSection = () => {
   const [featuredJob, setFeaturedJob] = useState([]);
   const [recentJob, setRecentJob] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showRecent, setShowRecent] = useState(false); // 🔥
 
   useEffect(() => {
     const controller = new AbortController();
@@ -58,9 +54,9 @@ const JobSection = () => {
         setBestJob(bestRes?.data?.[0]?.jobs || []);
         setFeaturedJob(featuredRes?.data?.[0]?.jobs || []);
         setRecentJob(recentRes?.data?.[0]?.jobs || []);
-      } catch (error) {
-        if (error.name !== "CanceledError") {
-          console.error("Job fetch error:", error);
+      } catch (err) {
+        if (err.name !== "CanceledError") {
+          console.error("Job fetch error:", err);
         }
       } finally {
         setLoading(false);
@@ -68,12 +64,23 @@ const JobSection = () => {
     };
 
     fetchJobs();
-    return () => controller.abort();
+
+    // ⏳ Defer recent jobs on mobile
+    const timer = setTimeout(() => setShowRecent(true), 1500);
+
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
   }, []);
 
-  const hasBest = useMemo(() => bestJob.length > 0, [bestJob]);
-  const hasFeatured = useMemo(() => featuredJob.length > 0, [featuredJob]);
-  const hasRecent = useMemo(() => recentJob.length > 0, [recentJob]);
+  /* ---------- MOBILE LIMITS ---------- */
+  const bestMobile = useMemo(() => bestJob.slice(0, 2), [bestJob]);
+  const featuredMobile = useMemo(
+    () => featuredJob.slice(0, 2),
+    [featuredJob]
+  );
+  const recentMobile = useMemo(() => recentJob.slice(0, 4), [recentJob]);
 
   return (
     <div className="max-w-[95%] mx-auto px-4 pt-[20px]">
@@ -85,15 +92,17 @@ const JobSection = () => {
           </h2>
 
           {loading ? (
-            <JobSkeleton count={4} />
+            <JobSkeleton count={2} />
           ) : (
-            hasBest && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {bestJob.map((job) => (
-                  <JobCards key={job?._id || job?.slug} job={job} />
-                ))}
-              </div>
-            )
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {(bestMobile).map((job, i) => (
+                <JobCards
+                  key={job?._id || job?.slug}
+                  job={job}
+                  priority={i === 0} // 🔥 LCP image
+                />
+              ))}
+            </div>
           )}
         </div>
 
@@ -104,37 +113,38 @@ const JobSection = () => {
           </h2>
 
           {loading ? (
-            <JobSkeleton count={4} />
+            <JobSkeleton count={2} />
           ) : (
-            hasFeatured && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {featuredJob.map((job) => (
-                  <JobCards key={job?._id || job?.slug} job={job} />
-                ))}
-              </div>
-            )
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {(featuredMobile).map((job) => (
+                <JobCards
+                  key={job?._id || job?.slug}
+                  job={job}
+                />
+              ))}
+            </div>
           )}
         </div>
       </div>
 
-      {/* ================= RECENT JOBS ================= */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-4 bg-purple-500 text-white rounded-2xl text-center">
-          Recent Job Vacancy in 2026
-        </h2>
+      {/* ================= RECENT JOBS (DEFERRED) ================= */}
+      {showRecent && (
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4 bg-purple-500 text-white rounded-2xl text-center">
+            Recent Job Vacancy in 2026
+          </h2>
 
-        {loading ? (
-          <JobSkeleton count={8} />
-        ) : (
-          hasRecent && (
+          {loading ? (
+            <JobSkeleton count={4} />
+          ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {recentJob.map((job) => (
+              {recentMobile.map((job) => (
                 <JobCards key={job?._id || job?.slug} job={job} />
               ))}
             </div>
-          )
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
