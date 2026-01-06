@@ -1,18 +1,18 @@
 "use client";
 import JobSection from "./JobSection";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import HomeBlog from "./HomeBlog";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
 
-  useEffect(() => {
-    const userToken = Cookies.get("jwt");
-    if (userToken) {
-      setToken(userToken);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userToken = Cookies.get("jwt");
+  //   if (userToken) {
+  //     setToken(userToken);
+  //   }
+  // }, []);
 
   return (
     <div>
