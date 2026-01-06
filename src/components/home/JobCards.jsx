@@ -22,16 +22,17 @@ const JobCards = ({ job }) => {
       {/* CONTENT */}
       <div className="flex flex-col items-center text-center flex-grow">
         
-        {/* COMPANY LOGO */}
+      
         <div className="relative h-16 w-44">
           <Image
             src={imageSrc}
             alt={job?.companyName || "Company Logo"}
             fill
+            priority
             className="object-contain"
             sizes="(max-width: 640px) 100vw, 176px"
-            loading="lazy"
-            priority={false}
+            
+           
           />
         </div>
 
