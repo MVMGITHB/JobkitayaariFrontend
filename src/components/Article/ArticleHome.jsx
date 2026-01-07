@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Popup from "../home/Popup";
 import Image from "next/image";
+import BrandCarousel from "../Carousel/BrandCarousel";
 
 export const ArticleHome = ({ data }) => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -84,6 +85,9 @@ export const ArticleHome = ({ data }) => {
     },
   };
 
+
+
+
   const [allCards, setAllCards] = useState([]);
   const [randomCards, setRandomCards] = useState([]);
   useEffect(() => {
@@ -100,6 +104,34 @@ export const ArticleHome = ({ data }) => {
       .catch((err) => console.error(err));
   }, []);
 
+
+  const bannerImages = [
+    {
+      src: "/banner/acko-horizontal-banner.png",
+      link: "https://offer.mvmtracking.com/api/clicks?campaign_id=526&pub_id=17&originalClick={}&sub1={your_sub}",
+    },
+    {
+      src: "/banner/acko-horizontal-banner-2.png",
+      link: "https://offer.mvmtracking.com/api/clicks?campaign_id=526&pub_id=17&originalClick={}&sub1={your_sub}",
+    },
+    {
+      src: "/banner/acko-horizontal-banner-3.png",
+      link: "https://offer.mvmtracking.com/api/clicks?campaign_id=526&pub_id=17&originalClick={}&sub1={your_sub}",
+    },
+  ]
+
+
+
+
+  //  const bannerImagesMobile = [
+  //   { src: "/brandbanner/mobile/A-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
+  //   { src: "/brandbanner/mobile/L-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
+  //   { src: "/brandbanner/mobile/M&S-HB.png", link:"https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
+  //   { src: "/brandbanner/mobile/N-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
+  //   { src: "/brandbanner/mobile/RT-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
+  // ];
+
+
   return (
     <>
       <script
@@ -110,6 +142,18 @@ export const ArticleHome = ({ data }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
       />
+
+
+       <div className="hidden md:block max-w-[1500px] mx-auto pb-2">
+            <BrandCarousel items={bannerImages} />
+          </div>
+
+          {/* Mobile */}
+          {/* <div className="block md:hidden max-w-[1500px] mx-auto p-4">
+            <MobileBrandCrousel items={bannerImagesMobile} />
+          </div> */}
+
+
       <Popup />
       <div className="mx-auto px-4 py-4 flex flex-col md:flex-row gap-6">
         <div className="w-full md:w-[15%] order-3 md:order-1 bg-gray-100">

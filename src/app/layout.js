@@ -101,7 +101,7 @@ export default function RootLayout({ children }) {
           </div>
           <MainPopup />
           <BreadCrumbSchema />
-          <JobKityaariPopup />
+          {/* <JobKityaariPopup /> */}
           {children}
           <Footer />
         </AuthProvider>

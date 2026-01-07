@@ -34,7 +34,7 @@ const JobSection = () => {
   const [featuredJob, setFeaturedJob] = useState([]);
   const [recentJob, setRecentJob] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showRecent, setShowRecent] = useState(false); // 🔥
+  const [showRecent, setShowRecent] = useState(false); 
 
   useEffect(() => {
     const controller = new AbortController();
@@ -99,14 +99,14 @@ const JobSection = () => {
                 <JobCards
                   key={job?._id || job?.slug}
                   job={job}
-                  priority={i === 0} // 🔥 LCP image
+                  priority={i === 0}
                 />
               ))}
             </div>
           )}
         </div>
 
-        {/* ================= FEATURED JOBS ================= */}
+       
         <div>
           <h2 className="text-2xl font-bold mb-4 bg-orange-400 text-white rounded-2xl text-center">
             Featured Jobs in 2026
@@ -127,7 +127,7 @@ const JobSection = () => {
         </div>
       </div>
 
-      {/* ================= RECENT JOBS (DEFERRED) ================= */}
+     
       {showRecent && (
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-4 bg-purple-500 text-white rounded-2xl text-center">
