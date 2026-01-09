@@ -3,8 +3,8 @@ import TechnologyHome5 from "@/components/technology/technologyHome5";
 
 
 export const metadata = {
-    title: 'Latest Government Jobs in India  2026– Apply Now for Sarkari Naukri ',
-    description: 'Explore latest government job openings in India. Get daily Sarkari Naukri updates for Railways, UPSC, Banks, Defense & more. Apply online now!',
+    title: 'Latest Government Jobs in India – Job Ki Tyaari',
+    description: 'Explore latest government jobs in India. Check eligibility, age limit, salary, selection process and apply online at Job Ki Tyaari.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',

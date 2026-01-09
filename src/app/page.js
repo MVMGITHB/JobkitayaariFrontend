@@ -2,8 +2,8 @@ import Home from "@/components/home/Home";
 import Popup from "@/components/home/Popup";
 
 export const metadata = {
-  title: 'Latest Government Jobs 2026, IT Jobs, Bank PO & Railway Jobs in India',
-  description: 'Find the latest Government Jobs, IT Jobs, Bank PO, Railway Jobs, and Fresher Jobs in India. Apply now at jobkityaari.com',
+  title: 'Latest Government & Private Jobs in India – Job Ki Tyaari',
+  description: 'Find latest government and private jobs in India. Get eligibility, salary, selection process and apply online updates on Job Ki Tyaari.',
   metadataBase: new URL('https://jobkityaari.com'),
   alternates: {
     canonical: './',

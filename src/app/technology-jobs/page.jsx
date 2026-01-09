@@ -1,8 +1,8 @@
 import TechnologyHome1 from "@/components/technology/TechnologyHome1"; // Capitalized component name
 
 export const metadata = {
-    title: 'Technology Jobs in India 2026 – IT, Software & Developer Vacancies',
-    description: 'Explore the latest IT & software jobs in India. Find openings for software developers, AI engineers, data scientists & more.',
+    title: 'Latest Technology & IT Jobs in India – Job Ki Tyaari',
+    description: 'Browse latest technology and IT jobs in India. Check eligibility, salary details and apply online through Job Ki Tyaari.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',

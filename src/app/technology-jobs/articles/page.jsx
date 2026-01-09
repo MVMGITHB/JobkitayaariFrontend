@@ -4,8 +4,8 @@ import axios from "axios";
 
 
 export const metadata = {
-  title: 'About Us | Job Ki Tyaari - Your Career Guide',
-  description: 'Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us',
+  title: 'Technology Jobs Articles & Career Guides – Job Ki Tyaari',
+  description: 'Technology jobs articles covering IT careers, skills, exam updates and recruitment news on Job Ki Tyaari.',
   metadataBase: new URL('https://jobkityaari.com'),
   alternates: {
     canonical: './',

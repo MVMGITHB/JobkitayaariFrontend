@@ -22,8 +22,8 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle}`,
-      description: `${post.mdesc}`,
+      title: "Teaching Jobs Articles & Exam Updates – Job Ki Tyaari",
+      description: "Teaching jobs articles with exam updates, eligibility details, preparation tips and recruitment news on Job Ki Tyaari.",
       metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',

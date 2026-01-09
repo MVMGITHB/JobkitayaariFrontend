@@ -3,9 +3,9 @@ import base_url from "@/components/helper/helper";
 import axios from "axios";
 
 export const metadata = {
-  title: "About Us | Job Ki Tyaari - Your Career Guide",
+  title: "Banking Jobs Articles, Exams & Updates – Job Ki Tyaari",
   description:
-    "Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us",
+    "Banking jobs articles covering exams, recruitment updates, eligibility details and preparation tips on Job Ki Tyaari.",
   metadataBase: new URL("https://jobkityaari.com"),
   alternates: {
     canonical: "./",

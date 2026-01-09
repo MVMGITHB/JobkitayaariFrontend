@@ -2,8 +2,8 @@ import TechnologyHome3 from "@/components/technology/technologyHome3";
 
 
 export const metadata = {
-    title: 'PSU Jobs in India 2026 – Government Sector Recruitment Updates',
-    description: 'Find PSU jobs in India. Apply for ONGC, BHEL, SAIL, NTPC, and other public sector unit vacancies.',
+    title: 'Latest PSU Jobs & Government PSU Vacancies – Job Ki Tyaari',
+    description: 'Discover latest PSU jobs and government PSU vacancies. Check eligibility, salary and apply online through Job Ki Tyaari.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',

@@ -1,8 +1,8 @@
 import TechnologyHome2 from "@/components/technology/technologyHome2";
 
 export const metadata = {
-    title: 'Teaching Jobs in India 2026 – Apply for Govt & Private School Jobs',
-    description: 'Looking for teaching jobs in India? Find vacancies in government & private schools, universities & coaching institutes.',
+    title: 'Latest Teaching Jobs & Vacancies in India – Job Ki Tyaari',
+    description: 'Find latest teaching jobs and vacancies in India. Check eligibility, salary details and apply online with Job Ki Tyaari.',
     metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
