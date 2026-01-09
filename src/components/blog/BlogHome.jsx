@@ -57,12 +57,15 @@ export const BlogHome = ({ data }) => {
                     />
                   </div>
 
+
+
+                 
                   <div className="p-4 text-center">
-                    <p className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
+                    <h2 className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
                       <Link href={`/${card?.category?.slug}/articles/${card?.slug}`}>
                         {card?.title}
                       </Link>
-                    </p>
+                    </h2>
                   </div>
                 </div>
               ))
