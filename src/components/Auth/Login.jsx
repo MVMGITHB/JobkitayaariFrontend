@@ -63,7 +63,7 @@ export default function Login() {
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="w-full max-w-md bg-gray-100 rounded-xl shadow-md p-8">
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">Login</h2>
+          <h1 className="text-3xl font-bold text-gray-800">Login</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">

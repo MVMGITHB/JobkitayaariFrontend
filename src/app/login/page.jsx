@@ -1,9 +1,9 @@
 import Login from "@/components/Auth/Login";
 
 export const metadata = {
-  title: "Login – Apply for Govt & Private  Jobs",
+  title: "JobKityaari Login | Access Latest Govt & Private Job Updates",
   description:
-    "Login to Job Ki Tyaari to access your account, job updates, exam preparation content, and resources.",
+    "Log in to JobKityaari to access the latest government and private job updates, exam notifications, results, and career alerts in one place.",
   metadataBase: new URL("https://jobkityaari.com"),
   alternates: {
     canonical: "./",
