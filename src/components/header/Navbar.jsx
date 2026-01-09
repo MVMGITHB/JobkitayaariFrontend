@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="invisible  md:visible  shadow-md p-4 px-4 md:px-16  bg-white">
+    <header className="hidden md:block  shadow-md p-4 px-4 md:px-16  bg-white">
     <div className="container w-[95%] mx-auto">
       <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-between md:items-center md:space-y-0">
         {[
