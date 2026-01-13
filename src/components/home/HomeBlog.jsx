@@ -65,8 +65,8 @@ function HomeBlog() {
     const fetchData = async () => {
       try {
         const [blogRes, latestRes] = await Promise.all([
-          api.get("/api/blog/getAllBlog", { signal: controller.signal }),
-          api.get("/api/job/getJobbySUbCategory/all-sectors", {
+          api.get("/api/blog/getHomeBlog", { signal: controller.signal }),
+          api.get("/api/job/homePageLatestJob", {
             signal: controller.signal,
           }),
         ]);

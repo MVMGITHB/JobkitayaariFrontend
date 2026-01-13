@@ -25,6 +25,7 @@ export async function generateMetadata({ params }) {
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
     const post = response.data;
+    console.log(post);
     if (!post) {
       return {
         title: "Post not found",
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle}`,
+      title: `${post.postName} 2026 - Job Ki Tyaari`,
       description: post.mdescription,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
