@@ -7,6 +7,23 @@ export const metadata = {
     alternates: {
       canonical: './',
     },
+
+     openGraph: {
+    title: "Latest Banking Jobs & Bank Vacancies – Job Ki Tyaari",
+    description:
+      "Get latest banking jobs and bank vacancies in India. Check eligibility, salary, selection process and apply online at Job Ki Tyaari.",
+    url: "https://jobkityaari.com",
+    siteName: "Job Ki Tyaari",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo3.webp", 
+        width: 1200,
+        height: 630,
+        alt: "Job Ki Tyaari – Latest Jobs in India",
+      },
+    ],
+  },
 }
 
 

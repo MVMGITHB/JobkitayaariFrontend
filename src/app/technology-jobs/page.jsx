@@ -7,6 +7,23 @@ export const metadata = {
     alternates: {
       canonical: './',
     },
+    openGraph: {
+    title: "Latest Technology & IT Jobs in India – Job Ki Tyaari",
+    description:
+      "Browse latest technology and IT jobs in India. Check eligibility, salary details and apply online through Job Ki Tyaari.",
+    url: "https://jobkityaari.com",
+    siteName: "Job Ki Tyaari",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo3.webp", 
+        width: 1200,
+        height: 630,
+        alt: "Job Ki Tyaari – Latest Jobs in India",
+      },
+    ],
+  },
+
 }
 const Page = () => {
 

@@ -10,6 +10,22 @@ export const metadata = {
   alternates: {
     canonical: './',
   },
+   openGraph: {
+    title: "Career Guide for Govt & Private Jobs | Tips & Resources",
+    description:
+      "Get expert career tips, job preparation guides, and resources to crack government and private jobs. Start your career journey with confidence!",
+    url: "https://jobkityaari.com",
+    siteName: "Job Ki Tyaari",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo3.webp", 
+        width: 1200,
+        height: 630,
+        alt: "Job Ki Tyaari – Latest Jobs in India",
+      },
+    ],
+  },
 
   // robots: {
   //   index: false, // Disables indexing
