@@ -42,6 +42,21 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: './',
     },
+     openGraph: {
+        title: `${post.mtitle} `,
+        description: post.mdesc,
+        url: `https://jobkityaari.com/articles/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${post?.image}`, // ✅ dynamic image
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.mdescription,

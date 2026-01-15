@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
         type: "article",
         images: [
           {
-            url: "/images/logo3.webp", 
+            url: `${base_url}${post?.image}`,
             width: 1200,
             height: 630,
             alt: "Job Ki Tyaari – Latest Jobs in India",

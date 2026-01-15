@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
         description : post.mdesc,
         url: `https://jobkityaari.com/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
-        type: "article",
+        type: "website",
         images: [
           {
             url: `${base_url}${post?.image}`, // ✅ dynamic image

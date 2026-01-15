@@ -1,4 +1,4 @@
-import Article from "@/components/Article/Article"
+import Article from "@/components/Article/Article";
 import base_url from "@/components/helper/helper";
 import axios from "axios";
 // export const metadata = {
@@ -8,7 +8,7 @@ import axios from "axios";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
@@ -18,7 +18,7 @@ import axios from "axios";
 
 // export async function generateMetadata({ params }) {
 //   const { slugName } = await params;
-  
+
 //   // Fetch dynamic data (Example data)
 //   const post = {
 //     title: "Dynamic Schema in Next.js",
@@ -57,12 +57,9 @@ import axios from "axios";
 //   };
 // }
 
-
-
 // export async function generateStaticParams() {
 //     return [{ slugName: "Heading-3" }];
 //   }
-
 
 export async function generateMetadata({ params }) {
   const { slugName } = await params;
@@ -86,10 +83,25 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.mtitle}`,
       description: `${post.mdesc}`,
-      metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
-      canonical: './',
-    },
+      metadataBase: new URL("https://jobkityaari.com"),
+      alternates: {
+        canonical: "./",
+      },
+      openGraph: {
+        title: `${post.mtitle} `,
+        description: post.mdesc,
+        url: `https://jobkityaari.com/articles/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${post?.image}`, // ✅ dynamic image
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.mdescription,
@@ -114,16 +126,15 @@ export async function generateMetadata({ params }) {
   }
 }
 
-
 const page = async ({ params }) => {
-  const { slugName } =await params;
+  const { slugName } = await params;
 
   try {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
     const data1 = response.data;
-   
+
     return (
       <div>
         <Article data={data1} />

@@ -44,6 +44,23 @@ export async function generateMetadata({ params }) {
       alternates: {
         canonical: "./",
       },
+       openGraph: {
+        title : `${post.postName} `,
+        description : post.mdescription,
+        url: `https://jobkityaari.com/government-jobs/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "webiste",
+        images: [
+          {
+            url: `${base_url}${post?.image}`, // ✅ dynamic image
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+
+      }
+
     };
   } catch (error) {
     return {
