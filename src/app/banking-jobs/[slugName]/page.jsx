@@ -11,6 +11,8 @@ export async function generateMetadata({ params }) {
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
     const post = response.data;
+
+    console.log(post);
     if (!post) {
       return {
         title: "Post not found",
@@ -47,6 +49,8 @@ export async function generateMetadata({ params }) {
      
     };
   } catch (error) {
+
+    
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",

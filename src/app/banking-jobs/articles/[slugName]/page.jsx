@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
         type: "article",
         images: [
           {
-            url: `${base_url}${data?.image}`, // ✅ dynamic image
+            url: `${base_url}${post?.image}`, // ✅ dynamic image
             width: 1200,
             height: 630,
             alt: "Job Ki Tyaari – Latest Jobs in India",
@@ -68,6 +68,8 @@ export async function generateMetadata({ params }) {
 
 
   } catch (error) {
+
+    // console.error("Error fetching job data:", error);
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
