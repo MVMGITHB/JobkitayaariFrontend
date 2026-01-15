@@ -11,7 +11,7 @@ export const metadata = {
     title: "Latest Technology & IT Jobs in India – Job Ki Tyaari",
     description:
       "Browse latest technology and IT jobs in India. Check eligibility, salary details and apply online through Job Ki Tyaari.",
-    url: "https://jobkityaari.com",
+    url: "https://jobkityaari.com/technology-jobs",
     siteName: "Job Ki Tyaari",
     type: "website",
     images: [

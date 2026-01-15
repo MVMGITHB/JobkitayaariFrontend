@@ -7,9 +7,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import base_url from "../helper/helper";
 
-/* ----------------------------------------
-   Dynamically load carousel (LCP fix)
------------------------------------------ */
+
 const JobCarousel = dynamic(() => import("./JobCrousel1"), {
   ssr: false,
   loading: () => (
