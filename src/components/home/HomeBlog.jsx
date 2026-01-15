@@ -87,7 +87,7 @@ function HomeBlog() {
   }, []);
 
   const hasLatestJobs = useMemo(
-    () => Array.isArray(latest) && latest.length > 0,
+    () => Array.isArray(latest) && latest?.length > 0,
     [latest]
   );
 
@@ -114,7 +114,7 @@ function HomeBlog() {
           <BlogSkeleton />
         ) : (
           <div className="max-w-[1380px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {blog.map((item, index) => (
+            {blog?.map((item, index) => (
               <Link
                 key={item?._id || item?.slug}
                 href={`/${item?.category?.slug}/articles/${item?.slug}`}

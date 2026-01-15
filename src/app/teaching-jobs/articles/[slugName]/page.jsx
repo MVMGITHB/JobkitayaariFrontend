@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
-    const post = response.data;
+    const post = response?.data;
     if (!post) {
       return {
         title: "Post not found",
@@ -21,15 +21,15 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.mtitle}`,
-      description: post.mdesc,
+      title: `${post?.mtitle}`,
+      description: post?.mdesc,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
         canonical: "./",
       },
       openGraph: {
-        title: `${post.mtitle} `,
-        description: post.mdesc,
+        title: `${post?.mtitle} `,
+        description: post?.mdesc,
         url: `https://jobkityaari.com/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
@@ -73,7 +73,7 @@ const page = async ({ params }) => {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
-    const data1 = response.data;
+    const data1 = response?.data;
 
     return (
       <div>

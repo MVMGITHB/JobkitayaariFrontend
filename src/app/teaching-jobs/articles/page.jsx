@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
-    const post = response.data;
+    const post = response?.data;
     if (!post) {
       return {
         title: "Post not found",

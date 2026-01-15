@@ -38,14 +38,14 @@ export async function generateMetadata({ params }) {
       };
     }
  
-    const fullName = `${author.firstName} ${author.lastName}`;
+    const fullName = `${author?.firstName} ${author?.lastName}`;
     const bio =
-      author.shortBio ||
+      author?.shortBio ||
       `Explore articles and insights by ${fullName} on Jobkityaari.`;
-    const imageUrl = author.image
-      ? author.image.startsWith("http")
-        ? author.image
-        : `${baseUrl}${author.image}`
+    const imageUrl = author?.image
+      ? author?.image.startsWith("http")
+        ? author?.image
+        : `${baseUrl}${author?.image}`
       : `${baseUrl}/images/default-user.png`;
  
     return {
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }) {
 }
  
 export default function Page({ params }) {
-  return <AuthorPage slug={params.slug} />;
+  return <AuthorPage slug={params?.slug} />;
 }
  
  

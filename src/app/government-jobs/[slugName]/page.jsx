@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
     const response = await axios.get(
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
-    const post = response.data;
+    const post = response?.data;
     console.log(post);
     if (!post) {
       return {
@@ -38,15 +38,15 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post.postName} 2026 - Job Ki Tyaari`,
-      description: post.mdescription,
+      title: `${post?.postName} 2026 - Job Ki Tyaari`,
+      description: post?.mdescription,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
         canonical: "./",
       },
        openGraph: {
-        title : `${post.postName} `,
-        description : post.mdescription,
+        title : `${post?.postName} `,
+        description : post?.mdescription,
         url: `https://jobkityaari.com/government-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "website",

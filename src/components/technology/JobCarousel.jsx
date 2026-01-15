@@ -58,7 +58,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
           <div className="w-full mx-auto mb-4">
             {(showAll ? data : [data[0]]).map((item, index) => (
               <p key={index} className="text-base lg:text-xl text-black mb-3 text-left">
-                {item.title}
+                {item?.title}
               </p>
             ))}
             <button onClick={handleToggle} className="text-blue-600 underline cursor-pointer">
@@ -68,7 +68,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
         )}
 
         <div className="relative mt-6">
-          {jobs.length > 1 && (
+          {jobs?.length > 1 && (
             <>
               <button
                 className="cursor-pointer absolute -left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-md hover:bg-gray-700 z-10"
@@ -85,9 +85,9 @@ const JobCarousel = ({ jobs, title, color, data }) => {
             </>
           )}
 
-          {jobs.length <= 1 ? (
+          {jobs?.length <= 1 ? (
             <div className="flex justify-center">
-              {jobs.map((job, index) => (
+              {jobs?.map((job, index) => (
                 <div key={index} className="py-2 px-2 w-full max-w-xs mx-auto">
                   <JobCard
                     category={job?.category?.slug}
@@ -104,7 +104,7 @@ const JobCarousel = ({ jobs, title, color, data }) => {
             </div>
           ) : (
             <Slider ref={sliderRef} {...settings}>
-              {jobs.map((job, index) => (
+              {jobs?.map((job, index) => (
                 <div key={index} className="px-2">
                   <div className="w-full max-w-xs mx-auto">
                     <JobCard

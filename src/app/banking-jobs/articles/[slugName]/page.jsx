@@ -24,15 +24,15 @@ export async function generateMetadata({ params }) {
 
     if(response?.data){
        return {
-      title: `${post.mtitle}`,
-      description: `${post.mdesc}`,
+      title: `${post?.mtitle}`,
+      description: `${post?.mdesc}`,
       metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
     },
       openGraph: {
-        title : `${post.mtitle} `,
-        description : post.mdesc,
+        title : `${post?.mtitle} `,
+        description : post?.mdesc,
         url: `https://jobkityaari.com/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "website",
@@ -83,7 +83,7 @@ const page = async ({ params }) => {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
-    const data1 = response.data;
+    const data1 = response?.data;
    
     return (
       <div>

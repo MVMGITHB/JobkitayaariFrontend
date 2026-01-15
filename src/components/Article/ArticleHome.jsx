@@ -85,16 +85,13 @@ export const ArticleHome = ({ data }) => {
     },
   };
 
-
-
-
   const [allCards, setAllCards] = useState([]);
   const [randomCards, setRandomCards] = useState([]);
   useEffect(() => {
     axios
       .get(`${base_url}/api/blog/getAllBlog`)
       .then((res) => {
-        const data = res.data;
+        const data = res?.data;
         setAllCards(data);
         // console.log("conclusion---", data)
         const shuffled = [...data].sort(() => 0.5 - Math.random());
@@ -103,7 +100,6 @@ export const ArticleHome = ({ data }) => {
       })
       .catch((err) => console.error(err));
   }, []);
-
 
   const bannerImages = [
     {
@@ -118,10 +114,7 @@ export const ArticleHome = ({ data }) => {
       src: "/banner/acko-horizontal-banner-3.png",
       link: "https://offer.mvmtracking.com/api/clicks?campaign_id=526&pub_id=17&originalClick={}&sub1={your_sub}",
     },
-  ]
-
-
-
+  ];
 
   //  const bannerImagesMobile = [
   //   { src: "/brandbanner/mobile/A-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
@@ -130,7 +123,6 @@ export const ArticleHome = ({ data }) => {
   //   { src: "/brandbanner/mobile/N-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
   //   { src: "/brandbanner/mobile/RT-HB.png", link: "https://offer.mvmtracking.com/api/clicks?campaign_id=488&pub_id=17&originalClick=" },
   // ];
-
 
   return (
     <>
@@ -143,16 +135,14 @@ export const ArticleHome = ({ data }) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(authorSchema) }}
       />
 
+      <div className="hidden md:block max-w-[1500px] mx-auto pb-2">
+        <BrandCarousel items={bannerImages} />
+      </div>
 
-       <div className="hidden md:block max-w-[1500px] mx-auto pb-2">
-            <BrandCarousel items={bannerImages} />
-          </div>
-
-          {/* Mobile */}
-          {/* <div className="block md:hidden max-w-[1500px] mx-auto p-4">
+      {/* Mobile */}
+      {/* <div className="block md:hidden max-w-[1500px] mx-auto p-4">
             <MobileBrandCrousel items={bannerImagesMobile} />
           </div> */}
-
 
       <Popup />
       <div className="mx-auto px-4 py-4 flex flex-col md:flex-row gap-6">
@@ -210,18 +200,18 @@ export const ArticleHome = ({ data }) => {
                 className="prose max-w-full mb-8  blog-content"
               />
 
-              {data.faqs && data.faqs.length > 0 && (
+              {data?.faqs && data?.faqs?.length > 0 && (
                 <div className="bg-gray-50 p-6 rounded">
                   <h2 className="text-[27px] font-bold mb-4 text-center">
                     Frequently Asked Questions (FAQs)
                   </h2>
-                  {data.faqs.map((faq, index) => (
-                    <div key={faq._id || index} className="mb-4">
+                  {data?.faqs.map((faq, index) => (
+                    <div key={faq?._id || index} className="mb-4">
                       <h3 className="text-[21px] font-semibold mb-2">
-                        Q{index + 1}: {faq.ques}
+                        Q{index + 1}: {faq?.ques}
                       </h3>
                       <p className="text-[21px]">
-                        <strong>Ans:</strong> {faq.ans}
+                        <strong>Ans:</strong> {faq?.ans}
                       </p>
                     </div>
                   ))}
@@ -229,7 +219,7 @@ export const ArticleHome = ({ data }) => {
               )}
             </>
           )}
-          {data?.blogContent && data.blogContent.length > 0 && (
+          {data?.blogContent && data?.blogContent?.length > 0 && (
             <>
               <h2 className="text-[27px] font-bold mb-4 text-center">
                 Conclusion
@@ -244,7 +234,7 @@ export const ArticleHome = ({ data }) => {
             <div className="p-2 rounded shadow bg-white">
               <h2 className="text-xl font-bold mb-4">Similar Blogs</h2>
               <div className="flex flex-col">
-                {randomCards.map((card, index) => (
+                {randomCards?.map((card, index) => (
                   <Link
                     key={index}
                     href={`/${card?.category?.slug}/articles/${card?.slug}`}
