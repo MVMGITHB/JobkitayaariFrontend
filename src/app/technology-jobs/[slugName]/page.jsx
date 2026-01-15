@@ -1,5 +1,5 @@
 import base_url from "@/components/helper/helper";
-import JobDescription from "@/components/jobDescription/JobDescription"
+import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
 
@@ -10,7 +10,7 @@ import Popup from "@/components/popup/Popup";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
@@ -40,10 +40,25 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.mtitle} `,
       description: post.mdescription,
-       metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
-      canonical: './',
-    },
+      metadataBase: new URL("https://jobkityaari.com"),
+      alternates: {
+        canonical: "./",
+      },
+      openGraph: {
+        title: `${post.mtitle} `,
+        description: post.mdescription,
+        url: `https://jobkityaari.com/job/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${post?.image}`,
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.mdescription,
@@ -68,15 +83,14 @@ export async function generateMetadata({ params }) {
   }
 }
 
-async function page({params}) {
-
-  const {slugName} = await params
+async function page({ params }) {
+  const { slugName } = await params;
   return (
     <>
-    <JobDescription slug={slugName}/>
-    <Popup/>
+      <JobDescription slug={slugName} />
+      <Popup />
     </>
-  )
+  );
 }
 
-export default page
+export default page;

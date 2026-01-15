@@ -1,4 +1,4 @@
-import Article from "@/components/Article/Article"
+import Article from "@/components/Article/Article";
 import base_url from "@/components/helper/helper";
 import axios from "axios";
 // export const metadata = {
@@ -8,7 +8,7 @@ import axios from "axios";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
@@ -38,11 +38,11 @@ export async function generateMetadata({ params }) {
     return {
       title: `${post.mtitle}`,
       description: `${post.mdesc}`,
-      metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
-      canonical: './',
-    },
-     openGraph: {
+      metadataBase: new URL("https://jobkityaari.com"),
+      alternates: {
+        canonical: "./",
+      },
+      openGraph: {
         title: `${post.mtitle} `,
         description: post.mdesc,
         url: `https://jobkityaari.com/articles/${slugName}`,
@@ -82,14 +82,14 @@ export async function generateMetadata({ params }) {
 }
 
 const page = async ({ params }) => {
-  const { slugName } =await params;
+  const { slugName } = await params;
 
   try {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
     const data1 = response.data;
-   
+
     return (
       <div>
         <Article data={data1} />
