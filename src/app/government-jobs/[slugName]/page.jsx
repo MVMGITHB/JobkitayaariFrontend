@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
         description : post.mdescription,
         url: `https://jobkityaari.com/government-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
-        type: "webiste",
+        type: "website",
         images: [
           {
             url: `${base_url}${post?.image}`, // ✅ dynamic image
