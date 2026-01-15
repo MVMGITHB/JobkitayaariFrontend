@@ -64,14 +64,14 @@ export default function RootLayout({ children }) {
         {/* Social Media / Open Graph */}
         <meta property="og:title" content="Job Ki Tyaari" />
         <meta property="og:description" content="Prepare for jobs with Job Ki Tyaari – latest exams, tips, and updates" />
-        <meta property="og:image" content="https://jobkityaari.com/images/social-preview.png" />
+        <meta property="og:image" content="https://jobkityaari.com/images/logo3.webp" />
         <meta property="og:url" content="https://jobkityaari.com" />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Job Ki Tyaari" />
         <meta name="twitter:description" content="Prepare for jobs with Job Ki Tyaari – latest exams, tips, and updates" />
-        <meta name="twitter:image" content="https://jobkityaari.com/images/social-preview.png" />
+        <meta name="twitter:image" content="https://jobkityaari.com/images/logo3.webp" />
         <meta name="twitter:site" content="@YourTwitterHandle" />
 
         {/* HSTS Header via meta (works if you don't have NGINX headers) */}
