@@ -28,7 +28,22 @@ export async function generateMetadata({ params }) {
        metadataBase: new URL('https://jobkityaari.com'),
       alternates: {
       canonical: './',
-    },
+      },
+      openGraph: {
+        title : `${post.mtitle} `,
+        description : post.mdescription,
+        url: `https://jobkityaari.com/job/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: "/images/logo3.webp", 
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+      },
      
     };
   } catch (error) {

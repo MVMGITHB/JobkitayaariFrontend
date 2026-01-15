@@ -29,6 +29,22 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: './',
     },
+      openGraph: {
+        title : `${post.mtitle} `,
+        description : post.mdesc,
+        url: `https://jobkityaari.com/articles/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${data?.image}`, // ✅ dynamic image
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+
+      }
       // openGraph: {
       //   title: post.title,
       //   description: post.mdescription,
