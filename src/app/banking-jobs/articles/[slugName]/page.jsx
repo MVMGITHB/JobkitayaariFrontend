@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
     const response = await axios.get(
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`
     );
-    const post = response.data;
+    const post = response?.data;
     if (!post) {
       return {
         title: "Post not found",
@@ -22,7 +22,8 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    return {
+    if(response?.data){
+       return {
       title: `${post.mtitle}`,
       description: `${post.mdesc}`,
       metadataBase: new URL('https://jobkityaari.com'),
@@ -61,6 +62,11 @@ export async function generateMetadata({ params }) {
       //   ],
       // },
     };
+    }
+
+   
+
+
   } catch (error) {
     return {
       title: "Error loading post",
