@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
             url: `${base_url}${data?.image}`, // ✅ dynamic image
             width: 1200,
             height: 630,
-            alt: title,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
           },
         ],
 

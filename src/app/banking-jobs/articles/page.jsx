@@ -10,22 +10,22 @@ export const metadata = {
   alternates: {
     canonical: "./",
   },
-   openGraph: {
-      title: "Banking Jobs Articles, Exams & Updates – Job Ki Tyaari",
-  description:
-    "Banking jobs articles covering exams, recruitment updates, eligibility details and preparation tips on Job Ki Tyaari.",
-        url: `https://jobkityaari.com/banking-jobs/articles`,
-        siteName: "Job Ki Tyaari",
-        type: "article",
-        images: [
-          {
-            url: "/images/logo3.webp", // ✅ dynamic image
-            width: 1200,
-            height: 630,
-            alt: title,
-          },
-        ],
+  openGraph: {
+    title: "Banking Jobs Articles, Exams & Updates – Job Ki Tyaari",
+    description:
+      "Banking jobs articles covering exams, recruitment updates, eligibility details and preparation tips on Job Ki Tyaari.",
+    url: `https://jobkityaari.com/banking-jobs/articles`,
+    siteName: "Job Ki Tyaari",
+    type: "article",
+    images: [
+      {
+        url: "/images/logo3.webp", // ✅ dynamic image
+        width: 1200,
+        height: 630,
+        alt: "Job Ki Tyaari – Latest Jobs in India",
       },
+    ],
+  },
 
   // robots: {
   //   index: false, // Disables indexing
