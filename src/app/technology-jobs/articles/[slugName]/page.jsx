@@ -35,19 +35,19 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const pageUrl = `https://jobkityaari.com/technology-jobs/articles/${slugName}`;
+    // const pageUrl = `https://jobkityaari.com/technology-jobs/articles/${slugName}`;
 
     return {
       title: `${post?.mtitle}`,
       description: `${post?.mdesc}`,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
-        canonical: pageUrl,
+        canonical: `https://jobkityaari.com/technology-jobs/articles/${slugName}`,
       },
       openGraph: {
         title: `${post?.mtitle} `,
         description: post?.mdesc,
-        url: pageUrl,
+        url: `https://jobkityaari.com/technology-jobs/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [

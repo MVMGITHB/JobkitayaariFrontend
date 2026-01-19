@@ -12,6 +12,9 @@ export async function generateMetadata({ params }) {
     );
     const post = response?.data;
 
+
+    // console.log("Post is " , post)
+
     console.log(post);
     if (!post) {
       return {
@@ -25,16 +28,16 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post?.mtitle} `,
-      description: post?.mdescription,
+      title: `${post?.postName} 2026 - Job Ki Tyaari `,
+      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
        metadataBase: new URL('https://jobkityaari.com'),
       alternates: {
       canonical: './',
       },
       openGraph: {
-        title : `${post?.mtitle} `,
-        description : post?.mdescription,
-        url: `https://jobkityaari.com/job/${slugName}`,
+       title: `${post?.postName} 2026 - Job Ki Tyaari `,
+       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+        url: `https://jobkityaari.com/banking-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [

@@ -39,12 +39,27 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post?.mtitle}`,
-      description: post?.mdescription,
+     title: `${post?.postName} 2026 - Job Ki Tyaari `,
+      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
        metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
       canonical: './',
     },
+     openGraph: {
+       title: `${post?.postName} 2026 - Job Ki Tyaari `,
+       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+        url: `https://jobkityaari.com/banking-jobs/${slugName}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${post?.image}`,
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.excerpt,
