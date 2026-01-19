@@ -85,7 +85,7 @@ export async function generateMetadata({ params }) {
       description: `${post?.mdesc}`,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
-        canonical: "./",
+        canonical: `https://jobkityaari.com/articles/${slugName}`,
       },
       openGraph: {
         title: `${post?.mtitle} `,
