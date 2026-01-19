@@ -12,7 +12,7 @@ export const metadata = {
     title: "About Us | Job Ki Tyaari - Your Career Guide",
     description:
       "Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us",
-    url: "https://jobkityaari.com",
+    url: "https://jobkityaari.com/about-us",
     siteName: "Job Ki Tyaari",
     type: "website",
     images: [

@@ -65,7 +65,7 @@ export async function generateMetadata({ params }) {
     };
   } catch (error) {
     return {
-      title: "Author Profile | Top5Shots",
+      title: "Author Profile | JobKiTyaari",
       description:
         "Author information could not be loaded due to a network issue.",
       alternates: {

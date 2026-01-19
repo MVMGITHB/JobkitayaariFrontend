@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       openGraph: {
         title : `${post?.mtitle} `,
         description : post?.mdesc,
-        url: `https://jobkityaari.com/articles/${slugName}`,
+        url: `https://jobkityaari.com/banking-jobs/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "website",
         images: [
