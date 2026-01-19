@@ -40,10 +40,10 @@ export async function generateMetadata({ params }) {
       description: `${post?.mdesc}`,
       metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
-      canonical: './',
+      canonical: `https://jobkityaari.com/management-jobs/articles/${slugName}`,
     },
      openGraph: {
-      title: `${post?.mtitle} `,
+        title: `${post?.mtitle} `,
         description: post?.mdesc,
         url: `https://jobkityaari.com/management-jobs/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
