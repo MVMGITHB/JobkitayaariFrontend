@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
        metadataBase: new URL('https://jobkityaari.com'),
     alternates: {
-      canonical: './',
+      canonical: `https://jobkityaari.com/management-jobs/${slugName}`,
     },
     openGraph: {
        title: `${post?.postName} 2026 - Job Ki Tyaari `,
