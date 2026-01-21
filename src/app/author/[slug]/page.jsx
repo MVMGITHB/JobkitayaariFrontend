@@ -17,23 +17,21 @@ export async function generateMetadata({ params }) {
 
 
  
-    if (!res.ok) {
-      return {
-        title: "Author Not Found | Jobkityaari",
-        description: "No author information available at the moment.",
-        alternates: {
-          canonical: `${baseUrl}/author/${slug}`,
-        },
-      };
-    }
+    // if (!res.ok) {
+    //   return {
+    //     title: "Author Not Found | Jobkityaari",
+    //     description: "No author information available at the moment.",
+    //     alternates: {
+    //       canonical: `${baseUrl}/author/${slug}`,
+    //     },
+    //   };
+    // }
  
     const data = await res.json();
     const author = data[0];
 
 
-    // console.log("Author is " , author);
-
-
+   
  
     if (!author) {
       return {
@@ -44,17 +42,19 @@ export async function generateMetadata({ params }) {
         },
       };
     }
+
+    
  
     const fullName = `${author?.name}`;
-    const bio =
-      author?.shortBio ||
-      `Explore articles and insights by ${fullName} on Jobkityaari.`;
-    const imageUrl = author?.image
-      ? author?.image.startsWith("http")
-        ? author?.image
-        : `${baseUrl}${author?.image}`
-      : `${baseUrl}/images/default-user.png`;
- 
+    const bio =`Explore articles and insights by ${fullName} on Jobkityaari.`;
+
+    // const imageUrl = author?.image
+    //   ? author?.image.startsWith("http")
+    //     ? author?.image
+    //     : `${baseUrl}${author?.image}`
+    //   : `${baseUrl}/images/default-user.png`;
+  // console.log("Author is " , author);
+
     return {
       title: `${fullName} | Author at jobkityaari`,
       description: bio,
@@ -77,15 +77,13 @@ export async function generateMetadata({ params }) {
         type: "article",
         images: [
           {
-            url: `${base_url}${post?.image}`,
+            url: `${base_url}${author?.image}`,
             width: 1200,
             height: 630,
             alt: "Job Ki Tyaari – Latest Jobs in India",
           },
         ],
       },
-
-
 
     };
   } catch (error) {
