@@ -11,13 +11,13 @@ export async function generateMetadata({ params }) {
   const baseUrl = "https://jobkityaari.com";
  
   try {
-    const res = await fetch(`${base_url}/singleUserbyslug/${slug}`, {
+    const res = await fetch(`${base_url}/api/auth/singleUserbyslug/${slug}`, {
       next: { revalidate: 60 },
     });
  
     if (!res.ok) {
       return {
-        title: "Author Not Found | Top5Shots",
+        title: "Author Not Found | Jobkityaari",
         description: "No author information available at the moment.",
         alternates: {
           canonical: `${baseUrl}/author/${slug}`,
