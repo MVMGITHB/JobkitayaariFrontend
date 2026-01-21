@@ -14,6 +14,8 @@ export async function generateMetadata({ params }) {
     const res = await fetch(`${base_url}/api/auth/singleUserbyslug/${slug}`, {
       next: { revalidate: 60 },
     });
+
+
  
     if (!res.ok) {
       return {
@@ -27,6 +29,11 @@ export async function generateMetadata({ params }) {
  
     const data = await res.json();
     const author = data[0];
+
+
+    // console.log("Author is " , author);
+
+
  
     if (!author) {
       return {
@@ -38,7 +45,7 @@ export async function generateMetadata({ params }) {
       };
     }
  
-    const fullName = `${author?.firstName} ${author?.lastName}`;
+    const fullName = `${author?.name}`;
     const bio =
       author?.shortBio ||
       `Explore articles and insights by ${fullName} on Jobkityaari.`;
@@ -62,6 +69,24 @@ export async function generateMetadata({ params }) {
       alternates: {
         canonical: `${baseUrl}/author/${slug}`,
       },
+      openGraph: {
+       title: `${fullName} | Author at jobkityaari`,
+      description: bio,
+        url: `${baseUrl}/author/${slug}`,
+        siteName: "Job Ki Tyaari",
+        type: "article",
+        images: [
+          {
+            url: `${base_url}${post?.image}`,
+            width: 1200,
+            height: 630,
+            alt: "Job Ki Tyaari – Latest Jobs in India",
+          },
+        ],
+      },
+
+
+
     };
   } catch (error) {
     return {
