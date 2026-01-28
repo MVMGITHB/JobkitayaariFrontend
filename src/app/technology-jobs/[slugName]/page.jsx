@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
 
   try {
     const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
+      `${base_url}/api/job/getJobBySlug/${slugName}`,
     );
     const post = response?.data;
     if (!post) {
@@ -38,15 +38,15 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-     title: `${post?.postName} 2026 - Job Ki Tyaari `,
-      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+      title: `${post?.mtitle} `,
+      description: `${post?.mdescription} `,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
         canonical: "./",
       },
       openGraph: {
-       title: `${post?.postName} 2026 - Job Ki Tyaari `,
-      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+        title: `${post?.mtitle} `,
+        description: `${post?.mdescription} `,
         url: `https://jobkityaari.com/technology-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",

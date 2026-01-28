@@ -38,16 +38,16 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-     title: `${post?.postName} 2026 - Job Ki Tyaari `,
-      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+       title: `${post?.mtitle} `,
+      description:`${ post?.mdescription} `,
       metadataBase: new URL("https://jobkityaari.com"),
       alternates: {
         canonical: `https://jobkityaari.com/government-jobs/${slugName}`,
       },
        openGraph: {
-       title: `${post?.postName} 2026 - Job Ki Tyaari `,
-       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
-        url: `https://jobkityaari.com/government-jobs/${slugName}`,
+       title: `${post?.mtitle} `,
+      description:`${ post?.mdescription} `,
+              url: `https://jobkityaari.com/government-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "website",
         images: [

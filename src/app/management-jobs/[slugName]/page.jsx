@@ -1,5 +1,5 @@
 import base_url from "@/components/helper/helper";
-import JobDescription from "@/components/jobDescription/JobDescription"
+import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
 
@@ -10,7 +10,7 @@ import Popup from "@/components/popup/Popup";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
 
   try {
     const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
+      `${base_url}/api/job/getJobBySlug/${slugName}`,
     );
     const post = response?.data;
     if (!post) {
@@ -38,16 +38,16 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-     title: `${post?.postName} 2026 - Job Ki Tyaari `,
-      description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
-       metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
-      canonical: `https://jobkityaari.com/management-jobs/${slugName}`,
-    },
-    openGraph: {
-       title: `${post?.postName} 2026 - Job Ki Tyaari `,
-       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
-        url: `https://jobkityaari.com/management-jobs/${slugName}`,
+      title: `${post?.mtitle} `,
+      description: `${post?.mdescription} `,
+      metadataBase: new URL("https://jobkityaari.com"),
+      alternates: {
+        canonical: `https://jobkityaari.com/management-jobs/${slugName}`,
+      },
+      openGraph: {
+       title: `${post?.mtitle} `,
+      description:`${ post?.mdescription} `,
+              url: `https://jobkityaari.com/management-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "website",
         images: [
@@ -58,8 +58,7 @@ export async function generateMetadata({ params }) {
             alt: "Job Ki Tyaari – Latest Jobs in India",
           },
         ],
-
-      }
+      },
       // openGraph: {
       //   title: post.title,
       //   description: post.excerpt,
@@ -84,15 +83,14 @@ export async function generateMetadata({ params }) {
   }
 }
 
-async function page({params}) {
-
-  const {slugName} = await params
+async function page({ params }) {
+  const { slugName } = await params;
   return (
     <>
-    <JobDescription slug={slugName}/>
-    <Popup/>
+      <JobDescription slug={slugName} />
+      <Popup />
     </>
-  )
+  );
 }
 
-export default page
+export default page;

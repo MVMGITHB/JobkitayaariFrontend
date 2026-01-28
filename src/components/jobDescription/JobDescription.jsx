@@ -16,7 +16,7 @@ function JobDescription({ slug }) {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            `${base_url}/api/job/getJobBySlug/${slug}`
+            `${base_url}/api/job/getJobBySlug/${slug}`,
           );
           setData(response?.data);
 
@@ -110,10 +110,13 @@ function JobDescription({ slug }) {
           <div>
             <div className="max-w-[980px] mx-auto mt-4">
               {data?.postName && (
-                <h1 className="text-[18px] text-red-600 mb-2">
+                <p className="text-[18px] text-red-600 mb-2">
                   Post Name:{" "}
-                  <span className="text-black">{data?.postName}</span>
-                </h1>
+                  <span className="text-black">
+                    {" "}
+                    <h1 className="inline">{data?.postName}</h1>
+                  </span>
+                </p>
               )}
               {data?.postDate && (
                 <p className="text-[14px] text-red-600 mb-2">
@@ -390,7 +393,7 @@ function JobDescription({ slug }) {
                   </h2>
                   <ul className="space-y-2 list-disc list-inside text-gray-800 mb-6">
                     {data?.requirementdata.map((req, index) =>
-                      req?.length > 1 ? <li key={index}>{req}</li> : null
+                      req?.length > 1 ? <li key={index}>{req}</li> : null,
                     )}
                   </ul>
                 </>
@@ -403,7 +406,7 @@ function JobDescription({ slug }) {
                   </h2>
                   <ul className="space-y-2 list-disc list-inside text-gray-800 mb-6">
                     {data?.jobDescription.map((desc, index) =>
-                      desc?.length > 1 ? <li key={index}>{desc}</li> : null
+                      desc?.length > 1 ? <li key={index}>{desc}</li> : null,
                     )}
                   </ul>
                 </>
@@ -416,7 +419,7 @@ function JobDescription({ slug }) {
                   </h2>
                   <ul className="space-y-2 list-disc list-inside text-gray-800 mb-6">
                     {data?.skill.map((skill, index) =>
-                      skill?.length > 1 ? <li key={index}>{skill}</li> : null
+                      skill?.length > 1 ? <li key={index}>{skill}</li> : null,
                     )}
                   </ul>
                 </>
