@@ -5,11 +5,11 @@
 
 // console.log("url:", url);
 
-    const base_url = "http://localhost:5001"
+    // const base_url = "http://localhost:5001"
 
     
 
-// const base_url = "https://api.jobkityaari.com"
+const base_url = "https://api.jobkityaari.com"
 
 
 export const base_url1 = "https://user.jobkityaari.com"
