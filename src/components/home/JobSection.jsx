@@ -1,20 +1,11 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import axios from "axios";
-import base_url from "../helper/helper";
+import api from "../lib/api";
 import JobCards from "./JobCards";
 
 /* ----------------------------------
-   Axios (singleton-safe)
------------------------------------ */
-const api = axios.create({
-  baseURL: base_url,
-  timeout: 8000,
-});
-
-/* ----------------------------------
-   Lightweight Skeleton
+   Ultra-light Skeleton
 ----------------------------------- */
 function JobSkeleton({ count = 2 }) {
   return (
@@ -22,7 +13,7 @@ function JobSkeleton({ count = 2 }) {
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="h-[280px] rounded-lg bg-gray-100 animate-pulse"
+          className="h-[260px] rounded-lg bg-gray-100 animate-pulse"
         />
       ))}
     </div>
@@ -37,12 +28,12 @@ const JobSection = () => {
   const [showRecent, setShowRecent] = useState(false);
 
   /* ----------------------------------
-     Load critical content FIRST
+     CRITICAL APIs – ASAP
   ----------------------------------- */
   useEffect(() => {
     const controller = new AbortController();
 
-    async function loadCriticalJobs() {
+    async function loadAboveTheFold() {
       try {
         const [bestRes, featuredRes] = await Promise.all([
           api.get("/api/bestJob/getAllBestJob", { signal: controller.signal }),
@@ -60,34 +51,36 @@ const JobSection = () => {
       }
     }
 
-    loadCriticalJobs();
+    loadAboveTheFold();
 
     return () => controller.abort();
   }, []);
 
   /* ----------------------------------
-     Defer Recent Jobs (after paint)
+     NON-CRITICAL – When browser is idle
   ----------------------------------- */
   useEffect(() => {
-    const controller = new AbortController();
+    if (!("requestIdleCallback" in window)) {
+      // fallback
+      setTimeout(fetchRecentJobs, 1000);
+      return;
+    }
 
-    const timer = setTimeout(async () => {
-      try {
-        const recentRes = await api.get(
-          "/api/recentJob/getAllRecentJOb",
-          { signal: controller.signal }
-        );
-        setRecentJob(recentRes?.data?.[0]?.jobs || []);
-        setShowRecent(true);
-      } catch (e) {
-        if (e.name !== "CanceledError") console.error(e);
-      }
-    }, 1800);
+    const id = requestIdleCallback(fetchRecentJobs, {
+      timeout: 2000,
+    });
 
-    return () => {
-      controller.abort();
-      clearTimeout(timer);
-    };
+    function fetchRecentJobs() {
+      api
+        .get("/api/recentJob/getAllRecentJOb")
+        .then((res) => {
+          setRecentJob(res?.data?.[0]?.jobs || []);
+          setShowRecent(true);
+        })
+        .catch(console.error);
+    }
+
+    return () => cancelIdleCallback(id);
   }, []);
 
   /* ---------- MOBILE LIMITS ---------- */
@@ -98,7 +91,7 @@ const JobSection = () => {
   return (
     <section className="max-w-[95%] mx-auto px-4 pt-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* ================= BEST JOBS ================= */}
+        {/* BEST JOBS */}
         <div>
           <h2 className="text-xl md:text-2xl font-bold mb-4 bg-green-500 text-white rounded-xl py-2 text-center">
             Best Job in 2026
@@ -112,14 +105,14 @@ const JobSection = () => {
                 <JobCards
                   key={job?._id || job?.slug}
                   job={job}
-                  priority={i === 0} // ⭐ LCP image
+                  priority={i === 0}
                 />
               ))}
             </div>
           )}
         </div>
 
-        {/* ================= FEATURED JOBS ================= */}
+        {/* FEATURED JOBS */}
         <div>
           <h2 className="text-xl md:text-2xl font-bold mb-4 bg-orange-400 text-white rounded-xl py-2 text-center">
             Featured Jobs in 2026
@@ -137,7 +130,7 @@ const JobSection = () => {
         </div>
       </div>
 
-      {/* ================= RECENT JOBS ================= */}
+      {/* RECENT JOBS */}
       {showRecent && (
         <div className="mt-10">
           <h2 className="text-xl md:text-2xl font-bold mb-4 bg-purple-500 text-white rounded-xl py-2 text-center">
