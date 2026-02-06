@@ -1,3 +1,6 @@
+
+
+const base_url = process.env.NEXT_PUBLIC_API_URL;
 // const base_url = "https://naukaripakki.onrender.com";
 
 
@@ -9,7 +12,11 @@
 
     
 
-const base_url = "https://api.jobkityaari.com"
+// const base_url = "https://api.jobkityaari.com"
+
+// if (!base_url) {
+//   base_url = "http://localhost:5001";
+// }
 
 
 export const base_url1 = "https://user.jobkityaari.com"

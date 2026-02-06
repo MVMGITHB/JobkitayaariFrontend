@@ -32,7 +32,7 @@ export default function MainPopup() {
       }
     };
 
-    getPopup();
+    // getPopup();
   }, []);
 
   /* ===============================

@@ -80,7 +80,7 @@ export default function Home1() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      <Popup />
+      {/* <Popup /> */}
       <Home />
     </div>
   );

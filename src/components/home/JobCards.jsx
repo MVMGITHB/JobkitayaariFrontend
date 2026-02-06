@@ -11,6 +11,9 @@ const JobCards = ({ job }) => {
       : "/images/company-placeholder.png";
   }, [job?.image]);
 
+
+  
+
   const jobLink = useMemo(() => {
     if (!job?.category?.slug || !job?.slug) return "#";
     return `/${job.category.slug}/${job.slug}`;
