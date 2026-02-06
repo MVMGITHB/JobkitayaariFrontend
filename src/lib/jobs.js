@@ -39,12 +39,12 @@ export async function getBestJobs() {
 export async function getFeaturedJobs() {
   const data = await fetcher(`${base_url}/api/featueJob/getAllFeatureJob`);
 
-  console.log("Featured Jobs API response:", data);
+//   console.log("Featured Jobs API response:", data);
   return data?.[0]?.jobs ?? [];
 }
 
 export async function getRecentJobs() {
   const data = await fetcher(`${base_url}/api/recentJob/getAllRecentJOb`);
-    console.log("Recent Jobs API response:", data);
+    // console.log("Recent Jobs API response:", data);
   return data?.[0]?.jobs ?? [];
 }

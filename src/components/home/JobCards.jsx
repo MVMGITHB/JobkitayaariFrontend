@@ -12,11 +12,11 @@ const JobCards = ({ job }) => {
   }, [job?.image]);
 
 
-  
+
 
   const jobLink = useMemo(() => {
     if (!job?.category?.slug || !job?.slug) return "#";
-    return `/${job.category.slug}/${job.slug}`;
+    return `/${job?.category.slug}/${job.slug}`;
   }, [job?.category?.slug, job?.slug]);
 
   return (
@@ -52,14 +52,14 @@ const JobCards = ({ job }) => {
         {/* SALARY */}
         {job?.salary && (
           <p className="text-green-600 font-semibold mt-2">
-            {job.salary}
+            {job?.salary}
           </p>
         )}
 
         {/* ROLE */}
         {job?.Jobrole && (
           <p className="text-blue-500 text-sm mt-1">
-            {job.Jobrole}
+            {job?.Jobrole}
           </p>
         )}
       </div>
