@@ -129,7 +129,7 @@ async function page({ params }) {
       "@context": "https://schema.org/",
       "@type": "JobPosting",
 
-      title: job?.title,
+      title: job?.postName,
       description: stripHtml(job?.mdescription),
 
       identifier: {
