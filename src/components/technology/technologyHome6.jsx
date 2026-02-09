@@ -1,36 +1,34 @@
-"use client"
+"use client";
 
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
 import axios from "axios";
 import base_url from "../helper/helper";
 import CategoryBlog from "./CategoryBlog";
 
 const technologyHome6 = ({ title, para, slug }) => {
-
   const [showAll, setShowAll] = useState(false);
-    const handleToggle = () => {
-      setShowAll((prev) => !prev);
-    };
+  const handleToggle = () => {
+    setShowAll((prev) => !prev);
+  };
 
-  const [bankingJob, setBankingJob]= useState([])
+  const [bankingJob, setBankingJob] = useState([]);
   const [insuranceJob, setInsuranceJob] = useState([]);
 
-  useEffect(()=>{
-   const fetchData = async ()=>{
-    const [bankingRes, insuranceRes]= await Promise.all([
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/banking-job`),
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/insurance-job`)
-    ])
-    setBankingJob(bankingRes.data)
-    setInsuranceJob(insuranceRes.data);
-   }
+  useEffect(() => {
+    const fetchData = async () => {
+      const [bankingRes, insuranceRes] = await Promise.all([
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/banking-job`),
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/insurance-job`),
+      ]);
+      setBankingJob(bankingRes.data);
+      setInsuranceJob(insuranceRes.data);
+    };
 
-   fetchData()
-  },[])
-  
+    fetchData();
+  }, []);
 
-   const data1 = [
+  const data1 = [
     {
       id: 1,
       title:
@@ -48,7 +46,7 @@ const technologyHome6 = ({ title, para, slug }) => {
     },
   ];
 
-   const data2 = [
+  const data2 = [
     {
       id: 1,
       title:
@@ -68,39 +66,44 @@ const technologyHome6 = ({ title, para, slug }) => {
 
   return (
     <div>
-      
-
-      <h1 className="text-base lg:text-2xl font-bold text-center mb-2">{title}</h1>
-       <div className=" max-w-[90%] mx-auto">
+      <h1 className="text-base lg:text-2xl font-bold text-center mb-2">
+        {title}
+      </h1>
+      <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-base lg:text-xl text-black mb-3">
-            {item.title}
+            {item?.title}
           </p>
         ))}
 
-        <button onClick={handleToggle} className="text-blue-600 underline cursor-pointer ">
+        <button
+          onClick={handleToggle}
+          className="text-blue-600 underline cursor-pointer "
+        >
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
       {bankingJob && (
-  <JobCarousel
-    jobs={bankingJob}
-    title={"Latest Banking Job Openings in India 2026"}
-    color={"blue"}
-    data={data1}
-  />
-)}
+        <JobCarousel
+          jobs={bankingJob}
+          title={"Latest Banking Job Openings in India 2026"}
+          color={"blue"}
+          data={data1}
+        />
+      )}
 
-    {insuranceJob?( <JobCarousel
-         jobs={insuranceJob}
-         title={"Best Insurance Job Opportunities in India 2026"}
-      color={"green"}
-      data={data2}
-       />):("")}
-           <CategoryBlog slug={slug}/>
-
+      {insuranceJob ? (
+        <JobCarousel
+          jobs={insuranceJob}
+          title={"Best Insurance Job Opportunities in India 2026"}
+          color={"green"}
+          data={data2}
+        />
+      ) : (
+        ""
+      )}
+      <CategoryBlog slug={slug} />
     </div>
-
   );
 };
 

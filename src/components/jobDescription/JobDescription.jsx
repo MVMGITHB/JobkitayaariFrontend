@@ -6,33 +6,33 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
 
-function JobDescription({ slug }) {
-  const [data, setData] = useState([]);
+function JobDescription({ slug , data}) {
+  // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (slug) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(
-            `${base_url}/api/job/getJobBySlug/${slug}`,
-          );
-          setData(response?.data);
+  // useEffect(() => {
+  //   if (slug) {
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await axios.get(
+  //           `${base_url}/api/job/getJobBySlug/${slug}`,
+  //         );
+  //         setData(response?.data);
 
-          console.log("response data", response?.data);
-          setLoading(false);
-        } catch (error) {
-          setError(error?.message);
-          setLoading(false);
-        }
-      };
-      fetchData();
-    }
-  }, []);
+  //         console.log("response data", response?.data);
+  //         setLoading(false);
+  //       } catch (error) {
+  //         setError(error?.message);
+  //         setLoading(false);
+  //       }
+  //     };
+  //     fetchData();
+  //   }
+  // }, []);
 
-  if (loading) return null;
-  if (error) return <p>Error: {error}</p>;
+  // if (loading) return null;
+  // if (error) return <p>Error: {error}</p>;
 
   const job = data;
   // const faqItems = [];
@@ -360,7 +360,7 @@ function JobDescription({ slug }) {
                   Job Details
                 </h1>
                 <p className="text-center text-3xl lg:text-4xl text-white mt-4 font-bold">
-                  {data.postName}
+                  {data?.postName}
                 </p>
                 {data?.location && (
                   <p className="text-center text-xl text-white mt-2">

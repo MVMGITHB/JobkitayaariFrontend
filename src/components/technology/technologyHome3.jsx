@@ -28,11 +28,11 @@ const [bhelJob, setbhelJob]=useState([])
       axios.get(`${base_url}/api/job/getJobbySUbCategory/powergrid-recruitment`),
       axios.get(`${base_url}/api/job/getJobbySUbCategory/bhel-jobs`),
     ])
-    setOngcJob(ongcRes.data);
-    setioclJob(ioclRes.data);
-    setGAILJob(gailRes.data)
-    setPwgJob(pwgRes.data)
-    setbhelJob(bhelRes.data)
+    setOngcJob(ongcRes?.data);
+    setioclJob(ioclRes?.data);
+    setGAILJob(gailRes?.data)
+    setPwgJob(pwgRes?.data)
+    setbhelJob(bhelRes?.data)
   }
 
   fetchData()
@@ -141,7 +141,7 @@ const [bhelJob, setbhelJob]=useState([])
        <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-base lg:text-xl text-black mb-3">
-            {item.title}
+            {item?.title}
           </p>
         ))}
 

@@ -94,7 +94,7 @@ async function page({ params }) {
   let job = null;
 
   try {
-    const res = await axios.get(
+    const res = await axios.get (
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
     job = res?.data;
@@ -165,7 +165,7 @@ async function page({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
-      <JobDescription slug={slugName} />
+      <JobDescription slug={slugName}  data={job} />
     </>
   );
 }

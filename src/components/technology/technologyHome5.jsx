@@ -170,7 +170,7 @@ const technologyHome5 = ({ title, para, slug }) => {
       <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-base lg:text-xl text-black mb-3">
-            {item.title}
+            {item?.title}
           </p>
         ))}
 

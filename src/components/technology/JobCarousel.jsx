@@ -15,24 +15,24 @@ const JobCarousel = ({ jobs, title, color, data }) => {
 
   const settings = {
     dots: false,
-    infinite: jobs.length > 1,
+    infinite: jobs?.length > 1,
     speed: 500,
-    slidesToShow: Math.min(jobs.length, 5),
+    slidesToShow: Math.min(jobs?.length, 5),
     slidesToScroll: 1,
-    autoplay: jobs.length > 1,
+    autoplay: jobs?.length > 1,
     autoplaySpeed: 3000,
     arrows: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(jobs.length, 3),
+          slidesToShow: Math.min(jobs?.length, 3),
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: Math.min(jobs.length, 2),
+          slidesToShow: Math.min(jobs?.length, 2),
         },
       },
       {

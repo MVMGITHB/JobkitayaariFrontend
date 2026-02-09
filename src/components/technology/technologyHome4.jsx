@@ -29,10 +29,10 @@ const technologyHome4 = ({ title, para, slug }) => {
           ),
         ]);
 
-        setMarketingJobs(marketingRes.data);
-        setSalesJobs(salesRes.data);
-        setfinanceJobs(financeRes.data);
-        setBdeJobs(bdeRes.data);
+        setMarketingJobs(marketingRes?.data);
+        setSalesJobs(salesRes?.data);
+        setfinanceJobs(financeRes?.data);
+        setBdeJobs(bdeRes?.data);
       } catch (error) {
         console.error("Error fetching jobs:", error);
       }
@@ -130,7 +130,7 @@ const technologyHome4 = ({ title, para, slug }) => {
       <div className=" w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-xl text-black mb-3">
-            {item.title}
+            {item?.title}
           </p>
         ))}
 

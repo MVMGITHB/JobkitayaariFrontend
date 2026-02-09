@@ -27,9 +27,9 @@ const technologyHome2 = ({ title, para,slug }) => {
           `${base_url}/api/job/getJobbySUbCategory/college-professor-job`
         ),
       ]);
-      setPrimaryJob(primaryRes.data);
-      setSrTeacjerJob(srTeacherRes.data);
-      setClProfessorJob(clProfessorRes.data);
+      setPrimaryJob(primaryRes?.data);
+      setSrTeacjerJob(srTeacherRes?.data);
+      setClProfessorJob(clProfessorRes?.data);
     };
 
     fetchData();
@@ -91,7 +91,7 @@ const technologyHome2 = ({ title, para,slug }) => {
       <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-base lg:text-xl text-black mb-3">
-            {item.title}
+            {item?.title}
           </p>
         ))}
 

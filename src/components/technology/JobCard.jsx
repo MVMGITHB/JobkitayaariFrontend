@@ -12,25 +12,21 @@ const JobCard = ({
   category,
   slug,
 }) => {
-   
-  
   return (
     <div className="bg-white hover:bg-amber-50 shadow-lg rounded-lg p-5 w-full min-h-[380px] flex flex-col">
       <div className="flex flex-col items-center text-center flex-grow">
-
-<div className="relative w-full h-14">
-  {logo ? (
-    <Image
-      src={`${base_url}${logo}`}
-      alt={company}
-      fill
-      className="object-contain"
-    />
-  ) : (
-    ""
-  )}
-</div>
-
+        <div className="relative w-full h-14">
+          {logo ? (
+            <Image
+              src={`${base_url}${logo}`}
+              alt={company}
+              fill
+              className="object-contain"
+            />
+          ) : (
+            ""
+          )}
+        </div>
 
         <h3 className="text-xl h-[90px] pt-2 text-black font-semibold mt-3 break-words">
           {title}
