@@ -185,7 +185,7 @@ async function page({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
-      <JobDescription slug={slugName} />
+      <JobDescription slug={slugName} data={job} />
       <Popup />
     </>
   );

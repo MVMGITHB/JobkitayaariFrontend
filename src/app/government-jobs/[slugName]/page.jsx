@@ -155,7 +155,7 @@ async function page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName} />
+      <JobDescription slug={slugName} data={job} />
       <Popup />
     </>
   );

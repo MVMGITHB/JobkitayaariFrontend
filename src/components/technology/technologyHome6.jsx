@@ -21,8 +21,8 @@ const technologyHome6 = ({ title, para, slug }) => {
         axios.get(`${base_url}/api/job/getJobbySUbCategory/banking-job`),
         axios.get(`${base_url}/api/job/getJobbySUbCategory/insurance-job`),
       ]);
-      setBankingJob(bankingRes.data);
-      setInsuranceJob(insuranceRes.data);
+      setBankingJob(bankingRes?.data);
+      setInsuranceJob(insuranceRes?.data);
     };
 
     fetchData();

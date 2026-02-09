@@ -6,7 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
 
-function JobDescription({ slug , data}) {
+function JobDescription({ slug, data }) {
   // const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
