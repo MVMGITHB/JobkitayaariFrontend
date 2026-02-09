@@ -135,7 +135,7 @@ async function page({ params }) {
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job?.salary),
+              value: Number(job?.salary) ,
               unitText: "MONTH",
             },
           }
