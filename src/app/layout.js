@@ -78,10 +78,10 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload" />
 
         {/* Google Tag Manager */}
-        <script
+        {/* <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-B6KBQKWQMS"
-        ></script>
+        ></script> */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

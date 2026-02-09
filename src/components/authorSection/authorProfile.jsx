@@ -4,34 +4,37 @@ import { useEffect, useState } from "react";
 import AuthorJsonLd from "./AuthorJsonLd";
 import base_url from "../helper/helper";
 
-export default function AuthorPage({ slug }) {
-  const [author, setAuthor] = useState(null);
+export default function AuthorPage({ slug  , author}) {
+  // const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchAuthor() {
-      try {
-        const res = await fetch(
-          `${base_url}/api/auth/singleUserbyslug/${slug}`
-        );
 
-        if (!res.ok) throw new Error("Failed to fetch data");
-        const data = await res.json();
-        setAuthor(data[0]);
-      } catch (err) {
-        setError("Failed to load author data.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchAuthor();
-  }, [slug]);
+  console.log("Author data in AuthorPage:", author);
 
-  if (loading)
-    return (
-      <p className="p-8 text-center text-gray-600">Loading author details...</p>
-    );
+  // useEffect(() => {
+  //   async function fetchAuthor() {
+  //     try {
+  //       const res = await fetch(
+  //         `${base_url}/api/auth/singleUserbyslug/${slug}`
+  //       );
+
+  //       if (!res.ok) throw new Error("Failed to fetch data");
+  //       const data = await res.json();
+  //       setAuthor(data[0]);
+  //     } catch (err) {
+  //       setError("Failed to load author data.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   fetchAuthor();
+  // }, [slug]);
+
+  // if (loading)
+  //   return (
+  //     <p className="p-8 text-center text-gray-600">Loading author details...</p>
+  //   );
   if (error) return <p className="p-8 text-center text-red-500">{error}</p>;
   if (!author)
     return <p className="p-8 text-center text-gray-500">No author found.</p>;
