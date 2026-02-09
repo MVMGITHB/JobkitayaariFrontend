@@ -40,9 +40,9 @@ const JobCards = ({ job }) => {
         </div>
 
         {/* JOB TITLE */}
-        <h3 className="text-lg font-semibold text-black mt-4 h-[72px] overflow-hidden">
+        <p className="text-lg font-semibold text-black mt-4 h-[72px] overflow-hidden">
           {job?.postName}
-        </h3>
+        </p>
 
         {/* COMPANY */}
         <p className="text-gray-600 text-sm mt-1">

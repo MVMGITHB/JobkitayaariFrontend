@@ -56,9 +56,9 @@ export default function HomeBlogClient({ blog = [], latest = [] }) {
                   {item?.category?.name}
                 </span>
 
-                <h3 className="text-md font-semibold text-gray-800 line-clamp-2">
+                <p className="text-md font-semibold text-gray-800 line-clamp-2">
                   {item?.title}
-                </h3>
+                </p>
 
                 <button className="mt-auto text-sm px-4 py-2 bg-[#162d5e] text-white rounded-full">
                   Read More

@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import AuthorJsonLd from "./AuthorJsonLd";
 import base_url from "../helper/helper";
+import Image from "next/image";
 
-export default function AuthorPage({ slug  , author}) {
+export default function AuthorPage({ slug, author }) {
   // const [author, setAuthor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
 
   console.log("Author data in AuthorPage:", author);
 
@@ -49,10 +49,17 @@ export default function AuthorPage({ slug  , author}) {
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="bg-white shadow-xl rounded-3xl p-6 border border-gray-200">
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-            <img
-              src={`${base_url}${author?.image}` || "/images/default-user.png"}
-              alt={author?.name}
-              className="w-32 h-32 rounded-full border-4 border-blue-500 shadow-md object-cover"
+            <Image
+              src={
+                author?.image
+                  ? `${base_url}${author.image}`
+                  : "/images/default-user.png"
+              }
+              alt={author?.name || "Author"}
+              width={128}
+              height={128}
+              className="rounded-full border-4 border-blue-500 shadow-md object-cover"
+              priority
             />
 
             <div className="flex-1 text-center md:text-left space-y-2">

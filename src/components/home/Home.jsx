@@ -31,7 +31,6 @@
 
 // export default Home;
 
-
 import JobSection from "./JobSection";
 import HomeBlog from "./HomeBlog";
 
