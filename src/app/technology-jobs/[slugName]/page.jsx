@@ -40,37 +40,38 @@ function toISO(dateStr) {
   }
 }
 
-
 export async function generateMetadata({ params }) {
-  const { slugName } = await params;
+  const { slugName } = params;
 
   try {
     const response = await axios.get(
       `${base_url}/api/job/getJobBySlug/${slugName}`,
     );
+
     const post = response?.data;
+
     if (!post) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        // robots: {
-        //   index: false,
-        //   follow: false,
-        // },
+        robots: { index: false, follow: false },
       };
     }
 
+    const url = `https://jobkityaari.com/technology-jobs/${slugName}`;
+
     return {
-      title: `${post?.mtitle} `,
-      description: `${post?.mdescription} `,
-      metadataBase: new URL("https://jobkityaari.com"),
+      title: post?.mtitle,
+      description: post?.mdescription,
+
       alternates: {
-        canonical: "./",
+        canonical: url, // ⭐ IMPORTANT (absolute URL only)
       },
+
       openGraph: {
-        title: `${post?.mtitle} `,
-        description: `${post?.mdescription} `,
-        url: `https://jobkityaari.com/technology-jobs/${slugName}`,
+        title: post?.mtitle,
+        description: post?.mdescription,
+        url: url,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [
@@ -82,26 +83,12 @@ export async function generateMetadata({ params }) {
           },
         ],
       },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.mdescription,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
+      robots: { index: false, follow: false },
     };
   }
 }
@@ -109,84 +96,84 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
   const { slugName } = await params;
 
-
-    let job = null;
+  let job = null;
 
   try {
-    const res = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
-    );
+    const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data;
 
     // console.log("Job data:", job);
   } catch {}
 
   const stripHtml = (html) =>
-    html ? html.replace(/<[^>]*>?/gm, "").replace(/\s+/g, " ").trim() : "";
+    html
+      ? html
+          .replace(/<[^>]*>?/gm, "")
+          .replace(/\s+/g, " ")
+          .trim()
+      : "";
 
-  const jobSchema =
-    job && {
-      "@context": "https://schema.org/",
-      "@type": "JobPosting",
+  const jobSchema = job && {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
 
-      title: job?.postName,
-      description: stripHtml(job?.mdescription),
+    title: job?.postName,
+    description: stripHtml(job?.mdescription),
 
-      identifier: {
-        "@type": "PropertyValue",
-        name: job?.organization || "Job Ki Tyaari",
-        value: job?._id,
+    identifier: {
+      "@type": "PropertyValue",
+      name: job?.organization || "Job Ki Tyaari",
+      value: job?._id,
+    },
+
+    hiringOrganization: {
+      "@type": "Organization",
+      name: job?.organization || "Job Ki Tyaari",
+      sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
+      logo: "https://jobkityaari.com/logo.png",
+    },
+
+    employmentType: "FULL_TIME",
+    datePosted: toISO(job?.createdAt),
+    validThrough: toISO(job?.updatedAt),
+
+    url: `https://jobkityaari.com/government-jobs/${slugName}`,
+
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: job?.location || "India",
+        addressCountry: "IN",
       },
+    },
 
-      hiringOrganization: {
-        "@type": "Organization",
-        name: job?.organization || "Job Ki Tyaari",
-        sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
-        logo: "https://jobkityaari.com/logo.png",
-      },
+    baseSalary: job?.salary
+      ? {
+          "@type": "MonetaryAmount",
+          currency: "INR",
+          value: {
+            "@type": "QuantitativeValue",
+            value: Number(job?.salary),
+            unitText: "MONTH",
+          },
+        }
+      : undefined,
 
-      employmentType: "FULL_TIME",
-      datePosted: toISO(job?.createdAt),
-      validThrough: toISO(job?.updatedAt),
-
-      url: `https://jobkityaari.com/government-jobs/${slugName}`,
-
-      jobLocation: {
-        "@type": "Place",
-        address: {
-          "@type": "PostalAddress",
-          addressRegion: job?.location || "India",
-          addressCountry: "IN",
-        },
-      },
-
-      baseSalary: job?.salary
-        ? {
-            "@type": "MonetaryAmount",
-            currency: "INR",
-            value: {
-              "@type": "QuantitativeValue",
-              value: Number(job?.salary),
-              unitText: "MONTH",
-            },
-          }
-        : undefined,
-
-      educationRequirements: job?.skill?.[0] || "As per notification",
-      experienceRequirements: job?.requirementdata?.[0] || "Not Required",
-    };
+    educationRequirements: job?.skill?.[0] || "As per notification",
+    experienceRequirements: job?.requirementdata?.[0] || "Not Required",
+  };
 
   return (
     <>
-
- {jobSchema && (
+      {jobSchema && (
         <Script
           id="job-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
-    
+
       <JobDescription slug={slugName} data={job} />
       <Popup />
     </>

@@ -83,10 +83,10 @@ export default function Register() {
     <div className=" flex justify-center items-center px-4">
       <div className="w-full max-w-md bg-gray-100 rounded-xl shadow-md p-8">
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-gray-800">Register</h2>
-          <p className="text-sm text-gray-500">
+          <h1 className="text-3xl font-bold text-gray-800">Register</h1>
+          <h2 className="text-sm text-gray-500">
             Fill in your details to create an account
-          </p>
+          </h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">

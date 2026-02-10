@@ -17,69 +17,67 @@ import axios from "axios";
 // }
 
 export async function generateMetadata({ params }) {
-  const { slugName } = await params;
+  const { slugName } = params;
 
   try {
-    const response = await axios.get(
-      `${base_url}/api/blog/getOneBlogByslug/${slugName}`
+    const res = await fetch(
+      `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
+      {
+        next: { revalidate: 60 },
+      }
     );
-    const post = response?.data;
-    if (!post) {
+
+    if (!res.ok) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        // robots: {
-        //   index: false,
-        //   follow: false,
-        // },
       };
     }
 
+    const post = await res.json();
+
     return {
-      title: `${post?.mtitle}`,
-      description: `${post?.mdesc}`,
-      metadataBase: new URL('https://jobkityaari.com'),
-    alternates: {
-      canonical: `https://jobkityaari.com/management-jobs/articles/${slugName}`,
-    },
-     openGraph: {
-        title: `${post?.mtitle} `,
+      title: post?.mtitle,
+      description: post?.mdesc,
+
+      metadataBase: new URL("https://jobkityaari.com"),
+
+      alternates: {
+        canonical: `/management-jobs/articles/${slugName}`,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        title: post?.mtitle,
         description: post?.mdesc,
         url: `https://jobkityaari.com/management-jobs/articles/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [
           {
-            url: `${base_url}${post?.image}`, // ✅ dynamic image
+            url: `${base_url}${post?.image}`,
             width: 1200,
             height: 630,
-            alt: "Job Ki Tyaari – Latest Jobs in India",
+            alt: post?.mtitle,
           },
         ],
       },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.mdescription,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
     };
   }
 }
+
+
+
+
 const page = async ({ params }) => {
   const { slugName } =await params;
 
