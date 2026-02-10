@@ -123,24 +123,31 @@ export async function generateMetadata({ params }) {
 
 
 
+import { notFound } from "next/navigation";
+// import Article from "@/components/Article/Article";
+// import base_url from "@/components/helper/helper";
+
 const page = async ({ params }) => {
-  const { slugName } = await params;
+  const { slugName } = params;
 
-  try {
-    const response = await axios.get(
-      `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
-    );
-    const data1 = response.data;
+  const res = await fetch(
+    `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
+    { cache: "no-store" }
+  );
 
-    return (
-      <div>
-        <Article data={data1} />
-      </div>
-    );
-  } catch (error) {
-    console.error("Error fetching article:", error);
-    return <div>Failed to load article.</div>;
+  if (!res.ok) {
+    notFound(); // ⭐ THIS FIXES CANONICALISED ISSUE
   }
+
+  const data = await res.json();
+
+  if (!data) {
+    notFound(); // also important
+  }
+
+  return <Article data={data} />;
 };
 
 export default page;
+
+// export default page;
