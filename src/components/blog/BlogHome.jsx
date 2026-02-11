@@ -26,18 +26,16 @@ export const BlogHome = ({ data }) => {
           Career Guide for Government & Private Jobs
         </h1>
 
-    <div className="hidden sm:block w-full relative overflow-hidden rounded-lg aspect-[4/1]">
-  <img
-    src="https://images-static.nykaa.com/uploads/899a63be-fbb2-457a-be3e-c55d02a0fcbb.jpg?tr=cm-pad_resize,w-1200"
-    alt="Ad Banner"
-    fill
-    className="object-cover rounded-lg"
-    sizes="(max-width: 768px) 100vw, 1200px"
-    priority
-  />
-</div>
-
-
+        <div className="hidden sm:block w-full relative overflow-hidden rounded-lg aspect-[4/1]">
+          <img
+            src="https://images-static.nykaa.com/uploads/899a63be-fbb2-457a-be3e-c55d02a0fcbb.jpg?tr=cm-pad_resize,w-1200"
+            alt="Ad Banner"
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            priority
+          />
+        </div>
 
         <div className="p-4 bg-gray-50">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -57,12 +55,11 @@ export const BlogHome = ({ data }) => {
                     />
                   </div>
 
-
-
-                 
                   <div className="p-4 text-center">
                     <h2 className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
-                      <Link href={`/${card?.category?.slug}/articles/${card?.slug}`}>
+                      <Link
+                        href={`/${card?.category?.slug}/articles/${card?.slug}`}
+                      >
                         {card?.title}
                       </Link>
                     </h2>

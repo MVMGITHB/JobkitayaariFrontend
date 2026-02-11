@@ -61,42 +61,30 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-      title: `${post?.mtitle} `,
-      description: `${post?.mdescription} `,
+      title: `${post?.mtitle}`,
+      description: `${post?.mdescription}`,
+
       metadataBase: new URL("https://jobkityaari.com"),
+
       alternates: {
-        canonical: `https://jobkityaari.com/management-jobs/${slugName}`,
+        canonical: `/management-jobs/${slugName}`, // ✅ FIXED
       },
+
       openGraph: {
-        title: `${post?.mtitle} `,
-        description: `${post?.mdescription} `,
-        url: `https://jobkityaari.com/management-jobs/${slugName}`,
+        title: `${post?.mtitle}`,
+        description: `${post?.mdescription}`,
+        url: `https://jobkityaari.com/management-jobs/${slugName}`, // absolute allowed here
         siteName: "Job Ki Tyaari",
         type: "website",
         images: [
           {
-            url: `${base_url}${post?.image}`, // ✅ dynamic image
+            url: `${base_url}${post?.image}`,
             width: 1200,
             height: 630,
             alt: "Job Ki Tyaari – Latest Jobs in India",
           },
         ],
       },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.excerpt,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
     };
   } catch (error) {
     return {
@@ -187,7 +175,7 @@ async function page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName}  data={job} />
+      <JobDescription slug={slugName} data={job} />
       <Popup />
     </>
   );
