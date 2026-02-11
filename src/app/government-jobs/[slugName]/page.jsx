@@ -2,19 +2,15 @@ import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
-import Script from "next/script";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
   if (!dateStr) return undefined;
 
   try {
-    // already ISO
     if (dateStr.includes("T")) return new Date(dateStr).toISOString();
 
-    // convert DD-MM-YYYY or DD/MM/YYYY → YYYY-MM-DD
     const parts = dateStr.replaceAll("/", "-").split("-");
-
     if (parts.length === 3) {
       const [dd, mm, yyyy] = parts;
       return new Date(`${yyyy}-${mm}-${dd}`).toISOString();
@@ -28,7 +24,7 @@ function toISO(dateStr) {
 
 /* -------------------- METADATA -------------------- */
 export async function generateMetadata({ params }) {
-  const { slugName } = await params;
+  const { slugName } = params;
 
   try {
     const response = await axios.get(
@@ -47,10 +43,14 @@ export async function generateMetadata({ params }) {
     return {
       title: post?.mtitle,
       description: post?.mdescription,
+
+      // IMPORTANT: keep metadataBase + RELATIVE canonical
       metadataBase: new URL("https://jobkityaari.com"),
+
       alternates: {
-        canonical: `https://jobkityaari.com/government-jobs/${slugName}`,
+        canonical: `/government-jobs/${slugName}`,
       },
+
       openGraph: {
         title: post?.mtitle,
         description: post?.mdescription,
@@ -76,8 +76,8 @@ export async function generateMetadata({ params }) {
 }
 
 /* -------------------- PAGE -------------------- */
-async function page({ params }) {
-  const { slugName } = await params;
+export default async function Page({ params }) {
+  const { slugName } = params;
 
   let job = null;
 
@@ -86,8 +86,6 @@ async function page({ params }) {
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
     job = res?.data;
-
-    // console.log("Job data:", job);
   } catch {}
 
   const stripHtml = (html) =>
@@ -95,9 +93,8 @@ async function page({ params }) {
 
   const jobSchema =
     job && {
-      "@context": "https://schema.org/",
+      "@context": "https://schema.org",
       "@type": "JobPosting",
-
       title: job?.postName,
       description: stripHtml(job?.mdescription),
 
@@ -135,7 +132,7 @@ async function page({ params }) {
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job?.salary) ,
+              value: Number(job?.salary),
               unitText: "MONTH",
             },
           }
@@ -147,9 +144,9 @@ async function page({ params }) {
 
   return (
     <>
+      {/* IMPORTANT: normal <script> NOT next/script */}
       {jobSchema && (
-        <Script
-          id="job-schema"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
@@ -160,5 +157,3 @@ async function page({ params }) {
     </>
   );
 }
-
-export default page;

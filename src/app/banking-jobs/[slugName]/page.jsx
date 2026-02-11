@@ -1,36 +1,26 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
-
 import axios from "axios";
-import Script from "next/script";
 
-
-
-
+/* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
   if (!dateStr) return undefined;
-
   try {
-    // already ISO
     if (dateStr.includes("T")) return new Date(dateStr).toISOString();
-
-    // convert DD-MM-YYYY or DD/MM/YYYY → YYYY-MM-DD
     const parts = dateStr.replaceAll("/", "-").split("-");
-
     if (parts.length === 3) {
       const [dd, mm, yyyy] = parts;
       return new Date(`${yyyy}-${mm}-${dd}`).toISOString();
     }
-
     return new Date(dateStr).toISOString();
   } catch {
     return undefined;
   }
 }
 
-
+/* -------------------- METADATA -------------------- */
 export async function generateMetadata({ params }) {
-  const { slugName } = await params;
+  const { slugName } = params;
 
   try {
     const response = await axios.get(
@@ -38,31 +28,27 @@ export async function generateMetadata({ params }) {
     );
     const post = response?.data;
 
-
-    // console.log("Post is " , post)
-
-    console.log(post);
     if (!post) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        // robots: {
-        //   index: false,
-        //   follow: false,
-        // },
       };
     }
 
     return {
-    title: `${post?.mtitle} `,
-      description:`${ post?.mdescription} `,
-       metadataBase: new URL('https://jobkityaari.com'),
+      title: post?.mtitle,
+      description: post?.mdescription,
+
+      metadataBase: new URL("https://jobkityaari.com"),
+
+      // RELATIVE ONLY
       alternates: {
-      canonical: './',
+        canonical: `/banking-jobs/${slugName}`,
       },
+
       openGraph: {
-       title: `${post?.postName} 2026 - Job Ki Tyaari `,
-       description:` Apply for ${ post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari. `,
+        title: `${post?.postName} 2026 - Job Ki Tyaari`,
+        description: `Apply for ${post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari.`,
         url: `https://jobkityaari.com/banking-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
@@ -75,11 +61,8 @@ export async function generateMetadata({ params }) {
           },
         ],
       },
-     
     };
-  } catch (error) {
-
-    
+  } catch {
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
@@ -87,19 +70,17 @@ export async function generateMetadata({ params }) {
   }
 }
 
-async function page({ params }) {
-  const { slugName } = await params;
+/* -------------------- PAGE -------------------- */
+export default async function Page({ params }) {
+  const { slugName } = params;
 
-  
   let job = null;
 
   try {
-    const res = await axios.get (
+    const res = await axios.get(
       `${base_url}/api/job/getJobBySlug/${slugName}`
     );
     job = res?.data;
-
-    // console.log("Job data:", job);
   } catch {}
 
   const stripHtml = (html) =>
@@ -107,9 +88,8 @@ async function page({ params }) {
 
   const jobSchema =
     job && {
-      "@context": "https://schema.org/",
+      "@context": "https://schema.org",
       "@type": "JobPosting",
-
       title: job?.postName,
       description: stripHtml(job?.mdescription),
 
@@ -122,7 +102,7 @@ async function page({ params }) {
       hiringOrganization: {
         "@type": "Organization",
         name: job?.organization || "Job Ki Tyaari",
-        sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
+        sameAs: `https://jobkityaari.com/banking-jobs/${slugName}`,
         logo: "https://jobkityaari.com/logo.png",
       },
 
@@ -130,7 +110,7 @@ async function page({ params }) {
       datePosted: toISO(job?.createdAt),
       validThrough: toISO(job?.updatedAt),
 
-      url: `https://jobkityaari.com/government-jobs/${slugName}`,
+      url: `https://jobkityaari.com/banking-jobs/${slugName}`,
 
       jobLocation: {
         "@type": "Place",
@@ -156,18 +136,18 @@ async function page({ params }) {
       educationRequirements: job?.skill?.[0] || "As per notification",
       experienceRequirements: job?.requirementdata?.[0] || "Not Required",
     };
+
   return (
     <>
-     {jobSchema && (
-        <Script
-          id="job-schema"
+      {/* SERVER RENDERED SCHEMA — IMPORTANT */}
+      {jobSchema && (
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
-      <JobDescription slug={slugName}  data={job} />
+
+      <JobDescription slug={slugName} data={job} />
     </>
   );
 }
-
-export default page;
