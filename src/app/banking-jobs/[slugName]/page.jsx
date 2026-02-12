@@ -92,7 +92,7 @@ export default async function Page({ params }) {
       "@type": "JobPosting",
       title: job?.postName,
       description: stripHtml(job?.mdescription),
-
+      
       identifier: {
         "@type": "PropertyValue",
         name: job?.organization || "Job Ki Tyaari",

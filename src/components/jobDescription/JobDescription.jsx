@@ -1,6 +1,5 @@
-"use client";
-import axios from "axios";
-import { useState, useEffect } from "react";
+
+// import { useState, useEffect } from "react";
 import base_url from "../helper/helper";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
@@ -8,8 +7,7 @@ import { TbReportMoney } from "react-icons/tb";
 
 function JobDescription({ slug, data }) {
   // const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
 
   // useEffect(() => {
   //   if (slug) {
