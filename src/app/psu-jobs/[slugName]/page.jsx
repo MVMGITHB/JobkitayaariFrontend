@@ -41,35 +41,34 @@ function toISO(dateStr) {
 }
 
 export async function generateMetadata({ params }) {
-  const { slugName } = await params;
+  const { slugName } = params;
 
   try {
-    const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`,
-    );
-    const post = response?.data;
-    if (!post) {
+    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        // robots: {
-        //   index: false,
-        //   follow: false,
-        // },
       };
     }
 
+    const post = await res.json();
+
     return {
-      title: `${post?.mtitle} `,
-      description: `${post?.mdescription} `,
-      metadataBase: new URL("https://jobkityaari.com"),
+      title: post?.mtitle,
+      description: post?.mdescription,
+
       alternates: {
-        canonical: "./",
+        canonical: `https://jobkityaari.com/psu-jobs/${slugName}`,
       },
+
       openGraph: {
-        title: `${post?.mtitle} `,
-        description: `${post?.mdescription} `,
-        url: `https://jobkityaari.com/banking-jobs/${slugName}`,
+        title: post?.mtitle,
+        description: post?.mdescription,
+        url: `https://jobkityaari.com/psu-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [
@@ -81,29 +80,15 @@ export async function generateMetadata({ params }) {
           },
         ],
       },
-      // openGraph: {
-      //   title: post.title,
-      //   description: post.excerpt,
-      //   robots: {
-      //     index: false,
-      //     follow: false,
-      //   },
-      //   images: [
-      //     {
-      //       url: post.coverImage,
-      //       width: 800,
-      //       height: 600,
-      //     },
-      //   ],
-      // },
     };
-  } catch (error) {
+  } catch {
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
     };
   }
 }
+
 
 async function page({ params }) {
   const { slugName } = await params;

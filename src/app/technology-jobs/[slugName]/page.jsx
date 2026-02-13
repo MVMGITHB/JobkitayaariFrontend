@@ -44,34 +44,31 @@ export async function generateMetadata({ params }) {
   const { slugName } = params;
 
   try {
-    const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`,
-    );
+    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
+      next: { revalidate: 60 },
+    });
 
-    const post = response?.data;
-
-    if (!post) {
+    if (!res.ok) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
-        robots: { index: false, follow: false },
       };
     }
 
-    const url = `https://jobkityaari.com/technology-jobs/${slugName}`;
+    const post = await res.json();
 
     return {
       title: post?.mtitle,
       description: post?.mdescription,
 
       alternates: {
-        canonical: url, // ⭐ IMPORTANT (absolute URL only)
+        canonical: `https://jobkityaari.com/technology-jobs/${slugName}`,
       },
 
       openGraph: {
         title: post?.mtitle,
         description: post?.mdescription,
-        url: url,
+        url: `https://jobkityaari.com/technology-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
         images: [
@@ -88,7 +85,6 @@ export async function generateMetadata({ params }) {
     return {
       title: "Error loading post",
       description: "An error occurred while fetching post data.",
-      robots: { index: false, follow: false },
     };
   }
 }

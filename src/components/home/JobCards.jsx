@@ -7,7 +7,7 @@ const JobCards = ({ job }) => {
   // Memoized values (avoid recalculation)
   const imageSrc = useMemo(() => {
     return job?.image
-      ? `${base_url}${job.image}`
+      ? `${base_url}${job?.image}`
       : "/images/company-placeholder.png";
   }, [job?.image]);
 
@@ -16,7 +16,7 @@ const JobCards = ({ job }) => {
 
   const jobLink = useMemo(() => {
     if (!job?.category?.slug || !job?.slug) return "#";
-    return `/${job?.category.slug}/${job.slug}`;
+    return `/${job?.category?.slug}/${job?.slug}`;
   }, [job?.category?.slug, job?.slug]);
 
   return (

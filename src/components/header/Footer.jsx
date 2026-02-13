@@ -11,19 +11,29 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white text-center lg:text-left">
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-2">
-          <div>
-            <h5 className="uppercase font-semibold mb-4">Contact us</h5>
-            <ul className="space-y-2">
-              <li>
-                <strong>Address:</strong> IThum I.T. Park, Sector 62, Noida
-              </li>
-              <li>
-                <strong> Email:</strong>{" "}
-                <a href="mailto:contact@jobkityaari.com">
-                  contact@jobkityaari.com
-                </a>
-              </li>
-            </ul>
+          <div className="gri  gap-8">
+            {/* Contact Info */}
+            <div>
+              <h5 className="uppercase font-semibold mb-4">Contact us</h5>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <strong>Address:</strong> IThum I.T. Park, Sector 62, Noida
+                </li>
+              </ul>
+            </div>
+
+            {/* Google Map */}
+            <div className="w-full h-[120px] mt-4 rounded-xl overflow-hidden border">
+              <iframe
+                src="https://www.google.com/maps?q=IThum+IT+Park+Noida&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
 
           <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">

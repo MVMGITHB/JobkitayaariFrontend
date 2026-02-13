@@ -27,28 +27,25 @@ export async function generateMetadata({ params }) {
   const { slugName } = params;
 
   try {
-    const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
-    );
+    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
+      next: { revalidate: 60 },
+    });
 
-    const post = response?.data;
-
-    if (!post) {
+    if (!res.ok) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
       };
     }
 
+    const post = await res.json();
+
     return {
       title: post?.mtitle,
       description: post?.mdescription,
 
-      // IMPORTANT: keep metadataBase + RELATIVE canonical
-      metadataBase: new URL("https://jobkityaari.com"),
-
       alternates: {
-        canonical: `/government-jobs/${slugName}`,
+        canonical: `https://jobkityaari.com/government-jobs/${slugName}`,
       },
 
       openGraph: {
@@ -56,7 +53,7 @@ export async function generateMetadata({ params }) {
         description: post?.mdescription,
         url: `https://jobkityaari.com/government-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
-        type: "website",
+        type: "article",
         images: [
           {
             url: `${base_url}${post?.image}`,

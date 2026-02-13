@@ -35,7 +35,7 @@ export default async function JobSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {featuredMobile?.map((job) => (
-              <JobCards key={job._id} job={job} />
+              <JobCards key={job?._id} job={job} />
             ))}
           </div>
         </div>
@@ -48,7 +48,7 @@ export default async function JobSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {recentMobile?.map((job) => (
-            <JobCards key={job._id} job={job} />
+            <JobCards key={job?._id} job={job} />
           ))}
         </div>
       </div>

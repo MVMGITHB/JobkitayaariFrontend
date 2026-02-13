@@ -23,32 +23,30 @@ export async function generateMetadata({ params }) {
   const { slugName } = params;
 
   try {
-    const response = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
-    );
-    const post = response?.data;
+    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
+      next: { revalidate: 60 },
+    });
 
-    if (!post) {
+    if (!res.ok) {
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
       };
     }
 
+    const post = await res.json();
+
     return {
       title: post?.mtitle,
       description: post?.mdescription,
 
-      metadataBase: new URL("https://jobkityaari.com"),
-
-      // RELATIVE ONLY
       alternates: {
-        canonical: `/banking-jobs/${slugName}`,
+        canonical: `https://jobkityaari.com/banking-jobs/${slugName}`,
       },
 
       openGraph: {
-        title: `${post?.postName} 2026 - Job Ki Tyaari`,
-        description: `Apply for ${post?.postName} in ${post?.companyName}. Check Eligibility, Salary & Age Limit at Job Ki Tyaari.`,
+        title: post?.mtitle,
+        description: post?.mdescription,
         url: `https://jobkityaari.com/banking-jobs/${slugName}`,
         siteName: "Job Ki Tyaari",
         type: "article",
@@ -69,6 +67,7 @@ export async function generateMetadata({ params }) {
     };
   }
 }
+
 
 /* -------------------- PAGE -------------------- */
 export default async function Page({ params }) {
