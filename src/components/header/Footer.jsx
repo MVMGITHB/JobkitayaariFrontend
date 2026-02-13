@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
 
             {/* Google Map */}
-            <div className="w-full h-[120px] mt-4 rounded-xl overflow-hidden border">
+            {/* <div className="w-full h-[120px] mt-4 rounded-xl overflow-hidden border">
               <iframe
                 src="https://www.google.com/maps?q=IThum+IT+Park+Noida&output=embed"
                 width="100%"
@@ -33,7 +33,7 @@ export default function Footer() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-            </div>
+            </div> */}
           </div>
 
           <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">
