@@ -8,7 +8,7 @@ export default function AuthorJsonLd({ author }) {
   if (!author) return null;
  
   // Construct full image URL if relative path given
-  let imageUrl = author.image || "/images/default-user.png";
+  let imageUrl = author.image || "/images/default-user.jpg";
   if (imageUrl && !imageUrl.startsWith("http")) {
     imageUrl = `${base_url}${imageUrl}`;
   }

@@ -53,7 +53,7 @@ export default function AuthorPage({ slug, author }) {
               src={
                 author?.image
                   ? `${base_url}${author.image}`
-                  : "/images/default-user.png"
+                  : "/images/default-user.jpg"
               }
               alt={author?.name || "Author"}
               width={128}

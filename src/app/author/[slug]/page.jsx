@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
     //   ? author?.image.startsWith("http")
     //     ? author?.image
     //     : `${baseUrl}${author?.image}`
-    //   : `${baseUrl}/images/default-user.png`;
+    //   : `${baseUrl}/images/default-user.jpg`;
     // console.log("Author is " , author);
 
     return {
