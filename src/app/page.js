@@ -1,5 +1,6 @@
 import Home from "@/components/home/Home";
 import Popup from "@/components/home/Popup";
+import HomePagePopUp from "@/components/popup/HomePagePopUp";
 
 export const metadata = {
   title: "Latest Government & Private Jobs in India – Job Ki Tyaari",
@@ -81,6 +82,7 @@ export default function Home1() {
       />
 
       {/* <Popup /> */}
+      <HomePagePopUp/>
       <Home />
     </div>
   );
