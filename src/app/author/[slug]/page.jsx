@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
 
     const data = await res.json();
 
-    console.log("Author data fetched for metadata:", data);
+    // console.log("Author data fetched for metadata:", data);
     const author = data[0];
 
     if (!author) {

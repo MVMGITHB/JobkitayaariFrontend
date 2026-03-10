@@ -10,7 +10,7 @@ export default function AuthorPage({ slug, author }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  console.log("Author data in AuthorPage:", author);
+  // console.log("Author data in AuthorPage:", author);
 
   // useEffect(() => {
   //   async function fetchAuthor() {
