@@ -20,7 +20,6 @@ export default function Register() {
     email: "",
     password: "",
     phone: "",
-    
   });
 
   const handleChange = (e) =>
@@ -49,20 +48,21 @@ export default function Register() {
       };
 
       const response = await axios.post(
-        base_url1 + "/api/users/register",
-        formdata
+        base_url + "/api/auth/register",
+        formdata,
       );
+
+      console.log("Registration response:", response.data); // Debug log
 
       if (response.data) {
         message.success(
-          "Register successfully. Please check your email for verification."
+          "Register successfully. Please check your email for verification.",
         );
         setFormData({
           name: "",
           email: "",
           password: "",
           phone: "",
-         
         });
         setConsent(false);
         setError(false);

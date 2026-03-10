@@ -82,7 +82,7 @@ export default function Home1() {
       />
 
       {/* <Popup /> */}
-      <HomePagePopUp/>
+      {/* <HomePagePopUp/> */}
       <Home />
     </div>
   );
