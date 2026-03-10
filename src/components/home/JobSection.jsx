@@ -8,9 +8,9 @@ export default async function JobSection() {
     getRecentJobs(),
   ]);
 
-  const bestMobile = bestJob.slice(0, 2);
-  const featuredMobile = featuredJob.slice(0, 2);
-  const recentMobile = recentJob.slice(0, 4);
+  const bestMobile = bestJob?.slice(0, 2);
+  const featuredMobile = featuredJob?.slice(0, 2);
+  const recentMobile = recentJob?.slice(0, 4);
 
   return (
     <section className="max-w-[95%] mx-auto px-4 pt-6">
