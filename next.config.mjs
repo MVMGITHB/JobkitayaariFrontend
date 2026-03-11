@@ -6,20 +6,30 @@ const nextConfig = {
   reactStrictMode: true,
 
   images: {
-    domains: [
-      "api.jobkityaari.com",
-      "api.shopsmaart.com",
-      "localhost",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.jobkityaari.com",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.shopsmaart.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        pathname: "/**",
+      },
     ],
   },
 
   async headers() {
-    // ❗ NO SECURITY HEADERS ON LOCALHOST
     if (!isProd) {
       return [];
     }
 
-    // ✅ SECURITY HEADERS ONLY FOR PRODUCTION
     return [
       {
         source: "/(.*)",
