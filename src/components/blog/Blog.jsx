@@ -1,47 +1,50 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import { BlogHome } from "./BlogHome";
+import axios from "axios";
+import base_url from "../helper/helper";
 
-'use client'
-import React, { useEffect, useState } from 'react'
-import { BlogHome } from './BlogHome'
-import axios from 'axios'
-import base_url from '../helper/helper'
-export const Blog = ({filters}) => {
+export const Blog = ({ filters }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true); // NEW
 
-    const [data,setData]  =useState([])
+  const fetchdata = async () => {
+    try {
+      setLoading(true);
 
-   const  fetchdata  = async()=>{
-        try {
-            const response = await axios.get(
-    `${base_url}/api/blog/getAllBlog`
-     );
+      const response = await axios.get(`${base_url}/api/blog/getAllBlog`);
 
-     if(filters==='carrier'){
-       setData(response.data)
-     }else{
-          const data1 = response?.data?.filter((item)=>{
-      return item.category.slug === filters
-  })
+      if (filters === "carrier") {
+        setData(response.data);
+      } else {
+        const data1 = response?.data?.filter((item) => {
+          return item.category.slug === filters;
+        });
 
-  if(data1){
-        setData(data1)
+        setData(data1 || []);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false); // stop loading
     }
-  
-     }
-  
-    
-        } catch (error) {
-            console.log(error) 
-        }
-    }
+  };
 
+  useEffect(() => {
+    fetchdata();
+  }, [filters]);
 
-    
-useEffect(()=>{
-   fetchdata()
-},[filters])
-     
+  if (loading) {
     return (
-        <div>
-            <BlogHome data={data}/>
-        </div>
-    )
-}
+      <div className="flex justify-center items-center py-20">
+        <div className="text-lg font-semibold">Loading Blogs...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <BlogHome data={data} />
+    </div>
+  );
+};
