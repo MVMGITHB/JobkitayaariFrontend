@@ -1,6 +1,7 @@
 import Article from "@/components/Article/Article";
 import base_url from "@/components/helper/helper";
 import axios from "axios";
+import { notFound } from "next/navigation";
 
 
 
@@ -76,7 +77,7 @@ const page = async ({ params }) => {
     );
   } catch (error) {
     console.error("Error fetching article:", error);
-    return <div>Failed to load article.</div>;
+    return notFound(); // Show 404 page if there's an error fetching the article
   }
 };
 

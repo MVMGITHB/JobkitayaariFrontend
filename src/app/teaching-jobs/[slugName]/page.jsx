@@ -1,6 +1,7 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import Popup from "@/components/popup/Popup";
+import { notFound } from "next/navigation";
 import Script from "next/script";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
@@ -85,6 +86,11 @@ export default async function Page({ params }) {
 
     if (res.ok) job = await res.json();
   } catch {}
+
+
+  if (!job) {
+        notFound();  // 👈 show 404 page
+      }
 
   const stripHtml = (html) =>
     html

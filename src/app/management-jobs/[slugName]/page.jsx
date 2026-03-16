@@ -2,6 +2,7 @@ import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
+import { notFound } from "next/navigation";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -78,39 +79,47 @@ export default async function Page({ params }) {
     job = res?.data;
   } catch {}
 
-  const stripHtml = (html) =>
-    html ? html.replace(/<[^>]*>?/gm, "").replace(/\s+/g, " ").trim() : "";
+  if (!job) {
+    notFound(); // 👈 show 404 page
+  }
 
-  const jobSchema =
-    job && {
-      "@context": "https://schema.org",
-      "@type": "JobPosting",
-      title: job?.postName,
-      description: stripHtml(job?.mdescription),
-      identifier: {
-        "@type": "PropertyValue",
-        name: job?.organization || "Job Ki Tyaari",
-        value: job?._id,
+  const stripHtml = (html) =>
+    html
+      ? html
+          .replace(/<[^>]*>?/gm, "")
+          .replace(/\s+/g, " ")
+          .trim()
+      : "";
+
+  const jobSchema = job && {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job?.postName,
+    description: stripHtml(job?.mdescription),
+    identifier: {
+      "@type": "PropertyValue",
+      name: job?.organization || "Job Ki Tyaari",
+      value: job?._id,
+    },
+    hiringOrganization: {
+      "@type": "Organization",
+      name: job?.organization || "Job Ki Tyaari",
+      sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
+      logo: "https://jobkityaari.com/logo.png",
+    },
+    employmentType: "FULL_TIME",
+    datePosted: toISO(job?.createdAt),
+    validThrough: toISO(job?.updatedAt),
+    url: `https://jobkityaari.com/government-jobs/${slugName}`,
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: job?.location || "India",
+        addressCountry: "IN",
       },
-      hiringOrganization: {
-        "@type": "Organization",
-        name: job?.organization || "Job Ki Tyaari",
-        sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
-        logo: "https://jobkityaari.com/logo.png",
-      },
-      employmentType: "FULL_TIME",
-      datePosted: toISO(job?.createdAt),
-      validThrough: toISO(job?.updatedAt),
-      url: `https://jobkityaari.com/government-jobs/${slugName}`,
-      jobLocation: {
-        "@type": "Place",
-        address: {
-          "@type": "PostalAddress",
-          addressRegion: job?.location || "India",
-          addressCountry: "IN",
-        },
-      },
-    };
+    },
+  };
 
   return (
     <>

@@ -3,6 +3,7 @@ import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -101,6 +102,11 @@ async function page({ params }) {
 
     // console.log("Job data:", job);
   } catch {}
+
+
+  if (!job) {
+        notFound();  // 👈 show 404 page
+  }
 
   const stripHtml = (html) =>
     html

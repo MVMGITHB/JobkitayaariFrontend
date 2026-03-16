@@ -1,6 +1,7 @@
 import Article from "@/components/Article/Article";
 import base_url from "@/components/helper/helper";
 import axios from "axios";
+import { notFound } from "next/navigation";
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
 //   description: 'Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us',
@@ -83,8 +84,9 @@ const page = async ({ params }) => {
       </div>
     );
   } catch (error) {
-    console.error("Error fetching article:", error);
-    return <div>Failed to load article.</div>;
+    // console.error("Error fetching article:", error);
+  
+    return notFound(); // Show 404 page if there's an error fetching the article
   }
 };
 

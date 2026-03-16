@@ -2,6 +2,7 @@ import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
+import { notFound } from "next/navigation";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -82,6 +83,10 @@ export default async function Page({ params }) {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data;
   } catch {}
+
+  if (!job) {
+    notFound(); // 👈 show 404 page
+  }
 
   const stripHtml = (html) =>
     html

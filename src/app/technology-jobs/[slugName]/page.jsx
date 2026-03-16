@@ -3,6 +3,7 @@ import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -48,7 +49,10 @@ export async function generateMetadata({ params }) {
       next: { revalidate: 60 },
     });
 
+    console.log("Metadata fetch status:", res);
+
     if (!res.ok) {
+      // console.log("Failed to fetch job data for metadata");
       return {
         title: "Post not found",
         description: "This blog post could not be found.",
@@ -100,6 +104,10 @@ async function page({ params }) {
 
     // console.log("Job data:", job);
   } catch {}
+
+  if (!job) {
+    notFound(); // 👈 show 404 page
+  }
 
   const stripHtml = (html) =>
     html

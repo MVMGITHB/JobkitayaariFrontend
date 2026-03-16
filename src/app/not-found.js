@@ -9,7 +9,7 @@ export default function InteractionPage() {
         <h1 className="text-white text-center text-7xl">404 </h1>
         <h4 className="text-white text-center text-2xl">Page not found</h4>
         <h2 className=" text-blue-500 text-center">
-          <Link href="/"> visit the website jabkityaari.com</Link>
+          <Link href="/"> visit the website jobkityaari.com</Link>
         </h2>
 
         <div className="relative w-screen h-[40vh] bg-gray-900 flex items-center overflow-hidden">

@@ -128,24 +128,28 @@ import { notFound } from "next/navigation";
 // import base_url from "@/components/helper/helper";
 
 const page = async ({ params }) => {
-  const { slugName } = params;
+  const { slugName } = params; // ❌ remove await
 
-  const res = await fetch(
-    `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
-    { cache: "no-store" }
-  );
+  try {
+    const response = await axios.get(
+      `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
+    );
 
-  if (!res.ok) {
-    notFound(); // ⭐ THIS FIXES CANONICALISED ISSUE
+    const data1 = response?.data;
+
+    if (!data1) {
+      notFound(); // ✅ directly call
+    }
+
+    return (
+      <div>
+        <Article data={data1} />
+      </div>
+    );
+  } catch (error) {
+    console.error("Error fetching article:", error);
+    notFound(); // ✅ don't return
   }
-
-  const data = await res.json();
-
-  if (!data) {
-    notFound(); // also important
-  }
-
-  return <Article data={data} />;
 };
 
 export default page;

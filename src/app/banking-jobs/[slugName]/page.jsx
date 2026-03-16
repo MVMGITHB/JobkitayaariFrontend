@@ -1,6 +1,7 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
+import { notFound } from "next/navigation";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -81,6 +82,10 @@ export default async function Page({ params }) {
     );
     job = res?.data;
   } catch {}
+
+   if (!job) {
+      notFound();  // 👈 show 404 page
+    }
 
   const stripHtml = (html) =>
     html ? html.replace(/<[^>]*>?/gm, "").replace(/\s+/g, " ").trim() : "";

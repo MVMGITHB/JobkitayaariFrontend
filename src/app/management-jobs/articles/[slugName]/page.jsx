@@ -1,6 +1,7 @@
-import Article from "@/components/Article/Article"
+import Article from "@/components/Article/Article";
 import base_url from "@/components/helper/helper";
 import axios from "axios";
+import { notFound } from "next/navigation";
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
 //   description: 'Job Ki Tyaari’s mission to help job seekers with career tips, exam updates, and study materials. Learn more about us',
@@ -8,7 +9,7 @@ import axios from "axios";
 //   alternates: {
 //     canonical: './',
 //   },
-   
+
 //   robots: {
 //     index: false, // Disables indexing
 //     follow: false, // Prevents following links
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }) {
       `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
       {
         next: { revalidate: 60 },
-      }
+      },
     );
 
     if (!res.ok) {
@@ -75,18 +76,20 @@ export async function generateMetadata({ params }) {
   }
 }
 
-
-
-
 const page = async ({ params }) => {
-  const { slugName } =await params;
+  const { slugName } = params; // ❌ remove await
 
   try {
     const response = await axios.get(
-      `${base_url}/api/blog/getOneBlogByslug/${slugName}`
+      `${base_url}/api/blog/getOneBlogByslug/${slugName}`,
     );
+
     const data1 = response?.data;
-   
+
+    if (!data1) {
+      notFound(); // ✅ directly call
+    }
+
     return (
       <div>
         <Article data={data1} />
@@ -94,7 +97,7 @@ const page = async ({ params }) => {
     );
   } catch (error) {
     console.error("Error fetching article:", error);
-    return <div>Failed to load article.</div>;
+    notFound(); // ✅ don't return
   }
 };
 
