@@ -354,12 +354,12 @@ function JobDescription({ slug, data }) {
           <div className="px-4">
             <div className="max-w-[980px] mx-auto mt-4 lg:mt-6">
               <div className="bg-violet-700 py-6 px-4 rounded-lg shadow-lg">
-                <h1 className="text-center text-2xl lg:text-3xl text-white font-semibold">
+                <p className="text-center text-2xl lg:text-3xl text-white font-semibold">
                   Job Details
-                </h1>
-                <p className="text-center text-3xl lg:text-4xl text-white mt-4 font-bold">
-                  {data?.postName}
                 </p>
+                <h1 className="text-center text-3xl lg:text-4xl text-white mt-4 font-bold">
+                  {data?.postName}
+                </h1>
                 {data?.location && (
                   <p className="text-center text-xl text-white mt-2">
                     {data?.location}
