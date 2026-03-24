@@ -112,7 +112,7 @@ function JobDescription({ slug, data }) {
                   Post Name:{" "}
                   <span className="text-black">
                     {" "}
-                    <h1 className="inline">{data?.postName}</h1>
+                    <h2 className="inline">{data?.postName}</h2>
                   </span>
                 </p>
               )}
@@ -199,9 +199,9 @@ function JobDescription({ slug, data }) {
                   data?.ageLimit[0]?.length >= 1)) && (
                 <div className="text-black border">
                   {data?.mtitle && (
-                    <h2 className="text-center font-bold text-[24px] text-green-600">
+                    <h1 className="text-center font-bold text-[24px] text-green-600">
                       {data.mtitle}
-                    </h2>
+                    </h1>
                   )}
                   <div className="p-4">
                     <p className="font-bold">For All Other Post</p>
