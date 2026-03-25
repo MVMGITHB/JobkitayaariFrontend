@@ -11,5 +11,10 @@ Disallow: /checkout/
 Disallow: /cart/
 Disallow: /orders/
 Disallow: /settings/
-
+ 
+Disallow: /tag/
+Disallow: /author/
+Disallow: /search/
+Disallow: /*?*
+ 
 Sitemap: https://jobkityaari.com/sitemap.xml
