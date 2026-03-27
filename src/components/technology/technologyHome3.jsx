@@ -1,45 +1,50 @@
-"use client"
+"use client";
 
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import JobCarousel from "./JobCarousel";
 import axios from "axios";
 import base_url from "../helper/helper";
 import CategoryBlog from "./CategoryBlog";
 
-const technologyHome3 = ({ title , para ,slug}) => {
-
-const [showAll, setShowAll] = useState(false);
+const technologyHome3 = ({ title, para, slug }) => {
+  const [showAll, setShowAll] = useState(false);
   const handleToggle = () => {
     setShowAll((prev) => !prev);
   };
 
-const [ongcJob, setOngcJob]=useState([])
-const [ioclJob, setioclJob]=useState([])
-const [GAILJob, setGAILJob]=useState([])
-const [PwgRec, setPwgJob]=useState([])
-const [bhelJob, setbhelJob]=useState([])
+  const [ongcJob, setOngcJob] = useState([]);
+  const [ioclJob, setioclJob] = useState([]);
+  const [GAILJob, setGAILJob] = useState([]);
+  const [PwgRec, setPwgJob] = useState([]);
+  const [bhelJob, setbhelJob] = useState([]);
 
- useEffect(()=>{
-  const fetchData=async ()=>{
-    const [ongcRes, ioclRes, gailRes, pwgRes, bhelRes]= await Promise.all([
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/ongc-recruitment`),
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/iocl`),
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/gail-job`),
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/powergrid-recruitment`),
-      axios.get(`${base_url}/api/job/getJobbySUbCategory/bhel-jobs`),
-    ])
-    setOngcJob(ongcRes?.data);
-    setioclJob(ioclRes?.data);
-    setGAILJob(gailRes?.data)
-    setPwgJob(pwgRes?.data)
-    setbhelJob(bhelRes?.data)
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const [ongcRes, ioclRes, gailRes, pwgRes, bhelRes] = await Promise.all([
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/ongc-recruitment`),
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/iocl`),
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/gail-job`),
+        axios.get(
+          `${base_url}/api/job/getJobbySUbCategory/powergrid-recruitment`,
+        ),
+        axios.get(`${base_url}/api/job/getJobbySUbCategory/bhel-jobs`),
+      ]);
+      setOngcJob(ongcRes?.data);
+      setioclJob(ioclRes?.data);
+      setGAILJob(gailRes?.data);
+      setPwgJob(pwgRes?.data);
+      setbhelJob(bhelRes?.data);
+    };
 
-  fetchData()
- },[])
+    fetchData();
+  }, []);
+
+    console.log("OngC job is ", ongcJob, ioclJob, GAILJob, PwgRec, bhelJob);
+
+     
 
 
-   const data1 = [
+  const data1 = [
     {
       id: 1,
       title:
@@ -60,9 +65,8 @@ const [bhelJob, setbhelJob]=useState([])
       title:
         "For frequent updates on ONGC job vacancies that fit your qualifications and career goals, keep checking this page.",
     },
-   
   ];
-   const data2 = [
+  const data2 = [
     {
       id: 1,
       title:
@@ -80,7 +84,7 @@ const [bhelJob, setbhelJob]=useState([])
     },
   ];
 
-   const data3 = [
+  const data3 = [
     {
       id: 1,
       title:
@@ -97,7 +101,7 @@ const [bhelJob, setbhelJob]=useState([])
         "Watch for updates on the selection process, application deadlines, and eligibility requirements. Don't pass up this opportunity to work for a renowned public sector organisation; submit your application now to guarantee a place in India's expanding energy infrastructure.",
     },
   ];
-   const data4 = [
+  const data4 = [
     {
       id: 1,
       title:
@@ -114,7 +118,7 @@ const [bhelJob, setbhelJob]=useState([])
         "Receive alerts about upcoming online application deadlines, test trends, and interview stages. Join one of the leading PSUs in India to have a steady and fulfilling career while helping to build the country's electrical infrastructure.",
     },
   ];
-   const data5 = [
+  const data5 = [
     {
       id: 1,
       title:
@@ -132,62 +136,83 @@ const [bhelJob, setbhelJob]=useState([])
     },
   ];
 
-  
   return (
     <div>
-     
-      <h1 className="text-base lg:text-2xl font-bold text-center mb-2 ">{title}</h1>
-      
-       <div className=" max-w-[90%] mx-auto">
+      <h1 className="text-base lg:text-2xl font-bold text-center mb-2 ">
+        {title}
+      </h1>
+
+      <div className=" max-w-[90%] mx-auto">
         {(showAll ? para : [para[0]]).map((item, index) => (
           <p key={index} className="text-base lg:text-xl text-black mb-3">
             {item?.title}
           </p>
         ))}
 
-        <button onClick={handleToggle} className="text-blue-600 underline cursor-pointer ">
+        <button
+          onClick={handleToggle}
+          className="text-blue-600 underline cursor-pointer "
+        >
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
 
-     {ongcJob?( <JobCarousel
-        jobs={ongcJob}
-        title={"ONGC Recruitment 2026 – Apply Now"}
-        color={"blue"}
-        data={data1}
-      />):("")}
+      {ongcJob?.length > 0 ? (
+        <JobCarousel
+          jobs={ongcJob}
+          title={"ONGC Recruitment 2026 – Apply Now"}
+          color={"blue"}
+          data={data1}
+        />
+      ) : (
+        ""
+      )}
 
-      {ioclJob?(<JobCarousel
-        jobs={ioclJob}
-        title={"IOCL – Latest Job Openings"}
-        color={"green"}
-        data={data2}
-      />):("")}
+      {ioclJob?.length > 0 ? (
+        <JobCarousel
+          jobs={ioclJob}
+          title={"IOCL – Latest Job Openings"}
+          color={"green"}
+          data={data2}
+        />
+      ) : (
+        ""
+      )}
 
-      {GAILJob?(<JobCarousel
-        jobs={GAILJob}
-        title={"GAIL Job Vacancies – Apply Today"}
-        color={"orange"}
-        data={data3}
-      />):("")}
+      {GAILJob?.length > 0 ? (
+        <JobCarousel
+          jobs={GAILJob}
+          title={"GAIL Job Vacancies – Apply Today"}
+          color={"orange"}
+          data={data3}
+        />
+      ) : (
+        ""
+      )}
 
-      {PwgRec?(<JobCarousel
-        jobs={PwgRec}
-        title={"POWERGRID Recruitment – Freshers & Experienced"}
-        color={""}
-        data={data4}
-      />):("purple")}
+      {PwgRec?.length > 0 ? (
+        <JobCarousel
+          jobs={PwgRec}
+          title={"POWERGRID Recruitment – Freshers & Experienced"}
+          color={""}
+          data={data4}
+        />
+      ) : (
+        "purple"
+      )}
 
-     
+      {bhelJob?.length > 0 ? (
+        <JobCarousel
+          jobs={bhelJob}
+          title={"BHEL Jobs 2026 – Best PSU Opportunities"}
+          color={"purple"}
+          data={data5}
+        />
+      ) : (
+        ""
+      )}
 
-      {bhelJob?(<JobCarousel
-        jobs={bhelJob}
-        title={"BHEL Jobs 2026 – Best PSU Opportunities"}
-        color={"purple"}
-        data={data5}
-      />):("")}
-
-      <CategoryBlog slug={slug}/>
+      <CategoryBlog slug={slug} />
     </div>
   );
 };
