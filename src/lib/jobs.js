@@ -33,18 +33,20 @@ async function fetcher(url) {
 
 export async function getBestJobs() {
   const data = await fetcher(`${base_url}/api/bestJob/getAllBestJob`);
+  console.log("data is  1", data)
   return data?.[0]?.jobs ?? [];
 }
 
 export async function getFeaturedJobs() {
   const data = await fetcher(`${base_url}/api/featueJob/getAllFeatureJob`);
-
+console.log("data is 2 ", data)
 //   console.log("Featured Jobs API response:", data);
   return data?.[0]?.jobs ?? [];
 }
 
 export async function getRecentJobs() {
   const data = await fetcher(`${base_url}/api/recentJob/getAllRecentJOb`);
+  console.log("data is 3 ", data)
     // console.log("Recent Jobs API response:", data);
   return data?.[0]?.jobs ?? [];
 }
