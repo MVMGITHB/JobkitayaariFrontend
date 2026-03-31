@@ -83,7 +83,7 @@ const technologyHome6 = ({ title, para, slug }) => {
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
-      {bankingJob && (
+      {bankingJob.length > 0 && (
         <JobCarousel
           jobs={bankingJob}
           title={"Latest Banking Job Openings in India 2026"}
@@ -92,7 +92,7 @@ const technologyHome6 = ({ title, para, slug }) => {
         />
       )}
 
-      {insuranceJob ? (
+      {insuranceJob.length > 0 ? (
         <JobCarousel
           jobs={insuranceJob}
           title={"Best Insurance Job Opportunities in India 2026"}

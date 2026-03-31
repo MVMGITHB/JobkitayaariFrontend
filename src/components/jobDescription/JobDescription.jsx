@@ -1,11 +1,16 @@
 
 // import { useState, useEffect } from "react";
+import axios from "axios";
 import base_url from "../helper/helper";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
+import RecommendedJob from "./RecommendedJob";
 
-function JobDescription({ slug, data }) {
+function JobDescription({ slug, data , recommednedJobs }) {
+
+  console.log("Recommended jobs in description", recommednedJobs);
+
   // const [data, setData] = useState([]);
 
 
@@ -95,6 +100,24 @@ function JobDescription({ slug, data }) {
   //   "@type": "FAQPage",
   //   "mainEntity": faqItems
   // };
+
+
+  // console.log("job data in descriptionbhvgcfgvhbjnbhvg v", data?.category?.slug);
+
+  
+
+
+
+  // useEffect(() => {
+
+  //   const resposne = axios.get(`${base_url}/api/job/getRecommedJob/${data?.category?.slug}`)
+
+  //   console.log("response in job description", resposne?.data);
+
+
+  // }, [data]);
+
+
 
   return (
     <>
@@ -448,7 +471,10 @@ function JobDescription({ slug, data }) {
             </div>
           </div>
         )}
+
+        
       </div>
+      <RecommendedJob recommedned={recommednedJobs} />
     </>
   );
 }

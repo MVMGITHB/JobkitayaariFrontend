@@ -39,7 +39,7 @@ const technologyHome3 = ({ title, para, slug }) => {
     fetchData();
   }, []);
 
-    console.log("OngC job is ", ongcJob, ioclJob, GAILJob, PwgRec, bhelJob);
+    // console.log("OngC job is ", ongcJob, ioclJob, GAILJob, PwgRec, bhelJob);
 
      
 
@@ -198,7 +198,7 @@ const technologyHome3 = ({ title, para, slug }) => {
           data={data4}
         />
       ) : (
-        "purple"
+        ""
       )}
 
       {bhelJob?.length > 0 ? (

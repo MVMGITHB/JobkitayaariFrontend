@@ -139,7 +139,7 @@ const technologyHome4 = ({ title, para, slug }) => {
         </button>
       </div>
 
-      {marketingJobs ? (
+      {marketingJobs.length > 0 ? (
         <JobCarousel
           jobs={marketingJobs}
           title={"Find the Best Marketing Jobs in India 2026"}
@@ -150,7 +150,7 @@ const technologyHome4 = ({ title, para, slug }) => {
         ""
       )}
 
-      {salesJobs ? (
+      {salesJobs.length > 0 ? (
         <JobCarousel
           jobs={salesJobs}
           title={"Best Sales Job Opportunities in India 2026"}
@@ -161,7 +161,7 @@ const technologyHome4 = ({ title, para, slug }) => {
         ""
       )}
 
-      {financeJobs ? (
+      {financeJobs.length > 0 ? (
         <JobCarousel
           jobs={financeJobs}
           title={"Find the Best Finance Jobs in India 2026 "}
@@ -172,7 +172,7 @@ const technologyHome4 = ({ title, para, slug }) => {
         ""
       )}
 
-      {bdeJobs ? (
+      {bdeJobs.length > 0 ? (
         <JobCarousel
           jobs={bdeJobs}
           title={"Top Business Development Job Openings in India 2026"}

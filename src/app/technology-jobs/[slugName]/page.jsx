@@ -4,6 +4,7 @@ import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import Script from "next/script";
 import { notFound } from "next/navigation";
+import ShowJobTemplate from "@/components/jobDescription/ShowJobTemplate";
 
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -97,12 +98,14 @@ async function page({ params }) {
   const { slugName } = await params;
 
   let job = null;
+  let recommednedJobs = [];
 
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
-    job = res?.data;
+    job = res?.data?.job;
+    recommednedJobs = res?.data.recommendedJobs || [];
 
-    // console.log("Job data:", job);
+    console.log("Job data:", job);
   } catch {}
 
   if (!job) {
@@ -178,7 +181,9 @@ async function page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName} data={job} />
+      <JobDescription slug={slugName} data={job}  recommednedJobs={recommednedJobs} />
+      
+      {/* <ShowJobTemplate slug={slugName} data={job} /> */}
       <Popup />
     </>
   );

@@ -27,9 +27,9 @@ const technologyHome5 = ({ title, para, slug }) => {
         console.log(err);
       }
     };
-
+    
     fetchData();
-
+    
     const fetchData1 = async () => {
       try {
         const response = await axios.get(
@@ -181,7 +181,7 @@ const technologyHome5 = ({ title, para, slug }) => {
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
-      {allsector ? (
+      {allsector.length > 0 ? (
         <JobCarousel
           jobs={allsector}
           title={"Latest Govenment Job Opening 2026 - All Sectors"}
@@ -191,7 +191,7 @@ const technologyHome5 = ({ title, para, slug }) => {
         ""
       )}
 
-      {railwayjob ? (
+      {railwayjob.length > 0 ? (
         <JobCarousel
           jobs={railwayjob}
           title={"Latest Railway Jobs in India 2026"}
@@ -202,7 +202,7 @@ const technologyHome5 = ({ title, para, slug }) => {
         ""
       )}
 
-      {defense ? (
+      {defense.length > 0 ? (
         <JobCarousel
           jobs={defense}
           title={"Explore Latest Defense Jobs in India 2026"}
@@ -213,7 +213,7 @@ const technologyHome5 = ({ title, para, slug }) => {
         ""
       )}
 
-      {upsc ? (
+      {upsc.length > 0 ? (
         <JobCarousel
           jobs={upsc}
           title={"UPSC Exam Notifications 2026 – Latest Govt Jobs"}

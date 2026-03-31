@@ -1,6 +1,7 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import Popup from "@/components/popup/Popup";
+import axios from "axios";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
@@ -78,19 +79,17 @@ export default async function Page({ params }) {
   const { slugName } = params;
 
   let job = null;
+  let recommednedJobs = [];
 
   try {
-    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
-      next: { revalidate: 60 },
-    });
-
-    if (res.ok) job = await res.json();
+    const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
+    job = res?.data?.job;
+    recommednedJobs = res?.data.recommendedJobs || [];
   } catch {}
 
-
   if (!job) {
-        notFound();  // 👈 show 404 page
-      }
+    notFound(); // 👈 show 404 page
+  }
 
   const stripHtml = (html) =>
     html
@@ -161,7 +160,7 @@ export default async function Page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName} data={job} />
+      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} />
       <Popup />
     </>
   );

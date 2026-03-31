@@ -102,7 +102,7 @@ const technologyHome2 = ({ title, para,slug }) => {
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
-      {primaryJob ? (
+      {primaryJob.length > 0 ? (
         <JobCarousel
           jobs={primaryJob}
           title={"Best Primary Teacher Job Opportunities in India 2026"}
@@ -112,7 +112,7 @@ const technologyHome2 = ({ title, para,slug }) => {
       ) : (
         ""
       )}
-      {srTeacherJob ? (
+      {srTeacherJob.length > 0 ? (
         <JobCarousel
           jobs={srTeacherJob}
           title={"Latest Senior Teacher Job Openings in India 2026 "}
@@ -123,7 +123,7 @@ const technologyHome2 = ({ title, para,slug }) => {
         ""
       )}
 
-      {clProfessorJob ? (
+      {clProfessorJob.length > 0 ? (
         <JobCarousel
           jobs={clProfessorJob}
           title={"Best College Professor Job Vacancies in India 2026"}

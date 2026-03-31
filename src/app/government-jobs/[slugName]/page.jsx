@@ -78,10 +78,13 @@ export default async function Page({ params }) {
   const { slugName } = params;
 
   let job = null;
+    let recommednedJobs = [];
 
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
-    job = res?.data;
+    job = res?.data?.job;
+    recommednedJobs = res?.data.recommendedJobs || [];
+
   } catch {}
 
   if (!job) {
@@ -156,7 +159,7 @@ export default async function Page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName} data={job} />
+      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} />
       <Popup />
     </>
   );

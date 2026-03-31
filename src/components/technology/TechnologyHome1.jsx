@@ -151,7 +151,7 @@ const TechnologyHome1 = ({ title, para, slug }) => {
           {showAll ? "Read Less" : "Read More"}
         </button>
       </div>
-      {softwareJobs ? (
+      {softwareJobs.length > 0 ? (
         <JobCarousel
           jobs={softwareJobs}
           title={"Software Developer Jobs 2026 – Freshers & Experienced"}
@@ -161,7 +161,7 @@ const TechnologyHome1 = ({ title, para, slug }) => {
       ) : (
         ""
       )}
-      {testingJobs ? (
+      {testingJobs.length > 0 ? (
         <JobCarousel
           jobs={testingJobs}
           title={"Software Testing Jobs (Manual & Automation) 2026"}
@@ -172,7 +172,7 @@ const TechnologyHome1 = ({ title, para, slug }) => {
         ""
       )}
 
-      {projectManJobs ? (
+      {projectManJobs.length > 0 ? (
         <JobCarousel
           jobs={projectManJobs}
           title={"Project Management Jobs 2026 – IT & Tech Sector"}
@@ -182,7 +182,7 @@ const TechnologyHome1 = ({ title, para, slug }) => {
       ) : (
         ""
       )}
-      {aimlJobs ? (
+      {aimlJobs.length > 0 ? (
         <JobCarousel
           jobs={aimlJobs}
           title={"AI & ML Jobs in India 2026 – High-Paying Roles"}
