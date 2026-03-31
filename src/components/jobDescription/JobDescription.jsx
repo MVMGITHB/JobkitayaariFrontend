@@ -9,7 +9,7 @@ import RecommendedJob from "./RecommendedJob";
 
 function JobDescription({ slug, data , recommednedJobs }) {
 
-  console.log("Recommended jobs in description", recommednedJobs);
+  // console.log("Recommended jobs in description", recommednedJobs);
 
   // const [data, setData] = useState([]);
 
