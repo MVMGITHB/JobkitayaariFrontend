@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
       next: { revalidate: 60 },
     });
 
-    console.log("Metadata fetch status:", res);
+    // console.log("Metadata fetch status:", res);
 
     if (!res.ok) {
       // console.log("Failed to fetch job data for metadata");
@@ -60,7 +60,8 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const post = await res.json();
+    const data = await res.json();
+    const post = data?.job;
 
     return {
       title: post?.mtitle,
@@ -111,7 +112,6 @@ async function page({ params }) {
   if (!job) {
     notFound(); // 👈 show 404 page
   }
-
   const stripHtml = (html) =>
     html
       ? html
@@ -121,7 +121,7 @@ async function page({ params }) {
       : "";
 
   const jobSchema = job && {
-    "@context": "https://schema.org/",
+    "@context": "https://schema.org",
     "@type": "JobPosting",
 
     title: job?.postName,
@@ -129,53 +129,70 @@ async function page({ params }) {
 
     identifier: {
       "@type": "PropertyValue",
-      name: job?.organization || "Job Ki Tyaari",
+      name: job?.companyName || "Job Ki Tyaari",
       value: job?._id,
     },
 
+    datePosted: toISO(job?.createdAt),
+
+    // ✅ IMPORTANT: use LAST DATE instead of updatedAt
+    validThrough: toISO(job?.lastDate),
+
+    employmentType: job?.Jobrole || "FULL_TIME",
+
     hiringOrganization: {
       "@type": "Organization",
-      name: job?.organization || "Job Ki Tyaari",
-      sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
+      name: job?.companyName || "Job Ki Tyaari",
+      sameAs: "https://jobkityaari.com",
       logo: "https://jobkityaari.com/logo.png",
     },
 
-    employmentType: "FULL_TIME",
-    datePosted: toISO(job?.createdAt),
-    validThrough: toISO(job?.updatedAt),
-
-    url: `https://jobkityaari.com/government-jobs/${slugName}`,
+    url: `https://jobkityaari.com/technology-jobs/${slugName}`,
 
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressRegion: job?.location || "India",
+        addressLocality: job?.location || "India",
         addressCountry: "IN",
       },
     },
 
-    baseSalary: job?.salary
+    // ✅ FIXED salary (string issue handled)
+    ...(job?.salary && !isNaN(Number(job.salary))
       ? {
-          "@type": "MonetaryAmount",
-          currency: "INR",
-          value: {
-            "@type": "QuantitativeValue",
-            value: Number(job?.salary),
-            unitText: "MONTH",
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: Number(job.salary),
+              unitText: "MONTH",
+            },
           },
         }
-      : undefined,
+      : {}),
 
-    educationRequirements: job?.skill?.[0] || "As per notification",
-    experienceRequirements: job?.requirementdata?.[0] || "Not Required",
+    // ✅ ADD THESE FOR GOOGLE RANKING
+    qualifications: job?.jobDescription || "As per notification",
+
+    responsibilities: job?.responsibility || stripHtml(job?.mdescription),
+
+    skills: job?.skill || [],
+
+    experienceRequirements: job?.experience
+      ? {
+          "@type": "OccupationalExperienceRequirements",
+          monthsOfExperience: Number(job.experience) || 0,
+        }
+      : undefined,
   };
 
   return (
     <>
-      {jobSchema && (
-        <Script
-          id="job-schema"
+    
+    { job.status === "Active" && jobSchema && (
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />

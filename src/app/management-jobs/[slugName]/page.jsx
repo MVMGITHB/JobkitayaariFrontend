@@ -35,7 +35,8 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const post = await res.json();
+    const data = await res.json();
+    const post = data?.job;
 
     return {
       title: post?.mtitle,
@@ -86,7 +87,7 @@ export default async function Page({ params }) {
     notFound(); // 👈 show 404 page
   }
 
-  const stripHtml = (html) =>
+ const stripHtml = (html) =>
     html
       ? html
           .replace(/<[^>]*>?/gm, "")
@@ -97,36 +98,75 @@ export default async function Page({ params }) {
   const jobSchema = job && {
     "@context": "https://schema.org",
     "@type": "JobPosting",
+
     title: job?.postName,
     description: stripHtml(job?.mdescription),
+
     identifier: {
       "@type": "PropertyValue",
-      name: job?.organization || "Job Ki Tyaari",
+      name: job?.companyName || "Job Ki Tyaari",
       value: job?._id,
     },
+
+    datePosted: toISO(job?.createdAt),
+
+    // ✅ IMPORTANT: use LAST DATE instead of updatedAt
+    validThrough: toISO(job?.lastDate),
+
+    employmentType: job?.Jobrole || "FULL_TIME",
+
     hiringOrganization: {
       "@type": "Organization",
-      name: job?.organization || "Job Ki Tyaari",
-      sameAs: `https://jobkityaari.com/government-jobs/${slugName}`,
+      name: job?.companyName || "Job Ki Tyaari",
+      sameAs: "https://jobkityaari.com",
       logo: "https://jobkityaari.com/logo.png",
     },
-    employmentType: "FULL_TIME",
-    datePosted: toISO(job?.createdAt),
-    validThrough: toISO(job?.updatedAt),
-    url: `https://jobkityaari.com/government-jobs/${slugName}`,
+
+    url: `https://jobkityaari.com/management-jobs/${slugName}`,
+
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressRegion: job?.location || "India",
+        addressLocality: job?.location || "India",
         addressCountry: "IN",
       },
     },
+
+    // ✅ FIXED salary (string issue handled)
+    ...(job?.salary && !isNaN(Number(job.salary))
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: Number(job.salary),
+              unitText: "MONTH",
+            },
+          },
+        }
+      : {}),
+
+    // ✅ ADD THESE FOR GOOGLE RANKING
+    qualifications: job?.jobDescription || "As per notification",
+
+    responsibilities: job?.responsibility || stripHtml(job?.mdescription),
+
+    skills: job?.skill || [],
+
+    experienceRequirements: job?.experience
+      ? {
+          "@type": "OccupationalExperienceRequirements",
+          monthsOfExperience: Number(job.experience) || 0,
+        }
+      : undefined,
   };
 
   return (
     <>
-      {jobSchema && (
+     
+    { job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}

@@ -35,7 +35,11 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const post = await res.json();
+    const data = await res.json();
+
+    const post = data?.job;
+
+    // console.log("Metadata API response:", post.job);
 
     return {
       title: post?.mtitle,
@@ -69,7 +73,6 @@ export async function generateMetadata({ params }) {
   }
 }
 
-
 /* -------------------- PAGE -------------------- */
 export default async function Page({ params }) {
   const { slugName } = params;
@@ -78,86 +81,123 @@ export default async function Page({ params }) {
   let recommednedJobs = [];
 
   try {
-    const res = await axios.get(
-      `${base_url}/api/job/getJobBySlug/${slugName}`
-    );
+    const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data.job;
     recommednedJobs = res?.data.recommendedJobs || [];
 
     // console.log("job data in page", job);
     // console.log("recommended jobs data in page", recommednedJobs);
-
   } catch {}
 
-   if (!job) {
-      notFound();  // 👈 show 404 page
-    }
+  if (!job) {
+    notFound(); // 👈 show 404 page
+  }
 
   const stripHtml = (html) =>
-    html ? html.replace(/<[^>]*>?/gm, "").replace(/\s+/g, " ").trim() : "";
+    html
+      ? html
+          .replace(/<[^>]*>?/gm, "")
+          .replace(/\s+/g, " ")
+          .trim()
+      : "";
 
-  const jobSchema =
-    job && {
-      "@context": "https://schema.org",
-      "@type": "JobPosting",
-      title: job?.postName,
-      description: stripHtml(job?.mdescription),
-      
-      identifier: {
-        "@type": "PropertyValue",
-        name: job?.organization || "Job Ki Tyaari",
-        value: job?._id,
+  const jobSchema = job && {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+
+    title: job?.postName,
+    description: stripHtml(job?.mdescription),
+
+    identifier: {
+      "@type": "PropertyValue",
+      name: job?.companyName || "Job Ki Tyaari",
+      value: job?._id,
+    },
+
+    datePosted: toISO(job?.createdAt),
+
+    // ✅ IMPORTANT: use LAST DATE instead of updatedAt
+    validThrough: toISO(job?.lastDate),
+
+    employmentType: job?.Jobrole || "FULL_TIME",
+
+    hiringOrganization: {
+      "@type": "Organization",
+      name: job?.companyName || "Job Ki Tyaari",
+      sameAs: "https://jobkityaari.com",
+      logo: "https://jobkityaari.com/logo.png",
+    },
+
+    url: `https://jobkityaari.com/banking-jobs/${slugName}`,
+
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: job?.location || "India",
+        addressCountry: "IN",
       },
+    },
 
-      hiringOrganization: {
-        "@type": "Organization",
-        name: job?.organization || "Job Ki Tyaari",
-        sameAs: `https://jobkityaari.com/banking-jobs/${slugName}`,
-        logo: "https://jobkityaari.com/logo.png",
-      },
-
-      employmentType: "FULL_TIME",
-      datePosted: toISO(job?.createdAt),
-      validThrough: toISO(job?.updatedAt),
-
-      url: `https://jobkityaari.com/banking-jobs/${slugName}`,
-
-      jobLocation: {
-        "@type": "Place",
-        address: {
-          "@type": "PostalAddress",
-          addressRegion: job?.location || "India",
-          addressCountry: "IN",
-        },
-      },
-
-      baseSalary: job?.salary
-        ? {
+    // ✅ FIXED salary (string issue handled)
+    ...(job?.salary && !isNaN(Number(job.salary))
+      ? {
+          baseSalary: {
             "@type": "MonetaryAmount",
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job?.salary),
+              value: Number(job.salary),
               unitText: "MONTH",
             },
-          }
-        : undefined,
+          },
+        }
+      : {}),
 
-      educationRequirements: job?.skill?.[0] || "As per notification",
-      experienceRequirements: job?.requirementdata?.[0] || "Not Required",
-    };
+    // ✅ ADD THESE FOR GOOGLE RANKING
+    qualifications: job?.jobDescription || "As per notification",
+
+    responsibilities: job?.responsibility || stripHtml(job?.mdescription),
+
+    skills: job?.skill || [],
+
+    experienceRequirements: job?.experience
+      ? {
+          "@type": "OccupationalExperienceRequirements",
+          monthsOfExperience: Number(job.experience) || 0,
+        }
+      : undefined,
+  };
+
+  console.log("job status is " , job);
 
   return (
     <>
       {/* SERVER RENDERED SCHEMA — IMPORTANT */}
-      {jobSchema && (
+
+
+    { job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
 
-      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} />
+
+    
+
+     {/* {jobSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
+        />
+      )} */}
+
+      <JobDescription
+        slug={slugName}
+        data={job}
+        recommednedJobs={recommednedJobs}
+      />
     </>
   );
 }
