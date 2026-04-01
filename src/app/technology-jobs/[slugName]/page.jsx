@@ -106,7 +106,7 @@ async function page({ params }) {
     job = res?.data?.job;
     recommednedJobs = res?.data.recommendedJobs || [];
 
-    console.log("Job data:", job);
+    // console.log("Job data:", job);
   } catch {}
 
   if (!job) {

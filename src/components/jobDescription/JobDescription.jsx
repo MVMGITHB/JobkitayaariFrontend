@@ -286,7 +286,7 @@ function JobDescription({ slug, data , recommednedJobs }) {
 
               {data?.status !== "Active" ? (
                 <p className="text-red-600 text-lg font-semibold text-center">
-                  Job has been Expired
+                 We are sorry to inform you that this job has been expired.
                 </p>
               ) : (
                 <div>
@@ -450,7 +450,7 @@ function JobDescription({ slug, data , recommednedJobs }) {
                 <div className="text-center mt-6">
                   {data?.status !== "Active" ? (
                     <p className="text-red-600 text-lg font-semibold">
-                      Job has been Expired
+                       We are sorry to inform you that this job has been expired.
                     </p>
                   ) : (
                     <a

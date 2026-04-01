@@ -169,7 +169,7 @@ export default async function Page({ params }) {
       : undefined,
   };
 
-  console.log("job status is " , job);
+  // console.log("job status is " , job);
 
   return (
     <>
