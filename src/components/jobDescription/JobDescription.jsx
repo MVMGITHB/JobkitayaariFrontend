@@ -10,7 +10,7 @@ import RecommendedJob from "./RecommendedJob";
 function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
 
 
-  // console.log("Recommended blogs  in description",recommendedBlogs);
+  console.log("Recommended blogs  in description",recommendedBlogs);
 
   // console.log("Recommended jobs in description", recommednedJobs);
 
