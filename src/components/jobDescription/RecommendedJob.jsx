@@ -58,7 +58,7 @@ const RecommendedJob = ({ recommedned, category, releatedBlogs }) => {
                       {item?.title}
                     </p>
 
-                    <button className="mt-auto text-sm px-4 py-2 bg-[#162d5e] text-white rounded-full">
+                    <button className="mt-auto text-sm px-4 py-2 bg-[#162d5e] text-white rounded-full cursor-pointer">
                       Read More
                     </button>
                   </div>
