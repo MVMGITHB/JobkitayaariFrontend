@@ -34,7 +34,7 @@ const RecommendedJob = ({ recommedned , category , releatedBlogs }) => {
               {releatedBlogs?.map((blog) => (
                 <li key={blog._id}>
                   <a
-                    href={`/${blog.category?.slug}/${blog.slug}`}
+                    href={`/${blog.category?.slug}/articles/${blog.slug}`}
                     className="text-blue-600 hover:underline"
                   >
                     {blog.title}
