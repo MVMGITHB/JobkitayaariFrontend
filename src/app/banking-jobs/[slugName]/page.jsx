@@ -79,11 +79,13 @@ export default async function Page({ params }) {
 
   let job = null;
   let recommednedJobs = [];
+  let recommendedBlogs = [];
 
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data.job;
     recommednedJobs = res?.data.recommendedJobs || [];
+    recommendedBlogs = res?.data.recommendedBlog || [];
 
     // console.log("job data in page", job);
     // console.log("recommended jobs data in page", recommednedJobs);
@@ -197,6 +199,7 @@ export default async function Page({ params }) {
         slug={slugName}
         data={job}
         recommednedJobs={recommednedJobs}
+        recommendedBlogs={recommendedBlogs}
       />
     </>
   );

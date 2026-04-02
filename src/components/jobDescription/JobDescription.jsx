@@ -7,7 +7,10 @@ import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
 import RecommendedJob from "./RecommendedJob";
 
-function JobDescription({ slug, data , recommednedJobs }) {
+function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
+
+
+  console.log("Recommended blogs  in description",recommendedBlogs);
 
   // console.log("Recommended jobs in description", recommednedJobs);
 
@@ -474,7 +477,7 @@ function JobDescription({ slug, data , recommednedJobs }) {
 
         
       </div>
-      <RecommendedJob recommedned={recommednedJobs} />
+      <RecommendedJob recommedned={recommednedJobs} category={ data?.category?.name} releatedBlogs={recommendedBlogs} />
     </>
   );
 }
