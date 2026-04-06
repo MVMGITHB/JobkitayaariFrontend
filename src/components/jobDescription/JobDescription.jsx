@@ -402,7 +402,7 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   {data?.salary && (
                     <div className="flex items-center gap-2 text-white">
                       <TbReportMoney className="text-2xl" />
-                      <span className="text-lg">{data.salary} {data?.salaryDuration}</span>
+                      <span className="text-lg">{data.salary}</span>
                     </div>
                   )}
                 </div>
