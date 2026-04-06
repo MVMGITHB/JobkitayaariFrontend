@@ -167,7 +167,7 @@ async function page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-    ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
+  ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
   ? {
       baseSalary: {
         "@type": "MonetaryAmount",
@@ -177,15 +177,15 @@ async function page({ params }) {
 
           value:
             job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000 // ✅ LPA → yearly INR
-              : Number(job.salaryNumber) || 0, // ✅ direct number or fallback to 0
+              ? Number(job.salaryNumber) * 100000
+              : Number(job.salaryNumber),
 
           unitText:
             job?.salaryDuration === "Month"
               ? "MONTH"
               : job?.salaryDuration === "Hour"
               ? "HOUR"
-              : "YEAR", 
+              : "YEAR",
         },
       },
     }

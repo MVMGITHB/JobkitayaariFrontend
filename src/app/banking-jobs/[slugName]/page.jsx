@@ -155,15 +155,15 @@ export default async function Page({ params }) {
 
           value:
             job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000 // ✅ LPA → yearly INR
-              : Number(job.salaryNumber) || 0, // ✅ default to 0 if invalid
+              ? Number(job.salaryNumber) * 100000
+              : Number(job.salaryNumber),
 
           unitText:
             job?.salaryDuration === "Month"
               ? "MONTH"
               : job?.salaryDuration === "Hour"
               ? "HOUR"
-              : "YEAR", // ✅ default (Year + LPA)
+              : "YEAR",
         },
       },
     }
