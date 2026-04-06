@@ -167,7 +167,7 @@ async function page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-    ...(job?.salary && !isNaN(Number(job.salary))
+    ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
       ? {
           baseSalary: {
             "@type": "MonetaryAmount",
@@ -176,8 +176,8 @@ async function page({ params }) {
               "@type": "QuantitativeValue",
               value:
                 job?.salaryDuration === "LPA"
-                  ? Number(job.salary) * 100000 // ✅ convert LPA → INR/year
-                  : Number(job.salary),
+                  ? Number(job.salaryNumber) * 100000 // ✅ convert LPA → INR/year
+                  : Number(job.salaryNumber) || 0,
 
               unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
             },
