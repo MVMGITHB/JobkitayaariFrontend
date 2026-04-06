@@ -78,7 +78,7 @@ export async function generateMetadata({ params }) {
 
 /* -------------------- PAGE -------------------- */
 export default async function Page({ params }) {
-  const { slugName } = params;
+  const { slugName } = await params;
 
   let job = null;
   let recommednedJobs = [];
@@ -102,6 +102,13 @@ export default async function Page({ params }) {
           .replace(/\s+/g, " ")
           .trim()
       : "";
+
+
+
+
+      // console.log("POST NAME:", job?.postName);
+
+      //  console.log("POST NAME:", job);
 
   const jobSchema = job && {
     "@context": "https://schema.org",
