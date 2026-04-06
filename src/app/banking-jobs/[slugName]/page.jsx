@@ -2,6 +2,7 @@ import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
 import axios from "axios";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -207,18 +208,13 @@ export default async function Page({ params }) {
       {/* SERVER RENDERED SCHEMA — IMPORTANT */}
 
       {job.status === "Active" && jobSchema && (
-        <script
+        <Script
+          id="job-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
-
-      {/* {jobSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
-        />
-      )} */}
 
       <JobDescription
         slug={slugName}
