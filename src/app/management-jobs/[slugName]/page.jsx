@@ -92,7 +92,7 @@ export default async function Page({ params }) {
   }
 
 
-   console.log("Job is devandh " , job);
+  //  console.log("Job is devandh " , job);
 
  const stripHtml = (html) =>
     html

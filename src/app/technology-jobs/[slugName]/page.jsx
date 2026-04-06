@@ -130,7 +130,7 @@ async function page({ params }) {
     "@type": "JobPosting",
 
     title: job?.postName,
-     description: stripHtml(job?.mdescription),
+    description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -167,40 +167,40 @@ async function page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
- ...(job?.salaryNumber
-  ? {
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
+    ...(job?.salaryNumber
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
 
-          value:
-            job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000
-              : Number(job.salaryNumber),
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salaryNumber) * 100000
+                  : Number(job.salaryNumber),
 
-          unitText:
-            job?.salaryDuration === "Month"
-              ? "MONTH"
-              : job?.salaryDuration === "Hour"
-              ? "HOUR"
-              : "YEAR",
-        },
-      },
-    }
-  : {
-      // ⚠️ fallback (only if needed)
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
-          value: 300000, // default ₹3L/year
-          unitText: "YEAR",
-        },
-      },
-    }),
+              unitText:
+                job?.salaryDuration === "Month"
+                  ? "MONTH"
+                  : job?.salaryDuration === "Hour"
+                    ? "HOUR"
+                    : "YEAR",
+            },
+          },
+        }
+      : {
+          // ⚠️ fallback (only if needed)
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 300000, // default ₹3L/year
+              unitText: "YEAR",
+            },
+          },
+        }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
