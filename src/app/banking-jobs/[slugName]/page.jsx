@@ -156,7 +156,7 @@ export default async function Page({ params }) {
           value:
             job?.salaryDuration === "LPA"
               ? Number(job.salaryNumber) * 100000 // ✅ LPA → yearly INR
-              : Number(job.salaryNumber),
+              : Number(job.salaryNumber) || 0, // ✅ default to 0 if invalid
 
           unitText:
             job?.salaryDuration === "Month"

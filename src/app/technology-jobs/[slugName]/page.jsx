@@ -178,7 +178,7 @@ async function page({ params }) {
           value:
             job?.salaryDuration === "LPA"
               ? Number(job.salaryNumber) * 100000 // ✅ LPA → yearly INR
-              : Number(job.salaryNumber),
+              : Number(job.salaryNumber) || 0, // ✅ direct number or fallback to 0
 
           unitText:
             job?.salaryDuration === "Month"
