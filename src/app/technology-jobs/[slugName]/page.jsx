@@ -100,7 +100,7 @@ async function page({ params }) {
 
   let job = null;
   let recommednedJobs = [];
-    let recommendedBlogs = [];
+  let recommendedBlogs = [];
 
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
@@ -114,6 +114,9 @@ async function page({ params }) {
   if (!job) {
     notFound(); // 👈 show 404 page
   }
+
+  console.log("Job data:", job);
+
   const stripHtml = (html) =>
     html
       ? html
@@ -127,7 +130,7 @@ async function page({ params }) {
     "@type": "JobPosting",
 
     title: job?.postName,
-    description: stripHtml(job?.mdescription),
+     description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -135,12 +138,12 @@ async function page({ params }) {
       value: job?._id,
     },
 
-    datePosted: toISO(job?.createdAt),
+    datePosted: job?.createdAt,
 
     // ✅ IMPORTANT: use LAST DATE instead of updatedAt
-    validThrough: toISO(job?.lastDate),
+    validThrough: job?.lastDate || job?.createdAt,
 
-    employmentType: job?.Jobrole || "FULL_TIME",
+    employmentType: job?.Jobrole === "Part Time" ? "PART_TIME" : "FULL_TIME",
 
     hiringOrganization: {
       "@type": "Organization",
@@ -155,7 +158,10 @@ async function page({ params }) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
+        streetAddress: job?.streetAddress || "India",
         addressLocality: job?.location || "India",
+        addressRegion: job?.state || "India",
+        postalCode: job?.pincode || "000000",
         addressCountry: "IN",
       },
     },
@@ -168,8 +174,12 @@ async function page({ params }) {
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job.salary),
-              unitText: "MONTH",
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salary) * 100000 // ✅ convert LPA → INR/year
+                  : Number(job.salary),
+
+              unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
             },
           },
         }
@@ -192,16 +202,20 @@ async function page({ params }) {
 
   return (
     <>
-    
-    { job.status === "Active" && jobSchema && (
+      {job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
 
-      <JobDescription slug={slugName} data={job}  recommednedJobs={recommednedJobs} recommendedBlogs={recommendedBlogs} />
-      
+      <JobDescription
+        slug={slugName}
+        data={job}
+        recommednedJobs={recommednedJobs}
+        recommendedBlogs={recommendedBlogs}
+      />
+
       {/* <ShowJobTemplate slug={slugName} data={job} /> */}
       <Popup />
     </>

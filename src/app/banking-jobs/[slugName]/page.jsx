@@ -116,12 +116,12 @@ export default async function Page({ params }) {
       value: job?._id,
     },
 
-    datePosted: toISO(job?.createdAt),
+    datePosted: job?.createdAt,
 
     // ✅ IMPORTANT: use LAST DATE instead of updatedAt
-    validThrough: toISO(job?.lastDate),
+    validThrough: job?.lastDate || job?.createdAt,
 
-    employmentType: job?.Jobrole || "FULL_TIME",
+    employmentType: job?.Jobrole === "Part Time" ? "PART_TIME" : "FULL_TIME",
 
     hiringOrganization: {
       "@type": "Organization",
@@ -136,25 +136,33 @@ export default async function Page({ params }) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
+        streetAddress: job?.streetAddress || "India",
         addressLocality: job?.location || "India",
+        addressRegion: job?.state || "India",
+        postalCode: job?.pincode || "000000",
         addressCountry: "IN",
       },
     },
 
     // ✅ FIXED salary (string issue handled)
-    ...(job?.salary && !isNaN(Number(job.salary))
+     ...(job?.salary && !isNaN(Number(job.salary))
       ? {
           baseSalary: {
             "@type": "MonetaryAmount",
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job.salary),
-              unitText: "MONTH",
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salary) * 100000 // ✅ convert LPA → INR/year
+                  : Number(job.salary),
+
+              unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
             },
           },
         }
       : {}),
+
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
@@ -177,18 +185,14 @@ export default async function Page({ params }) {
     <>
       {/* SERVER RENDERED SCHEMA — IMPORTANT */}
 
-
-    { job.status === "Active" && jobSchema && (
+      {job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
 
-
-    
-
-     {/* {jobSchema && (
+      {/* {jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}

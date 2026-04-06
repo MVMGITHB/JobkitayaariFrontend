@@ -79,15 +79,14 @@ export default async function Page({ params }) {
   const { slugName } = params;
 
   let job = null;
-    let recommednedJobs = [];
-    let recommendedBlogs = [];
+  let recommednedJobs = [];
+  let recommendedBlogs = [];
 
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data?.job;
     recommednedJobs = res?.data.recommendedJobs || [];
     recommendedBlogs = res?.data.recommendedBlog || [];
-
   } catch {}
 
   if (!job) {
@@ -101,12 +100,13 @@ export default async function Page({ params }) {
           .replace(/\s+/g, " ")
           .trim()
       : "";
- const jobSchema = job && {
+ 
+  const jobSchema = job && {
     "@context": "https://schema.org",
     "@type": "JobPosting",
 
     title: job?.postName,
-    description: stripHtml(job?.mdescription),
+     description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -114,12 +114,12 @@ export default async function Page({ params }) {
       value: job?._id,
     },
 
-    datePosted: toISO(job?.createdAt),
+    datePosted: job?.createdAt,
 
     // ✅ IMPORTANT: use LAST DATE instead of updatedAt
-    validThrough: toISO(job?.lastDate),
+    validThrough: job?.lastDate || job?.createdAt,
 
-    employmentType: job?.Jobrole || "FULL_TIME",
+    employmentType: job?.Jobrole === "Part Time" ? "PART_TIME" : "FULL_TIME",
 
     hiringOrganization: {
       "@type": "Organization",
@@ -134,7 +134,10 @@ export default async function Page({ params }) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
+        streetAddress: job?.streetAddress || "India",
         addressLocality: job?.location || "India",
+        addressRegion: job?.state || "India",
+        postalCode: job?.pincode || "000000",
         addressCountry: "IN",
       },
     },
@@ -147,8 +150,12 @@ export default async function Page({ params }) {
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job.salary),
-              unitText: "MONTH",
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salary) * 100000 // ✅ convert LPA → INR/year
+                  : Number(job.salary),
+
+              unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
             },
           },
         }
@@ -169,20 +176,23 @@ export default async function Page({ params }) {
       : undefined,
   };
 
-
-
   return (
     <>
       {/* IMPORTANT: normal <script> NOT next/script */}
-     
-    { job.status === "Active" && jobSchema && (
+
+      {job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
 
-      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs}  recommendedBlogs={recommendedBlogs} />
+      <JobDescription
+        slug={slugName}
+        data={job}
+        recommednedJobs={recommednedJobs}
+        recommendedBlogs={recommendedBlogs}
+      />
       <Popup />
     </>
   );

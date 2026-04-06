@@ -13,7 +13,7 @@ const RecommendedJob = ({ recommedned, category, releatedBlogs }) => {
           <div className="w-full mx-auto min-h-[420px]">
             {recommedned && (
               <JobCarousel2
-                jobs={recommedned}
+                jobs={recommedned} 
                 title="Releated Jobs"
                 color="blue"
               />

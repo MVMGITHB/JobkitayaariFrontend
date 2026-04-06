@@ -78,6 +78,8 @@ export default async function Page({ params }) {
   let recommendedBlogs = [];
 
 
+ 
+
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data?.job;
@@ -88,6 +90,9 @@ export default async function Page({ params }) {
   if (!job) {
     notFound(); // 👈 show 404 page
   }
+
+
+   console.log("Job is devandh " , job);
 
  const stripHtml = (html) =>
     html
@@ -102,7 +107,7 @@ export default async function Page({ params }) {
     "@type": "JobPosting",
 
     title: job?.postName,
-    description: stripHtml(job?.mdescription),
+     description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -110,12 +115,12 @@ export default async function Page({ params }) {
       value: job?._id,
     },
 
-    datePosted: toISO(job?.createdAt),
+    datePosted: job?.createdAt,
 
     // ✅ IMPORTANT: use LAST DATE instead of updatedAt
-    validThrough: toISO(job?.lastDate),
+    validThrough: job?.lastDate || job?.createdAt,
 
-    employmentType: job?.Jobrole || "FULL_TIME",
+    employmentType: job?.Jobrole === "Part Time" ? "PART_TIME" : "FULL_TIME",
 
     hiringOrganization: {
       "@type": "Organization",
@@ -130,7 +135,10 @@ export default async function Page({ params }) {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
+        streetAddress: job?.streetAddress || "India",
         addressLocality: job?.location || "India",
+        addressRegion: job?.state || "India",
+        postalCode: job?.pincode || "000000",
         addressCountry: "IN",
       },
     },
@@ -143,8 +151,12 @@ export default async function Page({ params }) {
             currency: "INR",
             value: {
               "@type": "QuantitativeValue",
-              value: Number(job.salary),
-              unitText: "MONTH",
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salary) * 100000 // ✅ convert LPA → INR/year
+                  : Number(job.salary),
+
+              unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
             },
           },
         }
@@ -173,7 +185,7 @@ export default async function Page({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
-      )}
+     )}
 
       <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} recommendedBlogs={recommendedBlogs} />
       <Popup />

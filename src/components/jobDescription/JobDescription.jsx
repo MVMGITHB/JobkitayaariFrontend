@@ -396,13 +396,13 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   {data?.experience && (
                     <div className="flex items-center gap-2 text-white">
                       <IoMdTime className="text-2xl" />
-                      <span className="text-lg">{data.experience}</span>
+                      <span className="text-lg">{data.experience} {data?.experienceDuration}</span>
                     </div>
                   )}
                   {data?.salary && (
                     <div className="flex items-center gap-2 text-white">
                       <TbReportMoney className="text-2xl" />
-                      <span className="text-lg">{data.salary}</span>
+                      <span className="text-lg">{data.salary} {data?.salaryDuration}</span>
                     </div>
                   )}
                 </div>
