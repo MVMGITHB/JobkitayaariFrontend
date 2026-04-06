@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
 
     const data = await res.json();
 
-    const post = data?.job
+    const post = data?.job;
 
     return {
       title: post?.mtitle,
@@ -89,13 +89,11 @@ export default async function Page({ params }) {
     job = res?.data?.job;
     recommednedJobs = res?.data.recommendedJobs || [];
     recommendedBlogs = res?.data.recommendedBlog || [];
-
   } catch {}
 
   if (!job) {
     notFound(); // 👈 show 404 page
   }
-
 
   const stripHtml = (html) =>
     html
@@ -105,12 +103,12 @@ export default async function Page({ params }) {
           .trim()
       : "";
 
- const jobSchema = job && {
+  const jobSchema = job && {
     "@context": "https://schema.org",
     "@type": "JobPosting",
 
     title: job?.postName,
-     description: stripHtml(job?.mdescription),
+    description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -147,40 +145,40 @@ export default async function Page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-  ...(job?.salaryNumber
-  ? {
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
+    ...(job?.salaryNumber
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
 
-          value:
-            job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000
-              : Number(job.salaryNumber),
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salaryNumber) * 100000
+                  : Number(job.salaryNumber),
 
-          unitText:
-            job?.salaryDuration === "Month"
-              ? "MONTH"
-              : job?.salaryDuration === "Hour"
-              ? "HOUR"
-              : "YEAR",
-        },
-      },
-    }
-  : {
-      // ⚠️ fallback (only if needed)
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
-          value: 300000, // default ₹3L/year
-          unitText: "YEAR",
-        },
-      },
-    }),
+              unitText:
+                job?.salaryDuration === "Month"
+                  ? "MONTH"
+                  : job?.salaryDuration === "Hour"
+                    ? "HOUR"
+                    : "YEAR",
+            },
+          },
+        }
+      : {
+          // ⚠️ fallback (only if needed)
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 300000, // default ₹3L/year
+              unitText: "YEAR",
+            },
+          },
+        }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
@@ -192,22 +190,26 @@ export default async function Page({ params }) {
     experienceRequirements: job?.experience
       ? {
           "@type": "OccupationalExperienceRequirements",
-          monthsOfExperience: Number(job.experience) || 0,
+          monthsOfExperience: Number(job.experience) || 1,
         }
       : undefined,
   };
 
   return (
     <>
-     
-    { job.status === "Active" && jobSchema && (
+      {job.status === "Active" && jobSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
 
-      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} recommendedBlogs={recommendedBlogs} />
+      <JobDescription
+        slug={slugName}
+        data={job}
+        recommednedJobs={recommednedJobs}
+        recommendedBlogs={recommendedBlogs}
+      />
       <Popup />
     </>
   );

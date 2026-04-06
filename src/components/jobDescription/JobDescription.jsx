@@ -14,120 +14,18 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
 
   // console.log("Recommended jobs in description", recommednedJobs);
 
-  // const [data, setData] = useState([]);
-
-
-  // useEffect(() => {
-  //   if (slug) {
-  //     const fetchData = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           `${base_url}/api/job/getJobBySlug/${slug}`,
-  //         );
-  //         setData(response?.data);
-
-  //         console.log("response data", response?.data);
-  //         setLoading(false);
-  //       } catch (error) {
-  //         setError(error?.message);
-  //         setLoading(false);
-  //       }
-  //     };
-  //     fetchData();
-  //   }
-  // }, []);
-
-  // if (loading) return null;
-  // if (error) return <p>Error: {error}</p>;
-
-  const job = data;
-  // const faqItems = [];
-
-  // if (job.requirementdata && job.requirementdata.length > 0) {
-  //   faqItems.push({
-  //     "@type": "Question",
-  //     "name": "What are the educational qualifications required?",
-  //     "acceptedAnswer": {
-  //       "@type": "Answer",
-  //       "text": job.requirementdata.filter(r => r.trim() !== "").join("<br/>")
-  //     }
-  //   });
-  // }
-
-  // if (job.ageLimit && job.ageLimit.length > 0) {
-  //   faqItems.push({
-  //     "@type": "Question",
-  //     "name": "What is the age limit for this job?",
-  //     "acceptedAnswer": {
-  //       "@type": "Answer",
-  //       "text": job.ageLimit.join("<br/>")
-  //     }
-  //   });
-  // }
-
-  // if (job.salary) {
-  //   faqItems.push({
-  //     "@type": "Question",
-  //     "name": "What is the salary for this position?",
-  //     "acceptedAnswer": {
-  //       "@type": "Answer",
-  //       "text": job.salary
-  //     }
-  //   });
-  // }
-
-  // if (job.applylink) {
-  //   faqItems.push({
-  //     "@type": "Question",
-  //     "name": "How can I apply for this job?",
-  //     "acceptedAnswer": {
-  //       "@type": "Answer",
-  //       "text": `You can apply through the official link: <a href="${job.applylink}" target="_blank" rel="noopener noreferrer">${job.applylink}</a>`
-  //     }
-  //   });
-  // }
-
-  // if (job.jobDescription && job.jobDescription.length > 0) {
-  //   faqItems.push({
-  //     "@type": "Question",
-  //     "name": "What is the job description?",
-  //     "acceptedAnswer": {
-  //       "@type": "Answer",
-  //       "text": job.jobDescription.join("<br/>")
-  //     }
-  //   });
-  // }
-
-  // const faqSchema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "FAQPage",
-  //   "mainEntity": faqItems
-  // };
-
-
-  // console.log("job data in descriptionbhvgcfgvhbjnbhvg v", data?.category?.slug);
+  
 
   
 
 
 
-  // useEffect(() => {
-
-  //   const resposne = axios.get(`${base_url}/api/job/getRecommedJob/${data?.category?.slug}`)
-
-  //   console.log("response in job description", resposne?.data);
-
-
-  // }, [data]);
-
+ 
 
 
   return (
     <>
-      {/* <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      /> */}
+    
 
       <div className="px-4 lg:px-6">
         {data?.Jobtype === "goven" ? (

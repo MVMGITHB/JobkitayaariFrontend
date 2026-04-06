@@ -188,7 +188,7 @@ export default async function Page({ params }) {
     experienceRequirements: job?.experience
       ? {
           "@type": "OccupationalExperienceRequirements",
-          monthsOfExperience: Number(job.experience) || 0,
+          monthsOfExperience: Number(job.experience) || 1,
         }
       : undefined,
   };
