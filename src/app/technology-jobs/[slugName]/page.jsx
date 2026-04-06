@@ -115,7 +115,7 @@ async function page({ params }) {
     notFound(); // 👈 show 404 page
   }
 
-  console.log("Job data:", job);
+  // console.log("Job data:", job);
 
   const stripHtml = (html) =>
     html
