@@ -145,7 +145,7 @@ export default async function Page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-   ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
+   ...(job?.salaryNumber
   ? {
       baseSalary: {
         "@type": "MonetaryAmount",
@@ -167,7 +167,18 @@ export default async function Page({ params }) {
         },
       },
     }
-  : {}),
+  : {
+      // ⚠️ fallback (only if needed)
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "INR",
+        value: {
+          "@type": "QuantitativeValue",
+          value: 300000, // default ₹3L/year
+          unitText: "YEAR",
+        },
+      },
+    }),
 
 
     // ✅ ADD THESE FOR GOOGLE RANKING

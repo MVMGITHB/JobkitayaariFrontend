@@ -167,7 +167,7 @@ async function page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-  ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
+ ...(job?.salaryNumber
   ? {
       baseSalary: {
         "@type": "MonetaryAmount",
@@ -189,7 +189,18 @@ async function page({ params }) {
         },
       },
     }
-  : {}),
+  : {
+      // ⚠️ fallback (only if needed)
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "INR",
+        value: {
+          "@type": "QuantitativeValue",
+          value: 300000, // default ₹3L/year
+          unitText: "YEAR",
+        },
+      },
+    }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
