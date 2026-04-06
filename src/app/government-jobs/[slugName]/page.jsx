@@ -143,23 +143,29 @@ export default async function Page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-    ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
-      ? {
-          baseSalary: {
-            "@type": "MonetaryAmount",
-            currency: "INR",
-            value: {
-              "@type": "QuantitativeValue",
-              value:
-                job?.salaryDuration === "LPA"
-                  ? Number(job.salaryNumber) * 100000 // ✅ convert LPA → INR/year
-                  : Number(job.salaryNumber) || 0,
+   ...(job?.salaryNumber && !isNaN(Number(job.salaryNumber))
+  ? {
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "INR",
+        value: {
+          "@type": "QuantitativeValue",
 
-              unitText: job?.salaryDuration === "month" ? "MONTH" : "YEAR",
-            },
-          },
-        }
-      : {}),
+          value:
+            job?.salaryDuration === "LPA"
+              ? Number(job.salaryNumber) * 100000 // ✅ LPA → yearly INR
+              : Number(job.salaryNumber),
+
+          unitText:
+            job?.salaryDuration === "Month"
+              ? "MONTH"
+              : job?.salaryDuration === "Hour"
+              ? "HOUR"
+              : "YEAR", // ✅ default (Year + LPA)
+        },
+      },
+    }
+  : {}),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
