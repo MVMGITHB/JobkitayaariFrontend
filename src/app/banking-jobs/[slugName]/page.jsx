@@ -75,17 +75,22 @@ export async function generateMetadata({ params }) {
 
 /* -------------------- PAGE -------------------- */
 export default async function Page({ params }) {
-  const { slugName } =  await params;
+  const { slugName } = await params;
 
   let job = null;
   let recommednedJobs = [];
   let recommendedBlogs = [];
 
   try {
-    const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
-    job = res?.data.job;
-    recommednedJobs = res?.data.recommendedJobs || [];
-    recommendedBlogs = res?.data.recommendedBlog || [];
+    const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {
+      cache: "no-store", // 👈 important for fresh data (SSR)
+    });
+
+    const data = await res.json();
+
+    job = data?.job;
+    recommednedJobs = data?.recommendedJobs || [];
+    recommendedBlogs = data?.recommendedBlog || [];
 
     // console.log("job data in page", job);
     // console.log("recommended jobs data in page", recommednedJobs);
@@ -145,41 +150,40 @@ export default async function Page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
-   ...(job?.salaryNumber
-  ? {
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
+    ...(job?.salaryNumber
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
 
-          value:
-            job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000
-              : Number(job.salaryNumber),
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salaryNumber) * 100000
+                  : Number(job.salaryNumber),
 
-          unitText:
-            job?.salaryDuration === "Month"
-              ? "MONTH"
-              : job?.salaryDuration === "Hour"
-              ? "HOUR"
-              : "YEAR",
-        },
-      },
-    }
-  : {
-      // ⚠️ fallback (only if needed)
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
-          value: 300000, // default ₹3L/year
-          unitText: "YEAR",
-        },
-      },
-    }),
-
+              unitText:
+                job?.salaryDuration === "Month"
+                  ? "MONTH"
+                  : job?.salaryDuration === "Hour"
+                    ? "HOUR"
+                    : "YEAR",
+            },
+          },
+        }
+      : {
+          // ⚠️ fallback (only if needed)
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 300000, // default ₹3L/year
+              unitText: "YEAR",
+            },
+          },
+        }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
