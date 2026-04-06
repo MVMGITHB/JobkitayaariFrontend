@@ -215,9 +215,11 @@ const jobSchema = job && {
 
   return (
     <>
-      {job.status === "Active" && jobSchema && (
-        <script
+       {job.status === "Active" && jobSchema && (
+        <Script
+          id="job-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
