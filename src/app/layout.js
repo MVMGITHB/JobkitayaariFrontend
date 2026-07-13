@@ -72,8 +72,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {/* Google Analytics (Correct way) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-B6KBQKWQMS"

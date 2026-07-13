@@ -37,6 +37,9 @@ export async function generateMetadata({ params }) {
 
     const post = await res.json();
 
+         const imageUrl = `${base_url}${post?.image}`;
+
+
     return {
       title: post?.mtitle,
       description: post?.mdesc,
@@ -67,6 +70,15 @@ export async function generateMetadata({ params }) {
           },
         ],
       },
+      twitter: {
+        card: "summary_large_image",
+        title: post?.mtitle,
+        description: post?.mdesc,
+        creator: "@JobKityaari", // Optional: Replace with your Twitter/X handle
+        site: "@JobKityaari", // Optional
+        images: [imageUrl],
+      },
+
     };
   } catch {
     return {

@@ -26,7 +26,7 @@ function toISO(dateStr) {
 
 /* -------------------- METADATA (NO CANONICAL HERE) -------------------- */
 export async function generateMetadata({ params }) {
-  const { slugName } = params;
+  const { slugName } = await params;
 
   try {
     const res = await fetch(`${base_url}/api/job/getJobBySlug/${slugName}`, {

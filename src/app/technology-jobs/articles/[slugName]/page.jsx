@@ -37,6 +37,8 @@ export async function generateMetadata({ params }) {
 
     const post = await res.json();
 
+    const imageUrl = `${base_url}${post?.image}`;
+
     return {
       title: post?.mtitle,
       description: post?.mdesc,
@@ -59,6 +61,14 @@ export async function generateMetadata({ params }) {
             alt: post?.mtitle,
           },
         ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post?.mtitle,
+        description: post?.mdesc,
+        creator: "@JobKityaari", // Optional: Replace with your Twitter/X handle
+        site: "@JobKityaari", // Optional
+        images: [imageUrl],
       },
     };
   } catch {
@@ -85,7 +95,7 @@ const page = async ({ params }) => {
     );
   } catch (error) {
     // console.error("Error fetching article:", error);
-  
+
     return notFound(); // Show 404 page if there's an error fetching the article
   }
 };
