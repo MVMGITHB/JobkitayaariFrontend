@@ -1,4 +1,3 @@
-
 // import { useState, useEffect } from "react";
 import axios from "axios";
 import base_url from "../helper/helper";
@@ -7,26 +6,13 @@ import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
 import RecommendedJob from "./RecommendedJob";
 
-function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
-
-
+function JobDescription({ slug, data, recommednedJobs, recommendedBlogs }) {
   // console.log("Recommended blogs  in description",recommendedBlogs);
 
   // console.log("Recommended jobs in description", recommednedJobs);
 
-  
-
-  
-
-
-
- 
-
-
   return (
     <>
-    
-
       <div className="px-4 lg:px-6">
         {data?.Jobtype === "goven" ? (
           <div>
@@ -162,8 +148,15 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   )}
                   <div className="p-4">
                     {/* <p className="font-bold">For All Other Post</p> */}
-                    {data?.jobDescription?.map((age, index) => (
+                    {/* {data?.jobDescription?.map((age, index) => (
                       <p key={index}>{age}</p>
+                    ))} */}
+
+                    {data.jobDescription.map((item, index) => (
+                      <div
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
                     ))}
                   </div>
                 </div>
@@ -187,7 +180,7 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
 
               {data?.status !== "Active" ? (
                 <p className="text-red-600 text-lg font-semibold text-center">
-                 We are sorry to inform you that this job has been expired.
+                  We are sorry to inform you that this job has been expired.
                 </p>
               ) : (
                 <div>
@@ -294,7 +287,9 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   {data?.experience && (
                     <div className="flex items-center gap-2 text-white">
                       <IoMdTime className="text-2xl" />
-                      <span className="text-lg">{data.experience} {data?.experienceDuration}</span>
+                      <span className="text-lg">
+                        {data.experience} {data?.experienceDuration}
+                      </span>
                     </div>
                   )}
                   {data?.salary && (
@@ -321,6 +316,8 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                 </>
               )}
 
+       
+
               {data?.jobDescription?.length > 0 && (
                 <>
                   <h2 className="text-xl font-semibold mb-2 text-violet-700">
@@ -328,7 +325,10 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   </h2>
                   <ul className="space-y-2 list-disc list-inside text-gray-800 mb-6">
                     {data?.jobDescription.map((desc, index) =>
-                      desc?.length > 1 ? <li key={index}>{desc}</li> : null,
+                      desc?.length > 1 ?  <div
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: desc }}
+                      /> : null,
                     )}
                   </ul>
                 </>
@@ -351,7 +351,7 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                 <div className="text-center mt-6">
                   {data?.status !== "Active" ? (
                     <p className="text-red-600 text-lg font-semibold">
-                       We are sorry to inform you that this job has been expired.
+                      We are sorry to inform you that this job has been expired.
                     </p>
                   ) : (
                     <a
@@ -367,15 +367,15 @@ function JobDescription({ slug, data , recommednedJobs  , recommendedBlogs}) {
                   )}
                 </div>
               )}
-
-              
             </div>
           </div>
         )}
-
-        
       </div>
-      <RecommendedJob recommedned={recommednedJobs} category={ data?.category?.name} releatedBlogs={recommendedBlogs} />
+      <RecommendedJob
+        recommedned={recommednedJobs}
+        category={data?.category?.name}
+        releatedBlogs={recommendedBlogs}
+      />
     </>
   );
 }

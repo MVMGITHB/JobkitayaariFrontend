@@ -10,7 +10,6 @@ const base_url = process.env.NEXT_PUBLIC_API_URL;
 
     // const base_url = "http://localhost:5001"
 
-    
 
 // const base_url = "https://api.jobkityaari.com"
 
