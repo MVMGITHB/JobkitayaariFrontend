@@ -5,6 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTime } from "react-icons/io";
 import { TbReportMoney } from "react-icons/tb";
 import RecommendedJob from "./RecommendedJob";
+import RamFinCorp from "../popup/RamFinCorp";
 
 function JobDescription({ slug, data, recommednedJobs, recommendedBlogs }) {
   // console.log("Recommended blogs  in description",recommendedBlogs);
@@ -13,6 +14,10 @@ function JobDescription({ slug, data, recommednedJobs, recommendedBlogs }) {
 
   return (
     <>
+
+      {slug === "ssc-je-recruitment-2026" &&  <RamFinCorp/>}
+
+    
       <div className="px-4 lg:px-6">
         {data?.Jobtype === "goven" ? (
           <div>
