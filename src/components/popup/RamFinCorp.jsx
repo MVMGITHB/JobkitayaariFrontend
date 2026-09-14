@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const POPUP_DELAY = 4000;
+const POPUP_DELAY = 3000;
 
 const popupData = {
   desktopImage: "/ramfinpopup/desktop.webp",
