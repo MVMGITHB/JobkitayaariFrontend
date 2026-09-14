@@ -31,7 +31,7 @@ export default function RamFinCorp() {
   };
 
   const handleClick = () => {
-    window.open(popupData.link, "_blank", "noopener,noreferrer");
+    window.open(popupData?.link, "_blank", "noopener,noreferrer");
     setShowPopup(false);
   };
 
@@ -52,7 +52,7 @@ export default function RamFinCorp() {
         {/* Mobile Image (Visible on mobile/small screens, hidden on md and up) */}
         <div className="block md:hidden">
           <Image
-            src={popupData.mobileImage}
+            src={popupData?.mobileImage}
             alt="Credit Card Offer Mobile"
             width={800}
             height={800}
@@ -74,7 +74,7 @@ export default function RamFinCorp() {
         {/* Desktop Image (Hidden on mobile, visible on md and up) */}
         <div className="hidden md:block">
           <Image
-            src={popupData.desktopImage}
+            src={popupData?.desktopImage}
             alt="Credit Card Offer Desktop"
             width={800}
             height={800}
