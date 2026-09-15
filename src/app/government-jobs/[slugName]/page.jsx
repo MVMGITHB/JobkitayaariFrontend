@@ -4,6 +4,7 @@ import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -194,6 +195,8 @@ export default async function Page({ params }) {
       : undefined,
   };
 
+  const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
+
   return (
     <>
       {/* IMPORTANT: normal <script> NOT next/script */}
@@ -206,6 +209,14 @@ export default async function Page({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
+
+      {hasPopupData && (
+              <JobDynamicPop
+                desktopImage={job?.desktopImage}
+                mobileImage={job?.mobileImage}
+                link={job?.popupLink}
+              />
+            )}
 
       <JobDescription
         slug={slugName}

@@ -1,5 +1,6 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 import axios from "axios";
 import { notFound } from "next/navigation";
 import Script from "next/script";
@@ -203,6 +204,7 @@ export default async function Page({ params }) {
 
   // console.log("job status is " , job);
 
+  const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
   return (
     <>
       {/* SERVER RENDERED SCHEMA — IMPORTANT */}
@@ -213,6 +215,15 @@ export default async function Page({ params }) {
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
+        />
+      )}
+
+      {/* <JobDynamicPop desktopImage={job?.desktopImage} mobileImage={job?.mobileImage} link={job?.popupLink} /> */}
+      {hasPopupData && (
+        <JobDynamicPop
+          desktopImage={job?.desktopImage}
+          mobileImage={job?.mobileImage}
+          link={job?.popupLink}
         />
       )}
 

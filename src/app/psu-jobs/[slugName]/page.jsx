@@ -4,6 +4,7 @@ import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import Script from "next/script";
 import { notFound } from "next/navigation";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -111,9 +112,6 @@ async function page({ params }) {
     notFound(); // 👈 show 404 page
   }
 
-
-
-
   const stripHtml = (html) =>
     html
       ? html
@@ -121,12 +119,12 @@ async function page({ params }) {
           .replace(/\s+/g, " ")
           .trim()
       : "";
-const jobSchema = job && {
+  const jobSchema = job && {
     "@context": "https://schema.org",
     "@type": "JobPosting",
 
     title: job?.postName,
-     description: stripHtml(job?.mdescription),
+    description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -163,40 +161,40 @@ const jobSchema = job && {
     },
 
     // ✅ FIXED salary (string issue handled)
-  ...(job?.salaryNumber
-  ? {
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
+    ...(job?.salaryNumber
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
 
-          value:
-            job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000
-              : Number(job.salaryNumber),
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salaryNumber) * 100000
+                  : Number(job.salaryNumber),
 
-          unitText:
-            job?.salaryDuration === "Month"
-              ? "MONTH"
-              : job?.salaryDuration === "Hour"
-              ? "HOUR"
-              : "YEAR",
-        },
-      },
-    }
-  : {
-      // ⚠️ fallback (only if needed)
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
-          value: 300000, // default ₹3L/year
-          unitText: "YEAR",
-        },
-      },
-    }),
+              unitText:
+                job?.salaryDuration === "Month"
+                  ? "MONTH"
+                  : job?.salaryDuration === "Hour"
+                    ? "HOUR"
+                    : "YEAR",
+            },
+          },
+        }
+      : {
+          // ⚠️ fallback (only if needed)
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 300000, // default ₹3L/year
+              unitText: "YEAR",
+            },
+          },
+        }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
@@ -213,14 +211,24 @@ const jobSchema = job && {
       : undefined,
   };
 
+  const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
+
   return (
     <>
-       {job.status === "Active" && jobSchema && (
+      {job.status === "Active" && jobSchema && (
         <Script
           id="job-schema"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
+        />
+      )}
+
+      {hasPopupData && (
+        <JobDynamicPop
+          desktopImage={job?.desktopImage}
+          mobileImage={job?.mobileImage}
+          link={job?.popupLink}
         />
       )}
 

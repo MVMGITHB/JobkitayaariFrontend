@@ -1,5 +1,6 @@
 import base_url from "@/components/helper/helper";
 import JobDescription from "@/components/jobDescription/JobDescription";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 import Popup from "@/components/popup/Popup";
 import axios from "axios";
 import { notFound } from "next/navigation";
@@ -202,6 +203,9 @@ export default async function Page({ params }) {
       : undefined,
   };
 
+
+    const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
+
   return (
     <>
        {job.status === "Active" && jobSchema && (
@@ -212,6 +216,14 @@ export default async function Page({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
+
+       {hasPopupData && (
+                    <JobDynamicPop
+                      desktopImage={job?.desktopImage}
+                      mobileImage={job?.mobileImage}
+                      link={job?.popupLink}
+                    />
+                  )}
 
       <JobDescription
         slug={slugName}

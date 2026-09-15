@@ -5,6 +5,7 @@ import Popup from "@/components/popup/Popup";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import ShowJobTemplate from "@/components/jobDescription/ShowJobTemplate";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 
 // export const metadata = {
 //   title: 'About Us | Job Ki Tyaari - Your Career Guide',
@@ -217,6 +218,9 @@ async function page({ params }) {
       : undefined,
   };
 
+
+    const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
+
   return (
     <>
        {job.status === "Active" && jobSchema && (
@@ -227,6 +231,15 @@ async function page({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
         />
       )}
+
+ {hasPopupData && (
+              <JobDynamicPop
+                desktopImage={job?.desktopImage}
+                mobileImage={job?.mobileImage}
+                link={job?.popupLink}
+              />
+            )}
+
       <JobDescription
         slug={slugName}
         data={job}

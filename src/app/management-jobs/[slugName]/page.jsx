@@ -4,6 +4,7 @@ import axios from "axios";
 import Popup from "@/components/popup/Popup";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import JobDynamicPop from "@/components/popup/JobDynamicPop";
 
 /* -------------------- SAFE DATE CONVERTER -------------------- */
 function toISO(dateStr) {
@@ -78,9 +79,6 @@ export default async function Page({ params }) {
   let recommednedJobs = [];
   let recommendedBlogs = [];
 
-
- 
-
   try {
     const res = await axios.get(`${base_url}/api/job/getJobBySlug/${slugName}`);
     job = res?.data?.job;
@@ -92,10 +90,9 @@ export default async function Page({ params }) {
     notFound(); // 👈 show 404 page
   }
 
-
   //  console.log("Job is devandh " , job);
 
- const stripHtml = (html) =>
+  const stripHtml = (html) =>
     html
       ? html
           .replace(/<[^>]*>?/gm, "")
@@ -108,7 +105,7 @@ export default async function Page({ params }) {
     "@type": "JobPosting",
 
     title: job?.postName,
-     description: stripHtml(job?.mdescription),
+    description: stripHtml(job?.mdescription),
 
     identifier: {
       "@type": "PropertyValue",
@@ -145,40 +142,40 @@ export default async function Page({ params }) {
     },
 
     // ✅ FIXED salary (string issue handled)
- ...(job?.salaryNumber
-  ? {
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
+    ...(job?.salaryNumber
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
 
-          value:
-            job?.salaryDuration === "LPA"
-              ? Number(job.salaryNumber) * 100000
-              : Number(job.salaryNumber),
+              value:
+                job?.salaryDuration === "LPA"
+                  ? Number(job.salaryNumber) * 100000
+                  : Number(job.salaryNumber),
 
-          unitText:
-            job?.salaryDuration === "Month"
-              ? "MONTH"
-              : job?.salaryDuration === "Hour"
-              ? "HOUR"
-              : "YEAR",
-        },
-      },
-    }
-  : {
-      // ⚠️ fallback (only if needed)
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "INR",
-        value: {
-          "@type": "QuantitativeValue",
-          value: 300000, // default ₹3L/year
-          unitText: "YEAR",
-        },
-      },
-    }),
+              unitText:
+                job?.salaryDuration === "Month"
+                  ? "MONTH"
+                  : job?.salaryDuration === "Hour"
+                    ? "HOUR"
+                    : "YEAR",
+            },
+          },
+        }
+      : {
+          // ⚠️ fallback (only if needed)
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "INR",
+            value: {
+              "@type": "QuantitativeValue",
+              value: 300000, // default ₹3L/year
+              unitText: "YEAR",
+            },
+          },
+        }),
 
     // ✅ ADD THESE FOR GOOGLE RANKING
     qualifications: job?.jobDescription || "As per notification",
@@ -195,10 +192,11 @@ export default async function Page({ params }) {
       : undefined,
   };
 
+  const hasPopupData = job?.desktopImage || job?.mobileImage || job?.popupLink;
+
   return (
     <>
-     
-     {job.status === "Active" && jobSchema && (
+      {job.status === "Active" && jobSchema && (
         <Script
           id="job-schema"
           type="application/ld+json"
@@ -207,7 +205,20 @@ export default async function Page({ params }) {
         />
       )}
 
-      <JobDescription slug={slugName} data={job} recommednedJobs={recommednedJobs} recommendedBlogs={recommendedBlogs} />
+      {hasPopupData && (
+        <JobDynamicPop
+          desktopImage={job?.desktopImage}
+          mobileImage={job?.mobileImage}
+          link={job?.popupLink}
+        />
+      )}
+
+      <JobDescription
+        slug={slugName}
+        data={job}
+        recommednedJobs={recommednedJobs}
+        recommendedBlogs={recommendedBlogs}
+      />
       <Popup />
     </>
   );
