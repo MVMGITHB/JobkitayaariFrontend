@@ -7,6 +7,7 @@ import Navbar from "@/components/header/Navbar";
 import BreadCrumbSchema from "@/components/BreadCrumb/BreadCrumbSchema";
 import MainPopup from "@/components/popup/MainPopup";
 import Script from "next/script";
+import TopSection from "@/components/home/TopSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -90,6 +91,7 @@ export default function RootLayout({ children }) {
         </Script>
 
         <AuthProvider>
+          <TopSection/>
           <Header />
           <div className="lg:sticky top-0 z-40">
             <Navbar />

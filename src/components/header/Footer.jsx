@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import {
   FaFacebook,
@@ -12,28 +13,25 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-2">
           <div className="gri  gap-8">
-            {/* Contact Info */}
-            <div>
-              <h5 className="uppercase font-semibold mb-4">Contact us</h5>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <strong>Address:</strong> IThum I.T. Park, Sector 62, Noida
-                </li>
-              </ul>
-            </div>
+            {/* Contact Info / Logo & Description */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              {/* Logo Image */}
+              <div className="mb-1 bg-white">
+                <img
+                  src="/images/logo3.webp" // Replace with your actual logo path or URL
+                  alt="Company Logo"
+                  className="h-30 w-auto object-contain"
+                />
+              </div>
 
-            {/* Google Map */}
-            {/* <div className="w-full h-[120px] mt-4 rounded-xl overflow-hidden border">
-              <iframe
-                src="https://www.google.com/maps?q=IThum+IT+Park+Noida&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div> */}
+              {/* Description Text */}
+              <p className="text-sm text-white leading-relaxed">
+                Explore government and private job opportunities, stay updated
+                on exams, and read helpful blogs about recruitment, eligibility,
+                applications, and career-related news. We share information, not
+                direct employment.
+              </p>
+            </div>
           </div>
 
           <div className="sm:text-left text-center sm:items-start items-center sm:justify-start justify-center sm:mx-0 mx-auto">
@@ -134,17 +132,6 @@ export default function Footer() {
                 </Link>
               </li>
 
-              {/* <li>
-    <Link
-      href="https://twitter.com/yourhandle"
-      className="flex sm:justify-start justify-center text-white hover:underline"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FaTwitter className="mr-2" /> Twitter
-    </Link>
-  </li> */}
-
               <li>
                 <Link
                   href="https://www.instagram.com/jobkityaari/"
@@ -155,22 +142,19 @@ export default function Footer() {
                   <FaInstagram className="mr-2" /> Instagram
                 </Link>
               </li>
-
-              {/* <li>
-    <Link
-      href="https://www.linkedin.com/company/yourcompany"
-      className="flex sm:justify-start justify-center text-white hover:underline"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <FaLinkedinIn className="mr-2" /> LinkedIn
-    </Link>
-  </li> */}
             </ul>
           </div>
         </div>
       </div>
 
+      {/* Added Paragraph Section before Copyright */}
+      <div className="max-w-7xl mx-auto px-4 py-4 border-t border-gray-800 text-center lg:text-left text-xs text-gray-400 leading-relaxed">
+        <p>
+          JobKityaari provides the latest government job alerts, private job notifications, recruitment news, and career updates across India. Stay updated on bank jobs, railway recruitment, defence vacancies, teaching jobs, admit cards, exam results, answer keys, and eligibility criteria. We also publish informative blogs to help job seekers understand recruitment processes. JobKityaari is an information portal and does not directly offer jobs or conduct recruitment.
+        </p>
+      </div>
+
+      {/* Copyright Section */}
       <div className="text-center bg-black/20 py-4 text-sm">
         © 2026 Copyright:{" "}
         <a
